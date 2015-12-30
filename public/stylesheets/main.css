@@ -1,0 +1,116 @@
+#headerwrap{
+    width: 100%;
+    background-image: url('../images/headerpicture.jpg');
+    background-repeat: repeat-x;
+    border: hidden;
+    height: 165px;
+    margin-bottom: 0px;
+
+}
+#navigationmain{
+    margin-top: 50px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#navbar-contact{
+    float: right;
+    margin-top: 15px;
+    text-align: left;
+
+}
+.header-logo{
+    width:250px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+.picturemain{
+    background-image: url('../images/Sarajevo.jpg');
+    height: 150px;
+}
+.dropdown-color{
+    background-color: white;
+
+}
+#apartmani {
+    text-align: center;
+    font-size: 40px;
+    font-family: Courier;
+    text-shadow: 0 0 1px whitesmoke;
+
+}
+.itemedvin{
+    margin-bottom: 20px;
+}
+#font-size20{
+    font-size: 20px;
+}
+#header{
+    width: 980px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 23px;
+    margin: 0 auto;
+}
+#navigation-container{
+    width: 960px;
+    padding: 10px;
+    margin-top: 23px;
+    text-align: left;
+    -webkit-border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0;
+    -khtml-border-radius: 8px 8px 0 0;
+    background-color: #FFF;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.top-header {
+    position: static;
+    width: 100%;
+    z-index: 99999;
+}
+#collapse{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#collapse-content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+#collapse-title{
+    font-size: 30px;
+}
+.collapse-margin{
+    margin-bottom: 15px;
+}
+.col-item .price {
+    float: none;
+}
+.margin-top15{
+    margin-top: 15px;
+    background-color: white;
+}
+.map{
+    height: 320px;
+}
+#apcreatebutton{
+ margin-bottom: 30px;
+}
+.login{
+    margin-top: 100px;
+    vertical-align: middle;
+}
+#login-button-padding{
+    padding:0px 50px 0px 50px;
+}
+#loginusername{
+    text-align: center;
+}
+#loginpassword{
+    text-align: center;
+}
+.footer-margin{
+    margin-top: 50px;
+}

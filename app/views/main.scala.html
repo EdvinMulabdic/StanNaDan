@@ -1,0 +1,167 @@
+@(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LaunchZ</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/bootstrap.min.css")'>
+        <script src='@routes.Assets.versioned("javascripts/bootstrap.min.js")' type="text/javascript"></script>
+
+        <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
+        <script src='@routes.Assets.versioned("javascripts/hello.js")' type="text/javascript"></script>
+
+            <!-- Fallback For IE 9 [ Media Query and html5 Shim] -->
+            <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+
+            <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+            <!-- Bootstrap 3.0.3 added, change to bootstrap.min.css and bootstrap-theme.min.css if you need the minified version -->
+        <link rel="shortcut icon" type="image/x-icon" href="img/lzfavicon.ico" />
+        <link rel="icon" type="image/x-icon" href="img/lzfavicon.ico" />
+
+            <!-- Vendor CSS -->
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/animate.css")' media="all"  />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/grid.css")' media="all"  />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/bootstrap.min.css")' media="all" />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/bootstrap-theme.min.css")' media="all" />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/hover.css")' media="all" />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/cbxnewgridhover.css")' media="all" />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/font-awesome.min.css")' media="all" />
+            <!-- <link rel="stylesheet" href="css/animate.css"> -->
+            <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300, 400,600,700|Raleway:400,300,500,700,600,900' rel='stylesheet' type='text/css'>
+
+            <!-- Custom CSS -->
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/style.css")' media="all" />
+
+        <link rel="stylesheet" id="lz-switcher-style" href='@routes.Assets.versioned("/stylesheets/css/switcher-default.css")' media="all" />
+
+
+        <script src='@routes.Assets.versioned("javascripts/vendor/modernizr-2.6.2.min.js")'></script>
+            <!-- DNS Prefetch for Google Hosted libraries, Remove if you don't need that. -->
+       <!-- <link rel="dns-prefetch" href="//ajax.googleapis.com"> -->
+
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+
+
+    </head>
+
+    <section>
+        <header class="top-header" id="headerwrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-8 header-logo">
+                        <a href="@routes.Application.index()"><img src= "@routes.Assets.versioned("images/logo.png")" alt="" class="img-responsive logo"></a>
+                    </div>
+
+                    <div class="col-md-8 col-sm-9">
+                        <nav class="navbar navbar-static-top">
+                            <div class="container-fluid nav-bar">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <div class="collapse navbar-collapse margin-top15" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle border-color" data-toggle="dropdown" role="button">Apartmani Sarajevo</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="">Centar</a></li>
+                                                <li><a href="">Novo Sarajevo</a></li>
+                                                <li><a href="">Novi Grad</a></li>
+                                                <li><a href="">Stari Grad</a></li>
+                                                <li><a href="">Ilidza</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Cesta pitanja</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="">Kucni red</a></li>
+                                                <li><a href="">Poslovna saradnja</a></li>
+                                                <li><a href="">Sve o rezervacijama</a></li>
+                                                <li><a href="">Placanje</a></li>
+                                                <li><a href="">Dolazak i odlazak </a></li>
+                                                <li><a href="">Boravak u apartmanu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Korisne informacije</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Vodic kroz Sarajevo</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="">Gdje izaci</a></li>
+                                                        <li><a href="">Gdje jesti</a></li>
+                                                        <li><a href="">Sta vidjeti</a></li>
+                                                        <li><a href="">Sta raditi</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="">Plan grada</a></li>
+                                                <li><a href="">Klima</a></li>
+                                                <li><a href="">Javni prevoz</a></li>
+                                                <li><a href="">Parking zone</a></li>
+                                                <li><a href="">Valuta i placanje</a></li>
+                                                <li><a href="">Korisni kontakti</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="">Saradnja</a></li>
+                                        <li><a href="">Kontakt</a></li>
+                                        <li><a href="">Blog</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <body>
+    @content
+    </body>
+
+    <footer>
+        <div class="cblz-footer-bottom footer-margin">
+            <div class="cblz-footer-content wow fadeInDown animated">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p  class="lz-copy text-center">Apartmani Sarajevo, Apartmani u Sarajevu. Stan Na Dan Sarajevo je najbolja opcija za Vas ukoliko trazite relativno jeftin privatni smestaj na kraci ili duzi rok u Sarajevu.
+                                Cijene iznajmljivanja Sarajevo apartmana razlikuju se u odnosu na duzinu boravka i lokaciju.
+                                Pozovite nas na +381 65 42 43 500 i uverite se u nasu poslovnost i besprijekornu uslugu.
+                                Hvala Vam sto ste nas izabrali, Vas Stan Na Dan Sarajevo.</p>
+                            <p class="lz-copy text-center">Copyright 2015 <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</html>
