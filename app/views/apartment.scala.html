@@ -1,33 +1,157 @@
 @main{
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="cbx-heading2 text-left">
-                    <h2 class="uppercase">APARTMAN <p>Lokacija, Adresa</p></h2>
-                </div>
-            </div>
-        </div><!-- //ROW Our Team Header -->
-
-        <section>
+    <section>
+        <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                    <div class="lz-about-description">
-                        <p>neki tekst nekog glupog apartmana koji nema veze nikakve i cijena je 100KM</p>
+                <div class="col-md-12">
+                    <div class="cbx-heading2 text-left">
+                        <h2 class="uppercase">APARTMAN <p>Lokacija, Adresa</p></h2>
                     </div>
                 </div>
+            </div><!-- //ROW Our Team Header -->
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7" id="margin-bottom-20">
+                    <div class="apdescription">
+                        <p>neki tekst nekog glupog apartmana koji nema veze nikakve i cijena je 100KM</p>
+                    </div>
+
+                    <div class="cbx-latest-area">
+                        <div id="cbstepcarousel" data-interval="3000" data-type="multi" data-ride="carousel" class="carousel cbstepcarousel slide carousel-fade">
+                            <div data-percol="3" class="carousel-inner carousel-inner-multi">
+
+                                <div class="item active cbx-single-all">
+                                    <div class="">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!--//Item-->
+
+                            </div>
+                            <a data-slide="prev" href="#cbstepcarousel" class="left carousel-control carousel-control-multi cbx-product-carousel margin-arrow-left" >
+                                <img class="" src='@routes.Assets.versioned("img/arrows_left.png")' alt=""/></a>
+                            <a data-slide="next" href="#cbstepcarousel" class="right carousel-control carousel-control-multi cbx-product-carousel margin-arrow-right">
+                                <img class="" src='@routes.Assets.versioned("img/arrows_right.png")' alt=""/></a>
+                        </div>
+                    </div> <!-- cbx-latest-area -->
+                </div>
+
+                <div class="col-md-4 col-md-offset-1">
+                    <div class="blue-box">
+                        <div class=" persons-nights">
+                            <p class=""><b> 1 </b> Noc</p>
+                            <p><b> 1 </b> Osoba</p>
+                        </div>
+
+                        <div class="price" id="blue-box-price" >
+                            <p class="">Po noci: <i class="fa fa-euro">45</i>  </p>
+                            <p>Ukupno:  <i class="fa fa-euro">500</i></p>
+                        </div>
+                    </div>
+
+                    <div class="" id="check-in">
+                        <div class="col-md-12 check-in-date">
+                            <h4>Datum dolaska: </h4>
+                        </div>
+                        <div class="col-md-12 padding-left-0">
+                            <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
+                        </div>
+
+                        <div class="col-md-12 check-in-date">
+                            <h4>Datum odlaska: </h4>
+                        </div>
+                        <div class="col-md-12 padding-left-0">
+                            <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
+                        </div>
+
+                        <div class="col-md-12 check-in-date">
+                            <h4>Broj osoba: </h4>
+                        </div>
+                        <div class="col-md-12 padding-left-0">
+                            <input type="number" min="1" class="date-check">
+                        </div>
+                        <div class="col-md-12 check-in-date" id="red-letters">
+                            <p>* Napustanje apartmana je do 12h</p>
+                            <p>* Za duzi boravak cijena po dogovoru</p>
+                        </div>
+
+                    </div>
+
+                    <div class=" xs-text-center cbx-submit-area" id="reservation-button">
+                        <button type="submit" name="login" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Rezervisi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="apartment-informations">
+                      <table class="table">
+                          <tbody>
+                              <tr>
+                                  <td>Apartman: </td>
+                                  <td align="right"><b>Apartman</b></td>
+                              </tr>
+
+                              <tr>
+                                  <td>Lokacija: </td>
+                                  <td align="right"><b>Pofalcii</b></td>
+                              </tr>
+
+                              <tr>
+                                  <td>Ulica: </td>
+                                  <td align="right"><b>Hamdije Cemerlica 31</b></td>
+                              </tr>
+                              <div class="split-pane-divider"></div>
+                              <tr>
+                                  <td>Cijena: </td>
+                                  <td align="right"><i class="fa fa-euro">45</i></td>
+                              </tr>
+
+                              <tr>
+                                  <td>Broj osoba: </td>
+                                  <td align="right">4</td>
+                              </tr>
+
+                              <tr>
+                                  <td>Broj kreveta: </td>
+                                  <td align="right">6</td>
+                              </tr>
+                              <tr>
+                                  <td>Kvadratura: </td>
+                                  <td align="right">56 m<sup>2</sup></td>
+                              </tr>
+                              <tr>
+                                  <td>Sprat </td>
+                                  <td align="right">5</td>
+                              </tr>
+                          </tbody>
+
+
+                      </table>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-7 col-md-offset-1">
+                </div>
+
+
 
             </div>
-        </section>
-        <section>
-            
-        </section>
-
-        <div>
-            <section></section>
-            
         </div>
-    </div>
+    </section>
 
 
 

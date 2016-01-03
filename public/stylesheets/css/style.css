@@ -123,7 +123,7 @@ a:focus {
 }
 .cbx-heading2 {
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .cbx-heading3 {
   margin-top: 40px;
@@ -3177,7 +3177,7 @@ li.cbxgrid-item-none {
   }
   .col-item .photo img {
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
   }
   .og-expander h3 {
     font-size: 20px;
