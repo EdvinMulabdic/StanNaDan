@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.text.StringFormatter;
 import play.Logger;
 import play.data.Form;
 
@@ -18,6 +19,7 @@ public class Apartment extends Model {
     @Id
     public Integer id;
     public String name;
+    public String title;
     public String neighborhood;
     public String address;
     public Integer price;
@@ -35,6 +37,7 @@ public class Apartment extends Model {
      * Default constructor
      * @param id
      * @param name
+     * @param title
      * @param neighborhood
      * @param address
      * @param price
@@ -47,10 +50,11 @@ public class Apartment extends Model {
      * @param lat
      * @param lng
      */
-    public Apartment(Integer id, String name, String neighborhood, String address, Integer price, Integer capacity,
+    public Apartment(Integer id, String name, String title, String neighborhood, String address, Integer price, Integer capacity,
                      Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng) {
         this.id = id;
         this.name = name;
+        this.title = title;
         this.neighborhood = neighborhood;
         this.address = address;
         this.price = price;
@@ -69,6 +73,7 @@ public class Apartment extends Model {
         return "Apartment{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", neighborhood='" + neighborhood + '\'' +
                 ", address='" + address + '\'' +
                 ", price=" + price +
