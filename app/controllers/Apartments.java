@@ -15,16 +15,16 @@ public class Apartments extends Controller {
         return ok(createapartment.render());
     }
 
-    public Result apartment() {
-
-        return ok(apartment.render());
+    public Result apartment(Integer apartmentId) {
+        Apartment apartment = Apartment.getApartmentById(apartmentId);
+        return ok(apartment.render(apartment));
     }
 
     public Result createApartment() {
-        Boolean success = Apartment.createApartment();
-        if (success) {
+        Apartment apartment = Apartment.createApartment();
+        if (apartment != null) {
             flash("success", "Uspješno ste kreirali apartman.");
-            return ok(apartment.render());
+            return ok(apartment.render(apartment));
         } else {
             flash("error", "Desila se greška, apartman nije kreiran.");
             return ok(createapartment.render());

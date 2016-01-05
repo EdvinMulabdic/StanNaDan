@@ -3,6 +3,7 @@ package models;
 import com.avaje.ebean.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -10,6 +11,7 @@ import java.util.Date;
  */
 @Entity
 public class Reservation extends Model {
+    @Id
     public Integer id;
     public Apartment apartment;
     public Date dateFrom;

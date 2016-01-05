@@ -12,6 +12,9 @@ GET     /assets/*file               @controllers.Assets.versioned(path="/public"
 
 GET         /apartmani              @controllers.Apartments.renderApartment()
 GET         /apartman               @controllers.Apartments.apartment()
+=======
+POST        /apartmani              @controllers.Apartments.createApartment()
+GET         /apartman/:apartmentId     @controllers.Apartments.apartment(apartmentId: Integer)
 
 #Login
 GET         /adminsnd               @controllers.Login.loginIndex()
