@@ -5,6 +5,7 @@ import play.Logger;
 import play.data.Form;
 
 import javax.persistence.Entity;
+import java.util.List;
 
 /**
  * Created by ajla on 22-Dec-15.
@@ -93,5 +94,10 @@ public class Apartment extends Model {
             Logger.debug("Nisam uspio spasiti apartman :(");
             return false;
         }
+    }
+    public static List<Apartment> apartmentsForHomepage() {
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.all();
+        return apartments;
     }
 }

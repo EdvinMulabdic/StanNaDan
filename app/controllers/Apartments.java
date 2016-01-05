@@ -16,6 +16,7 @@ public class Apartments extends Controller {
     }
 
     public Result apartment() {
+
         return ok(apartment.render());
     }
 
@@ -29,4 +30,6 @@ public class Apartments extends Controller {
             return ok(createapartment.render());
         }
     }
+
+
 }
