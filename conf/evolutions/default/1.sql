@@ -6,6 +6,7 @@
 create table apartment (
   id                        integer auto_increment not null,
   name                      varchar(255),
+  title                     varchar(255),
   neighborhood              varchar(255),
   address                   varchar(255),
   price                     integer,
