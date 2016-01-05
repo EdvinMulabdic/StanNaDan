@@ -4,13 +4,16 @@ import com.avaje.ebean.Model;
 import play.Logger;
 import play.data.Form;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by ajla on 22-Dec-15.
  */
 @Entity
 public class Apartment extends Model {
+    @Id
     public Integer id;
     public String name;
     public String neighborhood;
@@ -21,6 +24,7 @@ public class Apartment extends Model {
     public Integer rooms;
     public Integer area;
     public Integer floor;
+    @Column(columnDefinition = "TEXT")
     public String description;
     public String lat;
     public String lng;
@@ -80,18 +84,21 @@ public class Apartment extends Model {
     private static Form<Apartment> form = Form.form(Apartment.class);
     private static Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
 
-    public static Boolean createApartment() {
+    public static Apartment createApartment() {
         Form<Apartment> boundForm = form.bindFromRequest();
         Apartment apartment = null;
-
         try {
             apartment = boundForm.get();
             apartment.save();
 
-            return true;
+            return apartment;
         } catch (Exception e) {
             Logger.debug("Nisam uspio spasiti apartman :(");
-            return false;
+            return apartment;
         }
+    }
+
+    public static Apartment getApartmentById(Integer apartmentId) {
+        return finder.where().eq("id", apartmentId).findUnique();
     }
 }

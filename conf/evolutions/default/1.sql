@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table apartment (
-  id                        integer,
+  id                        integer auto_increment not null,
   name                      varchar(255),
   neighborhood              varchar(255),
   address                   varchar(255),
@@ -14,19 +14,21 @@ create table apartment (
   rooms                     integer,
   area                      integer,
   floor                     integer,
-  description               varchar(255),
+  description               TEXT,
   lat                       varchar(255),
-  lng                       varchar(255))
+  lng                       varchar(255),
+  constraint pk_apartment primary key (id))
 ;
 
 create table price (
-  id                        integer,
+  id                        integer auto_increment not null,
   persons_no                integer,
-  nights_no                 integer)
+  nights_no                 integer,
+  constraint pk_price primary key (id))
 ;
 
 create table reservation (
-  id                        integer,
+  id                        integer auto_increment not null,
   date_from                 datetime(6),
   date_to                   datetime(6),
   visitor_name              varchar(255),
@@ -36,7 +38,8 @@ create table reservation (
   phone                     varchar(255),
   comment                   varchar(255),
   arrival                   varchar(255),
-  cost                      integer)
+  cost                      integer,
+  constraint pk_reservation primary key (id))
 ;
 
 

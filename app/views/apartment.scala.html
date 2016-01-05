@@ -1,10 +1,11 @@
-@main{
+@(apartment: Apartment)
+@main {
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="cbx-heading2 text-left">
-                        <h2 class="uppercase">APARTMAN <p>Lokacija, Adresa</p></h2>
+                        <h2 class="uppercase">@apartment.name <p>@apartment.neighborhood, @apartment.address</p></h2>
                     </div>
                 </div>
             </div><!-- //ROW Our Team Header -->
@@ -16,12 +17,12 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="apdescription">
-                        <p>neki tekst nekog glupog apartmana koji nema veze nikakve i cijena je 100KM</p>
+                        <p>@apartment.description</p>
                     </div>
 
                     <div class="duplicate-email">
                     @if(flash.containsKey("success")) {
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-success" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             <span class="sr-only">Message:</span>
                             @flash.get("success")
@@ -61,7 +62,7 @@
                             </div>
 
                             <div class="price" id="blue-box-price" >
-                                <p class="">Po noci: <i class="fa fa-euro">45</i>  </p>
+                                <p class="">Po noci: <i class="fa fa-euro">@apartment.price</i>  </p>
                                 <p>Ukupno:  <i class="fa fa-euro">500</i></p>
                             </div>
                         </div>
@@ -88,14 +89,14 @@
                                 <input type="number" min="1" class="date-check">
                             </div>
                             <div class="col-md-12 check-in-date" id="red-letters">
-                                <p>* Napustanje apartmana je do 12h</p>
-                                <p>* Za duzi boravak cijena po dogovoru</p>
+                                <p>* Napuštanje apartmana je do 12h</p>
+                                <p>* Za duži boravak cijena po dogovoru</p>
                             </div>
 
                         </div>
 
                         <div class=" xs-text-center cbx-submit-area" id="reservation-button">
-                            <button type="submit" name="login" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Rezervisi</button>
+                            <button type="submit" name="login" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Rezerviši</button>
                         </div>
                     </form>
                 </div>
@@ -112,66 +113,49 @@
                             <tbody>
                                 <tr>
                                     <td>Apartman: </td>
-                                    <td align="right"><b>Apartman</b></td>
+                                    <td align="right"><b>@apartment.name</b></td>
                                 </tr>
 
                                 <tr>
                                     <td>Lokacija: </td>
-                                    <td align="right"><b>Pofalcii</b></td>
+                                    <td align="right"><b>@apartment.neighborhood</b></td>
                                 </tr>
 
                                 <tr>
                                     <td>Ulica: </td>
-                                    <td align="right"><b>Hamdije Cemerlica 31</b></td>
+                                    <td align="right"><b>@apartment.address</b></td>
                                 </tr>
                                 <div class="split-pane-divider"></div>
                                 <tr>
                                     <td>Cijena: </td>
-                                    <td align="right"><i class="fa fa-euro">45</i></td>
+                                    <td align="right"><i class="fa fa-euro">@apartment.price</i></td>
                                 </tr>
 
                                 <tr>
                                     <td>Broj osoba: </td>
-                                    <td align="right">4</td>
+                                    <td align="right">@apartment.capacity</td>
                                 </tr>
 
                                 <tr>
                                     <td>Broj kreveta: </td>
-                                    <td align="right">6</td>
+                                    <td align="right">@apartment.beds</td>
                                 </tr>
                                 <tr>
                                     <td>Kvadratura: </td>
-                                    <td align="right">56 m<sup>2</sup></td>
+                                    <td align="right">@apartment.area m<sup>2</sup></td>
                                 </tr>
                                 <tr>
                                     <td>Sprat </td>
-                                    <td align="right">5</td>
+                                    <td align="right">@apartment.floor</td>
                                 </tr>
                             </tbody>
-
-
                         </table>
-
                     </div>
-
                 </div>
 
                 <div class="col-md-9">
                     <div class="cbx-about-text text-left xs-text-center">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras maximus mauris urna, sed pretium arcu laoreet id. Suspendisse in velit neque.
-                            Pellentesque commodo cursus mauris non laoreet. In hac habitasse platea dictumst. Phasellus fringilla ut ante non sodales.
-                            Curabitur nibh odio, vestibulum feugiat mi luctus, feugiat aliquam velit. Vestibulum accumsan, mi et semper gravida, velit lacus elementum augue, eu aliquet ipsum arcu id elit.
-                            Curabitur ultricies mi quis fringilla sodales. Nulla et blandit ligula. Nam vel leo nec mi rhoncus imperdiet. Duis vitae tincidunt eros. Sed vel lacus eu arcu sagittis mollis ut sed ipsum.
-                        </p>
-                        <p>
-                            Suspendisse non urna eu nibh hendrerit interdum sed in est. In id laoreet purus.
-                            Phasellus a eros sit amet massa vulputate gravida ac in urna.
-                            Aliquam a bibendum enim. Donec sollicitudin lobortis rutrum.
-                            Maecenas blandit eleifend ex sit amet laoreet. Sed euismod vel risus id pharetra.
-                            Curabitur dui ligula, faucibus varius est non, consequat tincidunt metus.
-                            Nullam nibh erat, accumsan id magna nec, eleifend mattis odio.
-                        </p>
+                        @apartment.description
                         <span></span>
                     </div>
                 </div>

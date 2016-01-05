@@ -11,7 +11,7 @@ GET     /assets/*file               @controllers.Assets.versioned(path="/public"
 
 GET         /apartmani              @controllers.Apartments.renderApartment()
 POST        /apartmani              @controllers.Apartments.createApartment()
-GET         /apartman               @controllers.Apartments.apartment()
+GET         /apartman/:apartment     @controllers.Apartments.apartment(apartment: Apartment)
 
 #Login
 GET         /adminsnd               @controllers.Login.loginIndex()
