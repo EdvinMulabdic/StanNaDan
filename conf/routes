@@ -10,5 +10,6 @@ GET     /assets/*file               @controllers.Assets.versioned(path="/public"
 
 
 GET         /apartmani              @controllers.Apartments.renderApartment()
+POST        /apartmani              @controllers.Apartments.createApartment()
 GET         /adminsnd               @controllers.Application.login()
 GET         /apartman               @controllers.Apartments.apartment()

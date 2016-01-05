@@ -19,6 +19,16 @@
                         <p>neki tekst nekog glupog apartmana koji nema veze nikakve i cijena je 100KM</p>
                     </div>
 
+                    <div class="duplicate-email">
+                    @if(flash.containsKey("success")) {
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Message:</span>
+                            @flash.get("success")
+                        </div>
+                    }
+
+                    </div>
                     <div class="cbx-latest-area margin-bottom-20">
                         <div id="cbstepcarousel" data-interval="3000" data-type="multi" data-ride="carousel" class="carousel cbstepcarousel slide carousel-fade">
                             <div data-percol="3" class="carousel-inner carousel-inner-multi">
