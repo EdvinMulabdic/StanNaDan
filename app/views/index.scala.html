@@ -1,3 +1,4 @@
+@(apartments: java.util.List[Apartment])
 @main {
     <section>
         <div class="container">
@@ -40,191 +41,57 @@
             </div><!-- //ROW Our Team Header -->
             <div class="clearfix" style="margin-bottom: 5px"> </div>
             <div class="cbx-latest-area">
-
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
+            @if(apartments.size() > 0) {
+                @for(apartment <- apartments) {
+                    <div class="item active cbx-single-all">
+                        <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
                                 </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
+                                <div class="info">
+                                    <div class="row">
+                                        <a href="#" target="">
+                                            <div class=" col-md-12 text-center">
+                                                <h4 class="product-title-color"><strong>@apartment.name</strong></h4>
+                                                <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> @apartment.neighborhood</h5>
+                                                <h5 class="price-text-color">@apartment.address</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-male"></i>@apartment.capacity Osoba</p>
+                                        <p class="btn-details"><i class="fa fa-home"></i>@apartment.rooms Sobe</p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                                <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                                @*<img id="parkingimage" src='@routes.Assets.versioned("images/parking.png")'>*@
-
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                                    <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            @*<img id="parkingimage" src='@routes.Assets.versioned("images/parking.png")'>*@
-
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            @*<img id="parkingimage" src='@routes.Assets.versioned("images/parking.png")'>*@
-
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-             </div><!-- cbx-latest-area -->
+                    </div> <!--//Item-->
+                }
+            }
+            </div><!-- cbx-latest-area -->
         </div><!-- container end -->
     </section>
 
 
 
 
-                <!-- TEAM SECTION START -->
-            <section>
-                <div id="cbx-team" class="cbx-section cbx-team">
-                    <div class="cbx-team-inner">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="cbx-heading text-center">
-                                        <h2 class="uppercase wow fadeInUp">APARTMANI SARAJEVO</h2>
-                                        <hr noshade size="" width="" color="">
-                                        <p class=" wow flipInY">Postovani Gosti, gore pomenuti apartmani su samo dio nase ponude. Za siru ponudu pogledajte stranicu.</p>
-                                    </div>
-                                </div>
-                            </div><!-- //ROW Our Team Header -->
+    <!-- TEAM SECTION START -->
+    <section>
+        <div id="cbx-team" class="cbx-section cbx-team">
+            <div class="cbx-team-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cbx-heading text-center">
+                                <h2 class="uppercase wow fadeInUp">APARTMANI SARAJEVO</h2>
+                                <hr noshade size="" width="" color="">
+                                <p class=" wow flipInY">Postovani Gosti, gore pomenuti apartmani su samo dio nase ponude. Za siru ponudu pogledajte stranicu.</p>
+                            </div>
+                        </div>
+                    </div><!-- //ROW Our Team Header -->
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                     <div class="cbx-single-team text-center">
