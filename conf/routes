@@ -15,3 +15,7 @@ GET         /apartman               @controllers.Apartments.apartment()
 #Login
 GET         /adminsnd               @controllers.Login.loginIndex()
 POST        /adminsnd               @controllers.Login.login()
+=======
+POST        /apartmani              @controllers.Apartments.createApartment()
+GET         /adminsnd               @controllers.Application.login()
+GET         /apartman               @controllers.Apartments.apartment()
