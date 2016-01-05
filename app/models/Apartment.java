@@ -6,7 +6,9 @@ import play.data.Form;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
+import java.util.List;
 
 /**
  * Created by ajla on 22-Dec-15.
@@ -98,7 +100,13 @@ public class Apartment extends Model {
         }
     }
 
+
     public static Apartment getApartmentById(Integer apartmentId) {
         return finder.where().eq("id", apartmentId).findUnique();
+    }
+    public static List<Apartment> apartmentsForHomepage() {
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.all();
+        return apartments;
     }
 }

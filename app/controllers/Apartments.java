@@ -15,6 +15,7 @@ public class Apartments extends Controller {
         return ok(createapartment.render());
     }
 
+
     public Result apartment(Integer apartmentId) {
         Apartment apartment = Apartment.getApartmentById(apartmentId);
         return ok(apartment.render(apartment));
@@ -30,4 +31,6 @@ public class Apartments extends Controller {
             return ok(createapartment.render());
         }
     }
+
+
 }
