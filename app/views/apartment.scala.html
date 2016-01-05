@@ -11,15 +11,15 @@
         </div>
     </section>
 
-    <section>
+    <section class="margin-bottom-20">
         <div class="container">
             <div class="row">
-                <div class="col-md-7" id="margin-bottom-20">
+                <div class="col-md-7">
                     <div class="apdescription">
                         <p>neki tekst nekog glupog apartmana koji nema veze nikakve i cijena je 100KM</p>
                     </div>
 
-                    <div class="cbx-latest-area">
+                    <div class="cbx-latest-area margin-bottom-20">
                         <div id="cbstepcarousel" data-interval="3000" data-type="multi" data-ride="carousel" class="carousel cbstepcarousel slide carousel-fade">
                             <div data-percol="3" class="carousel-inner carousel-inner-multi">
 
@@ -43,49 +43,51 @@
                 </div>
 
                 <div class="col-md-4 col-md-offset-1">
-                    <div class="blue-box">
-                        <div class=" persons-nights">
-                            <p class=""><b> 1 </b> Noc</p>
-                            <p><b> 1 </b> Osoba</p>
+                    <form method="POST" role="form" action="#">
+                        <div class="blue-box">
+                            <div class=" persons-nights">
+                                <p class=""><b> 1 </b> Noc</p>
+                                <p><b> 1 </b> Osoba</p>
+                            </div>
+
+                            <div class="price" id="blue-box-price" >
+                                <p class="">Po noci: <i class="fa fa-euro">45</i>  </p>
+                                <p>Ukupno:  <i class="fa fa-euro">500</i></p>
+                            </div>
                         </div>
 
-                        <div class="price" id="blue-box-price" >
-                            <p class="">Po noci: <i class="fa fa-euro">45</i>  </p>
-                            <p>Ukupno:  <i class="fa fa-euro">500</i></p>
-                        </div>
-                    </div>
+                        <div class="" id="check-in">
+                            <div class="col-md-12 check-in-date">
+                                <h4>Datum dolaska: </h4>
+                            </div>
+                            <div class="col-md-12 padding-left-0">
+                                <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
+                            </div>
 
-                    <div class="" id="check-in">
-                        <div class="col-md-12 check-in-date">
-                            <h4>Datum dolaska: </h4>
-                        </div>
-                        <div class="col-md-12 padding-left-0">
-                            <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
-                        </div>
+                            <div class="col-md-12 check-in-date">
+                                <h4>Datum odlaska: </h4>
+                            </div>
+                            <div class="col-md-12 padding-left-0">
+                                <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
+                            </div>
 
-                        <div class="col-md-12 check-in-date">
-                            <h4>Datum odlaska: </h4>
-                        </div>
-                        <div class="col-md-12 padding-left-0">
-                            <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
-                        </div>
+                            <div class="col-md-12 check-in-date">
+                                <h4>Broj osoba: </h4>
+                            </div>
+                            <div class="col-md-12 padding-left-0">
+                                <input type="number" min="1" class="date-check">
+                            </div>
+                            <div class="col-md-12 check-in-date" id="red-letters">
+                                <p>* Napustanje apartmana je do 12h</p>
+                                <p>* Za duzi boravak cijena po dogovoru</p>
+                            </div>
 
-                        <div class="col-md-12 check-in-date">
-                            <h4>Broj osoba: </h4>
-                        </div>
-                        <div class="col-md-12 padding-left-0">
-                            <input type="number" min="1" class="date-check">
-                        </div>
-                        <div class="col-md-12 check-in-date" id="red-letters">
-                            <p>* Napustanje apartmana je do 12h</p>
-                            <p>* Za duzi boravak cijena po dogovoru</p>
                         </div>
 
-                    </div>
-
-                    <div class=" xs-text-center cbx-submit-area" id="reservation-button">
-                        <button type="submit" name="login" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Rezervisi</button>
-                    </div>
+                        <div class=" xs-text-center cbx-submit-area" id="reservation-button">
+                            <button type="submit" name="login" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Rezervisi</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -95,65 +97,137 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="apartment-informations">
-                      <table class="table">
-                          <tbody>
-                              <tr>
-                                  <td>Apartman: </td>
-                                  <td align="right"><b>Apartman</b></td>
-                              </tr>
+                    <div class="apartment-informations margin-bottom-20">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Apartman: </td>
+                                    <td align="right"><b>Apartman</b></td>
+                                </tr>
 
-                              <tr>
-                                  <td>Lokacija: </td>
-                                  <td align="right"><b>Pofalcii</b></td>
-                              </tr>
+                                <tr>
+                                    <td>Lokacija: </td>
+                                    <td align="right"><b>Pofalcii</b></td>
+                                </tr>
 
-                              <tr>
-                                  <td>Ulica: </td>
-                                  <td align="right"><b>Hamdije Cemerlica 31</b></td>
-                              </tr>
-                              <div class="split-pane-divider"></div>
-                              <tr>
-                                  <td>Cijena: </td>
-                                  <td align="right"><i class="fa fa-euro">45</i></td>
-                              </tr>
+                                <tr>
+                                    <td>Ulica: </td>
+                                    <td align="right"><b>Hamdije Cemerlica 31</b></td>
+                                </tr>
+                                <div class="split-pane-divider"></div>
+                                <tr>
+                                    <td>Cijena: </td>
+                                    <td align="right"><i class="fa fa-euro">45</i></td>
+                                </tr>
 
-                              <tr>
-                                  <td>Broj osoba: </td>
-                                  <td align="right">4</td>
-                              </tr>
+                                <tr>
+                                    <td>Broj osoba: </td>
+                                    <td align="right">4</td>
+                                </tr>
 
-                              <tr>
-                                  <td>Broj kreveta: </td>
-                                  <td align="right">6</td>
-                              </tr>
-                              <tr>
-                                  <td>Kvadratura: </td>
-                                  <td align="right">56 m<sup>2</sup></td>
-                              </tr>
-                              <tr>
-                                  <td>Sprat </td>
-                                  <td align="right">5</td>
-                              </tr>
-                          </tbody>
+                                <tr>
+                                    <td>Broj kreveta: </td>
+                                    <td align="right">6</td>
+                                </tr>
+                                <tr>
+                                    <td>Kvadratura: </td>
+                                    <td align="right">56 m<sup>2</sup></td>
+                                </tr>
+                                <tr>
+                                    <td>Sprat </td>
+                                    <td align="right">5</td>
+                                </tr>
+                            </tbody>
 
 
-                      </table>
+                        </table>
 
                     </div>
 
                 </div>
 
-                <div class="col-md-7 col-md-offset-1">
+                <div class="col-md-9">
+                    <div class="cbx-about-text text-left xs-text-center">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras maximus mauris urna, sed pretium arcu laoreet id. Suspendisse in velit neque.
+                            Pellentesque commodo cursus mauris non laoreet. In hac habitasse platea dictumst. Phasellus fringilla ut ante non sodales.
+                            Curabitur nibh odio, vestibulum feugiat mi luctus, feugiat aliquam velit. Vestibulum accumsan, mi et semper gravida, velit lacus elementum augue, eu aliquet ipsum arcu id elit.
+                            Curabitur ultricies mi quis fringilla sodales. Nulla et blandit ligula. Nam vel leo nec mi rhoncus imperdiet. Duis vitae tincidunt eros. Sed vel lacus eu arcu sagittis mollis ut sed ipsum.
+                        </p>
+                        <p>
+                            Suspendisse non urna eu nibh hendrerit interdum sed in est. In id laoreet purus.
+                            Phasellus a eros sit amet massa vulputate gravida ac in urna.
+                            Aliquam a bibendum enim. Donec sollicitudin lobortis rutrum.
+                            Maecenas blandit eleifend ex sit amet laoreet. Sed euismod vel risus id pharetra.
+                            Curabitur dui ligula, faucibus varius est non, consequat tincidunt metus.
+                            Nullam nibh erat, accumsan id magna nec, eleifend mattis odio.
+                        </p>
+                        <span></span>
+                    </div>
                 </div>
-
-
-
             </div>
         </div>
     </section>
 
+    <section class="margin-bottom-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cbx-heading2 text-left">
+                        <h2 class="uppercase"><p>Mapa</p></h2>
+                    </div>
+
+                    <div id="map" class="map"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cbx-heading2 text-left">
+                        <h2 class="uppercase"><p>Slicni apartmani</p></h2>
+                    </div>
+                </div>
 
 
 
+                <div class="item active cbx-single-all">
+                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
+                        <div class="col-item">
+                            <div class="photo">
+                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
+                            </div>
+                            <div class="info">
+                                <div class="row">
+                                    <a href="" target="_blank">
+                                        <div class=" col-md-12 text-center">
+                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
+                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
+                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="separator clear-left">
+                                    <p class="btn-add">
+                                        <i class="fa fa-male"></i>6 Osoba</p>
+                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--//Item-->
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script  src='@routes.Assets.versioned("javascripts/googlemap.js")'></script>
 }
