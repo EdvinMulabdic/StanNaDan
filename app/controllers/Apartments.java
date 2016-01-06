@@ -40,7 +40,7 @@ public class Apartments extends Controller {
         Apartment apart = Apartment.getApartmentById(apartmentId);
 
         Logger.debug(apart.toString());
-        
+
         return ok(updateapartment.render(apart));
     }
 

@@ -120,12 +120,13 @@ public class Apartment extends Model {
             Integer price = Integer.parseInt(boundForm.field("price").value());
             Integer capacity = Integer.parseInt(boundForm.field("capacity").value());
             Integer beds = Integer.parseInt(boundForm.field("beds").value());
-            Integer rooms =Integer.parseInt( boundForm.field("rooms").value());
+            Integer rooms = Integer.parseInt( boundForm.field("rooms").value());
             Integer area = Integer.parseInt(boundForm.field("area").value());
-            Integer floor =Integer.parseInt( boundForm.field("floor").value());
+            Integer floor = Integer.parseInt( boundForm.field("floor").value());
             String description = boundForm.field("description").value();
             String lat = boundForm.field("lat").value();
             String lng = boundForm.field("lng").value();
+
 
             apartment.update();
 
