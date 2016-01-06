@@ -57,13 +57,13 @@
                     <form method="POST" role="form" action="#">
                         <div class="blue-box">
                             <div class=" persons-nights">
-                                <p class=""><b> 1 </b> Noc</p>
-                                <p><b> 1 </b> Osoba</p>
+                                <p class="" ><b id="total">1</b> Noc</p>
+                                <p><b id="nopersons"> 1 </b> Osoba</p>
                             </div>
 
                             <div class="price" id="blue-box-price" >
-                                <p class="">Po noci: <i class="fa fa-euro">@apartment.price</i>  </p>
-                                <p>Ukupno:  <i class="fa fa-euro">500</i></p>
+                                <p class="" >Po noci: <i class="fa fa-euro" id="cijena"> @apartment.price</i>  </p>
+                                <p>Ukupno:  <i class="fa fa-euro" id="totalmoney" > 0 </i></p>
                             </div>
                         </div>
 
@@ -72,26 +72,29 @@
                                 <h4>Datum dolaska: </h4>
                             </div>
                             <div class="col-md-12 padding-left-0">
-                                <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
+                                <input type="date" class="date-check" name="checkIndate" id="checkIn" placeholder="select date" required/>
                             </div>
 
                             <div class="col-md-12 check-in-date">
                                 <h4>Datum odlaska: </h4>
                             </div>
                             <div class="col-md-12 padding-left-0">
-                                <input type="date" class="date-check" name="checkIn" id="date" placeholder="select date" required onchange="getCheckIn()"/>
+                                <input type="date" class="date-check" name="checkOutdate" id="checkOut" placeholder="select date" required onchange="totalNights(@apartment.price)"/>
                             </div>
 
                             <div class="col-md-12 check-in-date">
                                 <h4>Broj osoba: </h4>
                             </div>
                             <div class="col-md-12 padding-left-0">
-                                <input type="number" min="1" class="date-check">
+                                <input type="number" max="@apartment.capacity" min="1"  class="date-check" id="person" onclick="capacity()">
                             </div>
                             <div class="col-md-12 check-in-date" id="red-letters">
                                 <p>* Napuštanje apartmana je do 12h</p>
                                 <p>* Za duži boravak cijena po dogovoru</p>
                             </div>
+
+                            <input id="valchin" hidden>
+                            <input id="valchout" hidden>
 
                         </div>
 
@@ -224,4 +227,5 @@
 
 
     <script  src='@routes.Assets.versioned("javascripts/googlemap.js")'></script>
+    <script  src='@routes.Assets.versioned("javascripts/bluebox.js")'></script>
 }
