@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.Cookies;
 import models.Apartment;
 import play.Logger;
 import play.mvc.Controller;
@@ -53,6 +54,11 @@ public class Apartments extends Controller {
             flash("error", "Desila se greška, podaci o apartmanu nisu ažurirani.");
             return ok(createapartment.render());
         }
+    }
+    public Result cookies(Integer apartmentId){
+        Cookies.setCookies(apartmentId);
+        Logger.info("dshdja " + apartmentId);
+        return redirect(routes.Apartments.apartment(apartmentId));
     }
 
 }
