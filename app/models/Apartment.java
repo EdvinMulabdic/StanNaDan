@@ -110,9 +110,10 @@ public class Apartment extends Model {
 <<<<<<< 0c624bb9faf0306b7aa7606469c49e1831bc2b01
 =======
 
-    public static Apartment updateApartment() {
+    public static Apartment updateApartment(Integer apartmentId) {
         Form<Apartment> boundForm = form.bindFromRequest();
-        Apartment apartment = null;
+
+        Apartment apartment = Apartment.getApartmentById(apartmentId);
         try {
             String name = boundForm.field("name").value();
             String title = boundForm.field("title").value();
@@ -128,6 +129,19 @@ public class Apartment extends Model {
             String lat = boundForm.field("lat").value();
             String lng = boundForm.field("lng").value();
 
+            apartment.name = name;
+            apartment.title = title;
+            apartment.neighborhood = neighborhood;
+            apartment.address = address;
+            apartment.price = price;
+            apartment.capacity = capacity;
+            apartment.beds = beds;
+            apartment.rooms = rooms;
+            apartment.area = area;
+            apartment.floor = floor;
+            apartment.description = description;
+            apartment.lat = lat;
+            apartment.lng = lng;
 
             apartment.update();
 

@@ -45,8 +45,8 @@ public class Apartments extends Controller {
         return ok(updateapartment.render(apart));
     }
 
-    public Result updateApartment() {
-        Apartment apart = Apartment.updateApartment();
+    public Result updateApartment(Integer apartmentId) {
+        Apartment apart = Apartment.updateApartment(apartmentId);
         if (apart != null) {
             flash("success", "Uspješno ste ažurirali podatke o  apartmanu.");
             return ok(apartment.render(apart));
