@@ -93,6 +93,9 @@
 .map{
     height: 320px;
 }
+.map2{
+    height: 520px;
+}
 #apcreatebutton{
  margin-bottom: 30px;
 }
@@ -175,7 +178,7 @@
     border-style: none;
     border:1px solid black;
     padding: 0px;
-    /*width: 100%;*/
+    width: 100%;
     height: 30px;
     font-size: 18px;
     text-align: center;
@@ -216,4 +219,11 @@
         width: 100%;
         height: 100%;
     }
+}
+.margin-right-20{
+    margin-right: 20px;
+}
+.checkboxs{
+    width: 16px;
+    height: 16px;
 }
