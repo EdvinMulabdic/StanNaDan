@@ -14,7 +14,7 @@ GET         /apartmani                          @controllers.Apartments.renderAp
 POST        /apartmani                          @controllers.Apartments.createApartment()
 GET         /apartman/:apartmentId              @controllers.Apartments.apartment(apartmentId: Integer)
 GET         /updateapartman/:apartmentId        @controllers.Apartments.renderUpdateApartment(apartmentId: Integer)
-POST        /updateapartman                     @controllers.Apartments.updateApartment()
+POST        /updateapartman/:apartmentId        @controllers.Apartments.updateApartment(apartmentId: Integer)
 
 #Login
 GET         /adminsnd                           @controllers.Login.loginIndex()
