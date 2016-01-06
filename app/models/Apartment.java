@@ -91,6 +91,10 @@ public class Apartment extends Model {
     private static Form<Apartment> form = Form.form(Apartment.class);
     private static Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
 
+    /**
+     * Creates an Apartment and saves it in the DB
+     * @return
+     */
     public static Apartment createApartment() {
         Form<Apartment> boundForm = form.bindFromRequest();
         Apartment apartment = null;
@@ -105,10 +109,47 @@ public class Apartment extends Model {
         }
     }
 
+    public static Apartment updateApartment() {
+        Form<Apartment> boundForm = form.bindFromRequest();
+        Apartment apartment = null;
+        try {
+            String name = boundForm.field("name").value();
+            String title = boundForm.field("title").value();
+            String neighborhood = boundForm.field("neighborhood").value();
+            String address = boundForm.field("address").value();
+            Integer price = Integer.parseInt(boundForm.field("price").value());
+            Integer capacity = Integer.parseInt(boundForm.field("capacity").value());
+            Integer beds = Integer.parseInt(boundForm.field("beds").value());
+            Integer rooms =Integer.parseInt( boundForm.field("rooms").value());
+            Integer area = Integer.parseInt(boundForm.field("area").value());
+            Integer floor =Integer.parseInt( boundForm.field("floor").value());
+            String description = boundForm.field("description").value();
+            String lat = boundForm.field("lat").value();
+            String lng = boundForm.field("lng").value();
 
+            apartment.update();
+
+            return apartment;
+        } catch (Exception e) {
+            Logger.debug("Nisam uspio spasiti apartman :(");
+            return apartment;
+        }
+    }
+
+    /**
+     * Retrieves an apartment by provided id.
+     * @param apartmentId
+     * @return
+     */
     public static Apartment getApartmentById(Integer apartmentId) {
         return finder.where().eq("id", apartmentId).findUnique();
     }
+
+    /**
+     * Retrieves a list of apartments for homepage.
+     * TODO Odluciti i implementirati nacin na koji ce se odlucivati koji se apartmani prikazivati na pocetnoj stranici
+     * @return
+     */
     public static List<Apartment> apartmentsForHomepage() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.all();
