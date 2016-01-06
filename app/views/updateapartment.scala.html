@@ -1,6 +1,155 @@
-@main{
+@(apartment: Apartment)
+@main {
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="cbx-heading2 text-center">
+                        <h2 class="uppercase wow fadeInUp">DODAJ NOVI APARTMAN</h2>
+                        <hr noshade size="" width="" color="">
+                        <p class=" wow flipInY">Molimo unesite sve informacije kako bi apartman bio uspjesno unesen u bazu</p>
+                    </div>
+                </div>
+            </div><!-- //ROW Our Team Header -->
+
+            <div class="row">
+                @if(flash.containsKey("error")) {
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Message:</span>
+                        @flash.get("error")
+                    </div>
+                }
+                <form method="POST" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="#" >
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="text" name="name" class="form-control cbxname lz-git-form-control" id="apname" required value=@apartment.name>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="text" name="title" class="form-control cbxname lz-git-form-control" id="aptitle" required value=@apartment.title>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="text" name="neighborhood" class="form-control cbxname lz-git-form-control" id="aplocation" required value=@apartment.neighborhood>
+
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="text" name="address" class="form-control cbxname lz-git-form-control" id="apstreet" required value=@apartment.address>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="number" min="1" name="price" class="form-control cbxname lz-git-form-control" id="apprice" required value=@apartment.price>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="number" min="1" name="capacity" class="form-control cbxname lz-git-form-control" id="appersons" required value=@apartment.capacity>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="number" min="1" name="beds" class="form-control cbxname lz-git-form-control" id="apbeds" required value=@apartment.beds>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="number" min="1" name="rooms" class="form-control cbxname lz-git-form-control" id="aprooms" required value=@apartment.rooms>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="number" min="1" name="area" class="form-control cbxname lz-git-form-control" id="apares" required value=@apartment.area>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="number" name="floor" min="1" class="form-control cbxname lz-git-form-control" id="apfloor" required value=@apartment.floor>
+                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1" >
+                                <div class="cbx-heading4 text-center">
+                                    <p>Dodatni sadrzaji apartmana</p>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="parking" value="parking" style="width: 16px; height: 16px;">
+                                    <label  for="parking">Parking</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="washingmachine" value="washingmachine" class="checkboxs">
+                                    <label  for="washingmachine">Mašina za veš</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="balcony" value="balcony" class="checkboxs">
+                                    <label  for="balcony">Terasa</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="lift" value="lift" class="checkboxs">
+                                    <label  for="lift">Lift</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="pets" value="pets" class="checkboxs">
+                                    <label  for="pets">Kućni ljubimci</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <textarea name="description" id="textarea_2" class="form-control cbxmessage lz-git-form-control" name="cbxmessage" id="cbxmessage" rows="15" required value=@apartment.description></textarea>
+                                <label id="cbxmessage-error" class="error valid" for="cbxmessage"></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div id="map" class="map2"></div>
+                            </div>
+                            <input id="lat" name="lat" value="43.8534183"  style="display : none">
+                            <input id="lng" name="lng" value="18.37808399999"  style="display : none">
+                        </div>
+
+                        <div id="infoPanel" style="display : none">
+                            <b>Marker status:</b>
+                            <div id="markerStatus"><i>Click and drag the marker.</i></div>
+                            <b>Current position:</b>
+                            <div id="info"></div>
+                        </div>
+                    </div>
 
 
+                    <div class="col-md-6 col-md-offset-3 xs-text-center cbx-submit-area">
+                        <button type="submit" name="save" class="btn btn-block lz-git-submit-btn cbx-submit" id="apcreatebutton">Dodaj</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script  src='@routes.Assets.versioned("javascripts/googlemap.js")'></script>
 
 
 }
