@@ -80,91 +80,138 @@
 
             <!-- Shuffle.min js -->
         <script src='@routes.Assets.versioned("javascripts/jquery.shuffle.min.js")'></script>
-
-
-
+        <script src='@routes.Assets.versioned("javascripts/hover-dropdown.js")'></script>
 
 
     </head>
 
-    <section>
-        <header class="top-header" id="headerwrap">
+    <header class="head-section">
+        <div class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-3 col-xs-8 header-logo">
-                        <a href="@routes.Application.index()"><img src= "@routes.Assets.versioned("images/logo.png")" alt="" class="img-responsive logo"></a>
-                    </div>
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="@routes.Application.index()" class=""><img src= "@routes.Assets.versioned("images/logo.png")" alt="" class="img-responsive logo brand"></a>
 
-                    <div class="col-md-8 col-sm-9">
-                        <nav class="navbar navbar-static-top">
-                            <div class="container-fluid nav-bar">
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-
-                                <div class="collapse navbar-collapse margin-top15" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle border-color" data-toggle="dropdown" role="button">Apartmani Sarajevo</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="">Centar</a></li>
-                                                <li><a href="">Novo Sarajevo</a></li>
-                                                <li><a href="">Novi Grad</a></li>
-                                                <li><a href="">Stari Grad</a></li>
-                                                <li><a href="">Ilidza</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Cesta pitanja</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="">Kucni red</a></li>
-                                                <li><a href="">Poslovna saradnja</a></li>
-                                                <li><a href="">Sve o rezervacijama</a></li>
-                                                <li><a href="">Placanje</a></li>
-                                                <li><a href="">Dolazak i odlazak </a></li>
-                                                <li><a href="">Boravak u apartmanu</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Korisne informacije</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Vodic kroz Sarajevo</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="">Gdje izaci</a></li>
-                                                        <li><a href="">Gdje jesti</a></li>
-                                                        <li><a href="">Sta vidjeti</a></li>
-                                                        <li><a href="">Sta raditi</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="">Plan grada</a></li>
-                                                <li><a href="">Klima</a></li>
-                                                <li><a href="">Javni prevoz</a></li>
-                                                <li><a href="">Parking zone</a></li>
-                                                <li><a href="">Valuta i placanje</a></li>
-                                                <li><a href="">Korisni kontakti</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="">Saradnja</a></li>
-                                        <li><a href="">Kontakt</a></li>
-                                        <li><a href="">Blog</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </nav>
-                    </div>
-                </div>
             </div>
-        </header>
-    </section>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                        "dropdown" data-toggle="dropdown" href="#">Apartmani Sarajevo <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="index.html">Centar</a>
+                            </li>
+                            <li>
+                                <a href="index1.html">Novo Sarajevo</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Novi Grad</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Stari Grad</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Ilidza</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                        "dropdown" data-toggle="dropdown" href="#">Cesta pitanja<i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="index.html">Kucni red</a>
+                            </li>
+                            <li>
+                                <a href="index1.html">Poslovna saradnja</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Sve o rezervacijama</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Placanje</a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Dolazak i odlazak </a>
+                            </li>
+                            <li>
+                                <a href="index2.html">Boravak u apartmanu </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                        "dropdown" data-toggle="dropdown" href="#">Korisne informacije <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a href="#" tabindex="-1">Vodic kroz Sarajevo</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" tabindex="-1">Gdje izaci</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" tabindex="-1">Gdje jesti</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" tabindex="-1">Sta vidjeti</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" tabindex="-1">Sta raditi</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="table.html">Plan grada</a>
+                            </li>
+                            <li>
+                                <a href="table.html">Klima Sarajeva</a>
+                            </li>
+                            <li>
+                                <a href="table.html">Parkiranje i parking zone</a>
+                            </li>
+                            <li>
+                                <a href="table.html">Javni gradski prevoz</a>
+                            </li>
+                            <li>
+                                <a href="table.html">Valuta i placanje</a>
+                            </li>
+                            <li>
+                                <a href="table.html">Korisni kontakti</a>
+                            </li>
+
+                            <li class="dropdown-submenu">
+                                <a href="#" tabindex="-1">Kako do Sarajeva?</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" tabindex="-1">Avionom </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" tabindex="-1">Vozom</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" tabindex="-1">Autom</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="contact.html">Saradnja</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </header>
 
     <body>
     @content
