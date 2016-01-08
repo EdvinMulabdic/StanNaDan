@@ -41,8 +41,6 @@ public class Apartments extends Controller {
     public Result renderUpdateApartment(Integer apartmentId) {
         Apartment apart = Apartment.getApartmentById(apartmentId);
 
-        Logger.debug(apart.toString());
-
         return ok(updateapartment.render(apart));
     }
 
@@ -58,7 +56,6 @@ public class Apartments extends Controller {
     }
     public Result cookies(Integer apartmentId){
         Cookies.setCookies(apartmentId);
-        Logger.info("dshdja " + apartmentId);
         return redirect(routes.Apartments.apartment(apartmentId));
     }
 

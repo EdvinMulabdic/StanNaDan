@@ -34,3 +34,6 @@ POST        /apartman/:apartmentId              @controllers.Apartments.cookies(
 #Login
 GET         /adminsnd                           @controllers.Login.loginIndex()
 POST        /adminsnd                           @controllers.Login.login()
+
+#popup mail
+POST        /apartman/rezervacija/:apartmentId  @controllers.Emails.sendMail(apartmentId: Integer)
