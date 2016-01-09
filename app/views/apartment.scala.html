@@ -10,9 +10,9 @@
                         </div>
                     </div>
                     <div class="col-md-3 favourite-div">
-                        <form method="GET" role="form" action="#">
+                        <form method="GET" role="form" action="@routes.Apartments.favouriteApartments()">
                             <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="favbutton" onclick=""><i class="fa fa-heart" style="font-size: 30px"></i> MOJA LISTA</button>
+                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="favbutton" onclick="getCookies()"><i class="fa fa-heart" style="font-size: 30px"></i> MOJA LISTA</button>
                             </div>
                         </form>
                     </div>
@@ -214,9 +214,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 margin-bottom-20">
-                    <form method="POST" role="form" action="#">
+                    <form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">
                         <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                            <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="@routes.Apartments.cookies(apartment.id)"><i class="fa fa-heart"> DODAJ U LISTU</i></button>
+                            <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart"> DODAJ U LISTU</i></button>
                         </div>
                     </form>
                 </div>
@@ -347,5 +347,6 @@
     <script  src='@routes.Assets.versioned("javascripts/googlemap.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/bluebox.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/popup.js")'></script>
+    <script  src='@routes.Assets.versioned("javascripts/cookies.js")'></script>
 
 }

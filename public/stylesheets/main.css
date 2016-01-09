@@ -242,6 +242,7 @@
 .head-section .nav li a,
 .head-section .nav li.active ul.dropdown-menu li a {
     color: #999;
+    font-family: FontAwesome;
     font-size: 14px;
     font-weight: 300;
     background: none;
@@ -253,10 +254,12 @@ ul.dropdown-menu { border: none }
 .head-section .nav li.active a:hover,
 .head-section .nav li a.dropdown-toggle:hover,
 .head-section .nav li a.dropdown-toggle:focus,
-.head-section .nav li.active ul.dropdown-menu li a:hover,
-.head-section .nav li.active ul.dropdown-menu li a:focus,
-.head-section .nav li.active ul.dropdown-menu li.active a {
-    color: #fff !important;
+.head-section .nav li.active ul.dropdown-menu li a.black:hover,
+.head-section .nav li.active ul.dropdown-menu li a.black:focus,
+.head-section .nav li.active ul.dropdown-menu li.active a.black {
+    color: black !important;
+    font-size: 16px;
+    font-family: FontAwesome;
     background-color: #f5740a !important;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -264,7 +267,13 @@ ul.dropdown-menu { border: none }
     -o-transition: all .3s ease;
     transition: all .3s ease;
 }
-
+ ul.dropdown-menu { border: none }
+.head-section .nav li a#saradnja:hover,
+.head-section .nav li a#saradnja:focus,
+.head-section .nav li.active a#saradnja,
+.head-section .nav li.active a#saradnja:hover{
+    color: #fff !important;
+}
 .head-section .navbar-default .navbar-nav > .open > a,
 .head-section .navbar-default .navbar-nav > .open > a:hover,
 .head-section .navbar-default .navbar-nav > .open > a:focus {
@@ -666,4 +675,51 @@ ul.dropdown-menu { border: none }
 #favbutton{
     height: 50px;
     font-size: 20px;
+}
+
+
+/*------ price picture -----------*/
+.price-picture{
+    background-image: url('../images/price.png');
+    width: 58px;
+    height: 48px;
+    text-align: center;
+    line-height: 1.7;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFF;
+    position: absolute;
+    top: -7px;
+    right: 8px;
+}
+
+@media (max-width: 480px) {
+    .price-picture{
+        background-image: url('../images/price.png');
+        width: 58px;
+        height: 48px;
+        text-align: center;
+        line-height: 1.7;
+        font-size: 20px;
+        font-weight: 700;
+        color: #FFF;
+        position: absolute;
+        top: -7px;
+        right: 45px;
+    }
+}
+@media (max-width: 480px) {
+    .price-picture{
+        background-image: url('../images/price.png');
+        width: 58px;
+        height: 48px;
+        text-align: center;
+        line-height: 1.7;
+        font-size: 20px;
+        font-weight: 700;
+        color: #FFF;
+        position: absolute;
+        top: -7px;
+        right: 35px;
+    }
 }

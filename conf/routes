@@ -30,6 +30,8 @@ POST        /updateapartman/:apartmentId        @controllers.Apartments.updateAp
 =======
 POST        /updateapartman/:apartmentId                     @controllers.Apartments.updateApartment(apartmentId: Integer)
 POST        /apartman/:apartmentId              @controllers.Apartments.cookies(apartmentId: Integer)
+=======
+GET         /listaapartmana/                    @controllers.Apartments.favouriteApartments()
 
 #Login
 GET         /adminsnd                           @controllers.Login.loginIndex()
@@ -37,3 +39,4 @@ POST        /adminsnd                           @controllers.Login.login()
 
 #popup mail
 POST        /apartman/rezervacija/:apartmentId  @controllers.Emails.sendMail(apartmentId: Integer)
+
