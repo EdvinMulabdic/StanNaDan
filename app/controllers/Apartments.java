@@ -2,12 +2,15 @@ package controllers;
 
 import helpers.Cookies;
 import models.Apartment;
-import play.Logger;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import views.html.apartment;
 import views.html.createapartment;
+import views.html.favourite;
 import views.html.updateapartment;
+
+
 
 /**
  * Created by User on 12/29/2015.
@@ -56,6 +59,11 @@ public class Apartments extends Controller {
     public Result cookies(Integer apartmentId){
         Cookies.setCookies(apartmentId);
         return redirect(routes.Apartments.apartment(apartmentId));
+    }
+
+    public Result favouriteApartments(){
+
+        return ok(favourite.render());
     }
 
 }

@@ -49,7 +49,7 @@ public class Emails extends Controller {
             e.printStackTrace();
         }
             /*If mail is sent flash appears and user is redirected to index page */
-        flash("success", "Vasa poruka je poslana. Potrudit cemo se da odgovorimo u najkracem mogucem roku. Zahvaljujemo !");
+        flash("success", "Vasa poruka je poslana. Potrudit cemo se da odgovorimo u najkracem mogucem roku. Zahvaljujemo!");
         return redirect(routes.Apartments.apartment(apartmentId));
 
     }
