@@ -708,7 +708,7 @@ ul.dropdown-menu { border: none }
         right: 45px;
     }
 }
-@media (max-width: 480px) {
+@media (max-width: 400px) {
     .price-picture{
         background-image: url('../images/price.png');
         width: 58px;
