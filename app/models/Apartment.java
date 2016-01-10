@@ -1,12 +1,12 @@
 package models;
 
 import com.avaje.ebean.Model;
-import com.avaje.ebean.text.StringFormatter;
 import play.Logger;
 import play.data.Form;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 import javax.persistence.Id;
 
@@ -107,8 +107,6 @@ public class Apartment extends Model {
             return apartment;
         }
     }
-<<<<<<< 0c624bb9faf0306b7aa7606469c49e1831bc2b01
-=======
 
     public static Apartment updateApartment(Integer apartmentId) {
         Form<Apartment> boundForm = form.bindFromRequest();
@@ -152,6 +150,13 @@ public class Apartment extends Model {
         }
     }
 
+        /* --------------- retrieves all apartments ---------------*/
+    public static List<Apartment> getAllApartments(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.all();
+        return apartments;
+    }
+
     /**
      * Retrieves an apartment by provided id.
      * @param apartmentId
@@ -159,6 +164,41 @@ public class Apartment extends Model {
      */
     public static Apartment getApartmentById(Integer apartmentId) {
         return finder.where().eq("id", apartmentId).findUnique();
+    }
+        /* --------------- retrieves apartments with location centar ---------------*/
+
+    public static List<Apartment> apartmentsCentar(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("neighborhood", "Centar").findList();
+        return apartments;
+    }
+        /* --------------- retrieves apartments with location novo sarajevo ---------------*/
+
+    public static List<Apartment> apartmentsNSarajevo(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("neighborhood", "Novo Sarajevo").findList();
+        return apartments;
+    }
+        /* --------------- retrieves apartments with location novi grad ---------------*/
+
+    public static List<Apartment> apartmentsNGrad(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("neighborhood", "Novi Grad").findList();
+        return apartments;
+    }
+        /* --------------- retrieves apartments with location stari grad ---------------*/
+
+    public static List<Apartment> apartmentsSGrad(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("neighborhood", "Stari Grad").findList();
+        return apartments;
+    }
+        /* --------------- retrieves apartments with location ilidza ---------------*/
+
+    public static List<Apartment> apartmentsIlidza(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("neighborhood", "Ilidza").findList();
+        return apartments;
     }
 
     /**

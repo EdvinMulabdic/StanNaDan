@@ -1,0 +1,42 @@
+@(apartments: java.util.List [Apartment])
+@main{
+    <div class="container">
+    <section id="tablemargins">
+        <table class="table table-responsive" id="sort">
+            <thead>
+                <tr class="about">
+                    <th>Ime apartmana</th>
+                    <th>Lokacija</th>
+                    <th>Adresa</th>
+                    <th>Cijena</th>
+                    <th>Kapacitet</th>
+                    <th>Kreveti</th>
+                    <th>Povrsina</th>
+                    <th>Sprat</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(apartment <- apartments) {
+                <tr class="about" >
+                    <td>@apartment.name</td>
+                    <td>@apartment.neighborhood</td>
+                    <td>@apartment.address</td>
+                    <td>@apartment.price</td>
+                    <td>@apartment.capacity</td>
+                    <td>@apartment.beds</td>
+                    <td>@apartment.area</td>
+                    <td>@apartment.floor</td>
+                    <td>
+                        <a data-role="delete" data-delete-parent="tr" href="" role="button">
+                            <i class="rediconcolor fa fa-trash-o fa-lg"></i></a>
+                    </td>
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    </section>
+    </div>
+    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
+}

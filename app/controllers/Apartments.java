@@ -5,11 +5,9 @@ import models.Apartment;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import views.html.apartment;
-import views.html.createapartment;
-import views.html.favourite;
-import views.html.updateapartment;
+import views.html.*;
 
+import java.util.List;
 
 
 /**
@@ -66,5 +64,37 @@ public class Apartments extends Controller {
 
         return ok(favourite.render());
     }
+     /* --------------- apartments with location centar ---------------*/
+
+    public Result centarApartments(){
+        List<Apartment> apartments = Apartment.apartmentsCentar();
+        return ok(searchApartments.render(apartments));
+    }
+        /* --------------- apartments with location novo sarajevo ---------------*/
+
+    public Result nsarajevoApartments(){
+        List<Apartment> apartments = Apartment.apartmentsNSarajevo();
+        return ok(searchApartments.render(apartments));
+    }
+        /* --------------- apartments with location novi grad ---------------*/
+
+    public Result ngradApartments(){
+        List<Apartment> apartments = Apartment.apartmentsNGrad();
+        return ok(searchApartments.render(apartments));
+    }
+        /* --------------- apartments with location stari grad ---------------*/
+
+    public Result sgradApartments(){
+        List<Apartment> apartments = Apartment.apartmentsSGrad();
+        return ok(searchApartments.render(apartments));
+    }
+        /* --------------- apartments with location ilizda ---------------*/
+
+    public Result ilidzaApartments(){
+        List<Apartment> apartments = Apartment.apartmentsIlidza();
+        return ok(searchApartments.render(apartments));
+    }
+
+
 
 }
