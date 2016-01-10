@@ -17,11 +17,18 @@ GET         /updateapartman/:apartmentId        @controllers.Apartments.renderUp
 POST        /apartman/:apartmentId              @controllers.Apartments.cookies(apartmentId: Integer)
 POST        /updateapartman/:apartmentId        @controllers.Apartments.updateApartment(apartmentId: Integer)
 GET         /listaapartmana/                    @controllers.Apartments.favouriteApartments()
+GET         /centar                             @controllers.Apartments.centarApartments()
+GET         /novosarajevo                       @controllers.Apartments.nsarajevoApartments()
+GET         /novigrad                           @controllers.Apartments.ngradApartments()
+GET         /starigrad                          @controllers.Apartments.sgradApartments()
+GET         /ilidza                             @controllers.Apartments.ilidzaApartments()
 
 #Login
 GET         /adminsnd                           @controllers.Login.loginIndex()
-POST        /adminsnd                           @controllers.Login.login()
+POST        /adminsnd                           @controllers.Login.renderAdminPage()
 
 #popup mail
 POST        /apartman/rezervacija/:apartmentId  @controllers.Emails.sendMail(apartmentId: Integer)
 
+#cooperation
+GET         /saradnja                           @controllers.Application.cooperation()
