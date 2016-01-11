@@ -21,6 +21,14 @@ create table apartment (
   constraint pk_apartment primary key (id))
 ;
 
+create table app_user (
+  id                        integer auto_increment not null,
+  email                     varchar(255),
+  password                  varchar(255),
+  user_access_level         integer,
+  constraint pk_app_user primary key (id))
+;
+
 create table price (
   id                        integer auto_increment not null,
   persons_no                integer,
@@ -51,6 +59,8 @@ create table reservation (
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table apartment;
+
+drop table app_user;
 
 drop table price;
 
