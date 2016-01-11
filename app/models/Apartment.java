@@ -1,8 +1,10 @@
 package models;
 
 import com.avaje.ebean.Model;
+import helpers.Authenticator;
 import play.Logger;
 import play.data.Form;
+import play.mvc.Security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -93,6 +95,8 @@ public class Apartment extends Model {
      * Creates an Apartment and saves it in the DB
      * @return
      */
+    /* --------------- create apartment ---------------*/
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public static Apartment createApartment() {
         Form<Apartment> boundForm = form.bindFromRequest();
         Apartment apartment = null;
@@ -106,7 +110,8 @@ public class Apartment extends Model {
             return apartment;
         }
     }
-
+    /* --------------- update apartment ---------------*/
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public static Apartment updateApartment(Integer apartmentId) {
         Form<Apartment> boundForm = form.bindFromRequest();
 
@@ -147,6 +152,12 @@ public class Apartment extends Model {
             Logger.debug("Nisam uspio spasiti apartman :(");
             return apartment;
         }
+    }
+    /* --------------- delete apartment ---------------*/
+    @Security.Authenticated(Authenticator.AdminFilter.class)
+    public static void deleteApartment(Integer apartmentId){
+        Apartment apartment = finder.where().eq("id", apartmentId).findUnique();
+        apartment.delete();
     }
 
         /* --------------- retrieves all apartments ---------------*/
@@ -210,4 +221,5 @@ public class Apartment extends Model {
         List<Apartment> apartments = finder.all();
         return apartments;
     }
+
 }

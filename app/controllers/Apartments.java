@@ -1,10 +1,12 @@
 package controllers;
 
+import helpers.Authenticator;
 import helpers.Cookies;
 import models.Apartment;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.*;
 
 import java.util.List;
@@ -22,28 +24,31 @@ public class Apartments extends Controller {
     }
 
     // Create apartment
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result renderApartment() {
         return ok(createapartment.render());
     }
-
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result createApartment() {
         Apartment apart = Apartment.createApartment();
         if (apart != null) {
             flash("success", "Uspješno ste kreirali apartman.");
-            return ok(apartment.render(apart));
+            return redirect(routes.Apartments.apartment(apart.id));
         } else {
             flash("error", "Desila se greška, apartman nije kreiran.");
-            return ok(createapartment.render());
+            return status(404, createapartment.render());
         }
     }
 
     // Update apartment
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result renderUpdateApartment(Integer apartmentId) {
         Apartment apart = Apartment.getApartmentById(apartmentId);
 
         return ok(updateapartment.render(apart));
     }
 
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result updateApartment(Integer apartmentId) {
         Apartment apart = Apartment.updateApartment(apartmentId);
         if (apart != null) {
@@ -60,7 +65,7 @@ public class Apartments extends Controller {
     }
 
     public Result favouriteApartments(){
-
+//        String apartment = ctx.session().get(" ");
         return ok(favourite.render());
     }
      /* --------------- apartments with location centar ---------------*/
@@ -93,7 +98,18 @@ public class Apartments extends Controller {
         List<Apartment> apartments = Apartment.apartmentsIlidza();
         return ok(searchApartments.render(apartments));
     }
+        /* --------------- delete apartment ---------------*/
 
-
+    public Result deleteApartment(Integer apartmentId){
+        Apartment.deleteApartment(apartmentId);
+        List<Apartment> apartments = Apartment.getAllApartments();
+        return status(200, adminpage.render(apartments));
+    }
+            /* --------------- admin page render ---------------*/
+    @Security.Authenticated(Authenticator.AdminFilter.class)
+    public Result adminPageRender(){
+        List<Apartment> apartments = Apartment.getAllApartments();
+        return ok(adminpage.render(apartments));
+    }
 
 }

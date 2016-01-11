@@ -14,7 +14,6 @@ import play.mvc.Result;
  */
 public class Emails extends Controller {
     public Result sendMail(Integer apartmentId) {
-        Logger.info("USAO U MAIL  " + apartmentId);
         //taking values from input fields
         DynamicForm form = Form.form().bindFromRequest();
         String name = form.field("name").value();
