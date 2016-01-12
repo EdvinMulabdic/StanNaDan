@@ -22,17 +22,22 @@ GET         /ilidza                              @controllers.Apartments.ilidzaA
 
 #Login
 GET         /adminsnd                            @controllers.Login.loginIndex()
-POST        /adminsnd/adminpage                  @controllers.Login.renderAdminPage()
+POST        /adminsnd/adminpanel                 @controllers.Login.renderAdminPanel()
 
 #popup mail
 POST        /apartman/rezervacija/:apartmentId   @controllers.Emails.sendMail(apartmentId: Integer)
 
-#cooperation
-GET         /saradnja                            @controllers.Application.cooperation()
+#Informations
+GET         /saradnja                            @controllers.Informations.cooperation()
+GET         /kucnired                            @controllers.Informations.rules()
+GET         /sveorezervacijama                   @controllers.Informations.reservations()
+GET         /placanje                            @controllers.Informations.payment()
+GET         /boravakuapartmanu                   @controllers.Informations.apartmentRules()
+GET         /dolazakiodlazak                     @controllers.Informations.arrivalsAndDeparture()
+
 
 #admin
 GET         /adminsnd/adminpage                  @controllers.Apartments.adminPageRender()
-
 GET         /adminsnd/:apartmentId               @controllers.Apartments.deleteApartment(apartmentId: Integer)
 DELETE      /adminsnd/:apartmentId               @controllers.Apartments.deleteApartment(apartmentId: Integer)
 GET         /dodajapartman                       @controllers.Apartments.renderApartment()
@@ -40,3 +45,6 @@ POST        /adminsnd/apartman                   @controllers.Apartments.createA
 GET         /updateapartman/:apartmentId         @controllers.Apartments.renderUpdateApartment(apartmentId: Integer)
 POST        /updateapartman/:apartmentId         @controllers.Apartments.updateApartment(apartmentId: Integer)
 
+GET         /adminsnd/adminpanel/:email          @controllers.Login.showAdminPanel(email: String)
+POST        /adminsnd/adminpanel/:email          @controllers.Login.updateUser(email: String)
+GET         /adminsnd/adminpage/apartmani        @controllers.Login.renderAdminPage()

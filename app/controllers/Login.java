@@ -11,6 +11,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.adminpage;
+import views.html.adminpanel;
 import views.html.login;
 
 import java.util.List;
@@ -24,11 +25,23 @@ public class Login extends Controller {
     public Result loginIndex(){
         return ok(login.render());
     }
+    /* ---------------  admin page list of apartments render ---------------*/
 
-    /* --------------- admin page list of apartments render ---------------*/
-
-    public Result renderAdminPage(){
+    public Result renderAdminPage() {
         List<Apartment> apartments = Apartment.getAllApartments();
+
+        return ok(adminpage.render(apartments));
+    }
+
+    public Result showAdminPanel(String email){
+        AppUser user = AppUser.findUserByEmail(email);
+
+        return ok(adminpanel.render(user));
+    }
+
+    /* --------------- admin panel ---------------*/
+
+    public Result renderAdminPanel(){
         DynamicForm form = Form.form().bindFromRequest();
 
         String email = form.field("email").value();
@@ -41,8 +54,27 @@ public class Login extends Controller {
         }else if(user.userAccessLevel == UserAccessLevel.ADMIN){
             Cookies.setUserCookies(user);
             Session.setUserSessionData(user);
-            return ok(adminpage.render(apartments));
+            return ok(adminpanel.render(user));
         }
         return redirect(routes.Application.index());
     }
-}
+
+    /* --------------- admin page update password ---------------*/
+
+    public Result updateUser(String email){
+        AppUser user = AppUser.findUserByEmail(email);
+        DynamicForm form = Form.form().bindFromRequest();
+        String password = form.field("password").value();
+
+        boolean isUpdated = AppUser.updateUser(user, password);
+
+        if(isUpdated){
+            flash("success", "Vas password je azuriran");
+            return redirect(routes.Login.showAdminPanel(user.email));
+        }
+        flash("error-search", "Neuspjelo azuriranje.");
+        return redirect(routes.Login.renderAdminPanel());
+        }
+
+    }
+
