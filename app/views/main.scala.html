@@ -21,12 +21,6 @@
         <script src='@routes.Assets.versioned("javascripts/bootstrap.min.js")' type="text/javascript"></script>
 
         <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
-        <link rel="shortcut icon" href='@routes.Assets.versioned("images/ico/favicon.png")'>
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href='@routes.Assets.versioned("images/favicon.png")'>
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href='@routes.Assets.versioned("images/favicon.png")'>
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href='@routes.Assets.versioned("images/favicon.png")'>
-        <link rel="apple-touch-icon-precomposed" href='@routes.Assets.versioned("images/favicon.png")'>
-        @*<script src='@routes.Assets.versioned("javascripts/hello.js")' type="text/javascript"></script>*@
 
             <!-- Fallback For IE 9 [ Media Query and html5 Shim] -->
             <!--[if lt IE 9]>
@@ -105,47 +99,44 @@
                             </a>
                             <ul class="dropdown-menu ">
                                 <li>
-                                    <a class="black" href="@routes.Apartments.centarApartments()">Centar</a>
+                                    <a href="@routes.Apartments.centarApartments()">Centar</a>
                                 </li>
                                 <li>
-                                    <a class="black" href="@routes.Apartments.nsarajevoApartments()">Novo Sarajevo</a>
+                                    <a href="@routes.Apartments.nsarajevoApartments()">Novo Sarajevo</a>
                                 </li>
                                 <li>
-                                    <a class="black" href="@routes.Apartments.ngradApartments()">Novi Grad</a>
+                                    <a href="@routes.Apartments.ngradApartments()">Novi Grad</a>
                                 </li>
                                 <li>
-                                    <a class="black" href="@routes.Apartments.sgradApartments()">Stari Grad</a>
+                                    <a href="@routes.Apartments.sgradApartments()">Stari Grad</a>
                                 </li>
                                 <li>
-                                    <a class="black" href="@routes.Apartments.ilidzaApartments()">Ilidza</a>
+                                    <a href="@routes.Apartments.ilidzaApartments()">Ilidza</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                            "dropdown" data-toggle="dropdown" href="#">Cesta pitanja<i class="fa fa-angle-down"></i>
+                            "dropdown" data-toggle="dropdown" href="">Cesta pitanja<i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="index.html">Kucni red</a>
+                                    <a href="@routes.Informations.rules()">Kucni red</a>
                                 </li>
                                 <li>
-                                <a href="index1.html">Poslovna saradnja</a>
-                            </li>
-                            <li>
-                                <a href="index2.html">Sve o rezervacijama</a>
-                            </li>
-                            <li>
-                                <a href="index2.html">Placanje</a>
-                            </li>
-                            <li>
-                                <a href="index2.html">Dolazak i odlazak </a>
-                            </li>
-                            <li>
-                                <a href="index2.html">Boravak u apartmanu </a>
-                            </li>
-                        </ul>
-                    </li>
+                                    <a href="@routes.Informations.reservations()">Sve o rezervacijama</a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Informations.payment()">Placanje</a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Informations.arrivalsAndDeparture()">Dolazak i odlazak </a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Informations.apartmentRules()">Boravak u apartmanu </a>
+                                </li>
+                            </ul>
+                        </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
                         "dropdown" data-toggle="dropdown" href="#">Korisne informacije <i class="fa fa-angle-down"></i>
@@ -205,7 +196,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="@routes.Application.cooperation()" id="saradnja" >Saradnja</a>
+                        <a href="@routes.Informations.cooperation()" id="saradnja" >Saradnja</a>
                     </li>
                 </ul>
             </div>
