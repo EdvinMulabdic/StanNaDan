@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.Authenticator;
 import helpers.Cookies;
 import helpers.Session;
 import helpers.UserAccessLevel;
@@ -10,6 +11,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.adminpage;
 import views.html.adminpanel;
 import views.html.login;
@@ -26,13 +28,14 @@ public class Login extends Controller {
         return ok(login.render());
     }
     /* ---------------  admin page list of apartments render ---------------*/
-
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result renderAdminPage() {
         List<Apartment> apartments = Apartment.getAllApartments();
 
         return ok(adminpage.render(apartments));
     }
 
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result showAdminPanel(String email){
         AppUser user = AppUser.findUserByEmail(email);
 
@@ -40,7 +43,7 @@ public class Login extends Controller {
     }
 
     /* --------------- admin panel ---------------*/
-
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result renderAdminPanel(){
         DynamicForm form = Form.form().bindFromRequest();
 
@@ -61,6 +64,7 @@ public class Login extends Controller {
 
     /* --------------- admin page update password ---------------*/
 
+    @Security.Authenticated(Authenticator.AdminFilter.class)
     public Result updateUser(String email){
         AppUser user = AppUser.findUserByEmail(email);
         DynamicForm form = Form.form().bindFromRequest();
