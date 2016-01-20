@@ -43,7 +43,7 @@ public class Login extends Controller {
     }
 
     /* --------------- admin panel ---------------*/
-    @Security.Authenticated(Authenticator.AdminFilter.class)
+    //@Security.Authenticated(Authenticator.AdminFilter.class)
     public Result renderAdminPanel(){
         DynamicForm form = Form.form().bindFromRequest();
 

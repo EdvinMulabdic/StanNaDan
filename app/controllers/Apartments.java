@@ -53,7 +53,7 @@ public class Apartments extends Controller {
     public Result updateApartment(Integer apartmentId) {
         Apartment apart = Apartment.updateApartment(apartmentId);
         if (apart != null) {
-            flash("success", "Uspješno ste ažurirali podatke o  apartmanu.");
+            flash("success", "Uspješno ste ažurirali podatke o apartmanu.");
             return ok(apartment.render(apart));
         } else {
             flash("error", "Desila se greška, podaci o apartmanu nisu ažurirani.");
