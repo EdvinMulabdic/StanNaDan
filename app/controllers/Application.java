@@ -10,7 +10,7 @@ import java.util.List;
 public class Application extends Controller {
 
     public Result index() {
-            List<Apartment> apartments = Apartment.apartmentsForHomepage();
+        List<Apartment> apartments = Apartment.apartmentsForHomepage();
         return ok(index.render(apartments));
     }
 

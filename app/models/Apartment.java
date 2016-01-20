@@ -3,12 +3,14 @@ package models;
 import com.avaje.ebean.Model;
 import helpers.Authenticator;
 import play.Logger;
+import play.api.mvc.MultipartFormData;
 import play.data.Form;
 import play.mvc.Security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.File;
 import java.util.List;
 
 /**

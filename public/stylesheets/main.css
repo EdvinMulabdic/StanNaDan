@@ -603,7 +603,7 @@ ul.dropdown-menu { border: none }
     font-weight: normal;
 }
 #cssmenu ul ul a:before {
-    content: "»";
+    content: "ï¿½";
     position: absolute;
     left: 10px;
     color: #e94f31;
@@ -673,6 +673,10 @@ ul.dropdown-menu { border: none }
 }
 #ddlocation{
     color: #e94f31;
+}
+
+.edit-label {
+    color: #f5740a;
 }
 
 /*-------------------------------------- media ----------------------------------------*/
