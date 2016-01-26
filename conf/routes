@@ -76,5 +76,5 @@ GET         /adminsnd/adminpanel/:email          @controllers.Login.showAdminPan
 POST        /adminsnd/adminpanel/:email          @controllers.Login.updateUser(email: String)
 GET         /adminsnd/adminpage/apartmani        @controllers.Login.renderAdminPage()
 
-GET    /uploadRender                             @controllers.ImageUpload.uploadRender()
-POST   /upload                                   @controllers.ImageUpload.upload()
+GET         /uploadRender/:apartmentId             @controllers.ImageUpload.uploadRender(apartmentId: Integer)
+POST        /upload/:apartmentId                   @controllers.ImageUpload.upload(apartmentId: Integer)

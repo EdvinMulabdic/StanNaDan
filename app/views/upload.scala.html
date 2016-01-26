@@ -1,13 +1,14 @@
+@(apartmentId: Integer)
 @main {
 
   <div class="container">
     <div class="row">
       <div class="login">
-        <form method="POST" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.ImageUpload.upload()" enctype="multipart/form-data" >
+        <form method="POST" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.ImageUpload.upload(apartmentId)" enctype="multipart/form-data" >
           <div col-md-6>
             <div class="form-group">
               <div class="col-md-6 col-md-offset-3">
-                <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
+                <input type="file" id="myFile" multiple size="50" onchange="myFunction(@apartmentId)">
               </div>
               <div class="col-sm-6 col-md-offset-3 xs-text-center cbx-submit-area" id="login-button-padding">
                 <button type="submit" name="login" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Upload</button>
@@ -18,49 +19,6 @@
       </div>
 
     </div>
-
   </div>
-  <script>
-    function myFunction() {
-      var x = document.getElementById("myFile");
-      var txt = "";
-      var src = "";
-      if ('files' in x) {
-          if (x.files.length == 0) {
-              txt = "Select one or more files.";
-          } else {
-              for (var i = 0; i < x.files.length; i++) {
-                  txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-                  var file = x.files[i];
-                  var data = new FormData();
-                  data.append('picture', file);
-                  jQuery.ajax({
-                      url: '/upload',
-                      data: data,
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      type: 'POST',
-                      success: function(data) {
-                      }
-                  });
-
-                  if ('name' in file) {
-                      txt += "name: " + file.name + "<br>";
-                  }
-                  if ('size' in file) {
-                      txt += "size: " + file.size + " bytes <br>";
-                  }
-              }
-          }
-      } else {
-          if (x.value == "") {
-              txt += "Select one or more files.";
-          } else {
-              txt += "The files property is not supported by your browser!";
-              txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead.
-          }
-      }
-    }
-  </script>
+    <script src='@routes.Assets.versioned("javascripts/imgUpload.js")'></script>
 }
