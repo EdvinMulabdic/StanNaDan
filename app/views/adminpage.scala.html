@@ -14,6 +14,7 @@
                         <th>Kreveti</th>
                         <th>Povrsina</th>
                         <th>Sprat</th>
+                        <th>Galerija</th>
                         <th>Uredi</th>
                         <th>Obisi</th>
                     </tr>
@@ -29,6 +30,10 @@
                         <td class="text-center">@apartment.beds</td>
                         <td class="text-center">@apartment.area</td>
                         <td class="text-center">@apartment.floor</td>
+                        <td class="text-center">
+                            <a data-role="get" data-delete-parent="tr" href="@routes.ImageUpload.uploadRender(apartment.id)" role="button">
+                                <i class=" fa fa-file-image-o fa-lg"></i></a>
+                        </td>
                         <td class="text-center">
                             <a data-role="post" data-delete-parent="tr" href="@routes.Apartments.renderUpdateApartment(apartment.id)" role="button">
                                 <i class=" fa fa-pencil fa-lg"></i></a>
