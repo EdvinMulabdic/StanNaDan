@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Id;
 
@@ -225,5 +226,37 @@ public class Apartment extends Model {
         return apartments;
     }
 
+    /* --------------- retrieves list of images names for the current apartment ---------------*/
+
+    public static List<String> getListOfApartmentImages(Apartment apartment) {
+        List<String> results = new ArrayList<>();
+
+        String folderName = apartment.name + apartment.id;
+        String location = "C:/Users/ajla/Documents/DTProjects/StanNaDan/public/apartmentPhotos/" + folderName;
+
+        File[] files = new File(location).listFiles();
+
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    results.add("/assets/apartmentPhotos/" + folderName + "/" + file.getName());
+                }
+            }
+        }
+        return results;
+    }
+
+    /* --------------- retrieves first picture name for the current apartment ---------------*/
+    public static String getFirstImage(Apartment apartment) {
+        List<String> images = getListOfApartmentImages(apartment);
+
+        return (images.size() > 0) ? images.get(0) : "/assets/images/stan_na_dan.jpg";
+    }
+
+    /* --------------- Checks if images list for the current apartement is empty ---------------*/
+    public static Boolean imagesListIsEmpty(Apartment apartment) {
+        List<String> images = getListOfApartmentImages(apartment);
+        return (images.size() > 0) ? false : true;
+    }
 }
 
