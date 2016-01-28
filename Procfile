@@ -1,1 +1,1 @@
-web: play run --http.port=$PORT $PLAY_OPTS -DapplyEvolutions.default=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=postgres://fykjjtvhaxapxf:TbVuJzkHZ_FW1b0ZxXFsPOyyAp@ec2-54-247-167-90.eu-west-1.compute.amazonaws.com:5432/d4fe1ao9o5tu9g
+web: target/start -Dhttp.port=${PORT} ${JAVA_OPTS} -Dconfig.resource=application.conf
