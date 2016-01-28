@@ -1,17 +1,18 @@
 package controllers;
 
+import models.Apartment;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
-import views.html.login;
+
+import java.util.List;
 
 public class Application extends Controller {
 
     public Result index() {
-        return ok(index.render());
+        List<Apartment> apartments = Apartment.apartmentsForHomepage();
+        return ok(index.render(apartments));
     }
-    public Result login(){
-        return ok(login.render());
-    }
+
 
 }

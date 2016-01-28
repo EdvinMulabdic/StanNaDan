@@ -1,3 +1,4 @@
+@(apartments: java.util.List[Apartment])
 @main {
     <section>
         <div class="container">
@@ -6,25 +7,6 @@
                     Apartmani Sarajevo
                 </div>
             </div>
-
-            <div id="search-panel">
-                <div>
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Lokacija
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Centar</a></li>
-                            <li><a href="#">Otoka</a></li>
-                            <li><a href="#">Ilidza</a></li>
-                            <li><a href="#">Pofalici</a></li>
-                            <li><a href="#">Socijalno</a></li>
-                            <li><a href="#">Cengic Vila</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
     </section>
 
@@ -40,191 +22,60 @@
             </div><!-- //ROW Our Team Header -->
             <div class="clearfix" style="margin-bottom: 5px"> </div>
             <div class="cbx-latest-area">
-
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
+            @if(apartments.size() > 0) {
+                @for(apartment <- apartments) {
+                    <div class="item active cbx-single-all">
+                        <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src='@Apartment.getFirstImage(apartment)' class="" alt="a">
+                                    <div class="price-picture">
+                                       <i class="fa fa-euro"> @apartment.price</i>
+                                    </div>
                                 </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
+                                <div class="info">
+                                    <div class="row">
+                                        <a href="@routes.Apartments.apartment(apartment.id)" target="">
+                                            <div class=" col-md-12 text-center">
+                                                <h4 class="product-title-color"><strong>@apartment.name</strong></h4>
+                                                <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> @apartment.neighborhood</h5>
+                                                <h5 class="price-text-color">@apartment.address</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-male"></i>@apartment.capacity Osoba</p>
+                                        <p class="btn-details"><i class="fa fa-home"></i>@apartment.rooms Sobe</p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                                <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                                @*<img id="parkingimage" src='@routes.Assets.versioned("images/parking.png")'>*@
-
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                                    <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            @*<img id="parkingimage" src='@routes.Assets.versioned("images/parking.png")'>*@
-
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 itemedvin">
-                        <div class="col-item">
-                            <div class="photo">
-                                <img src='@routes.Assets.versioned("images/ap1.jpg")' class="" alt="a">
-                            </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            @*<img id="parkingimage" src='@routes.Assets.versioned("images/parking.png")'>*@
-
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!--//Item-->
-             </div><!-- cbx-latest-area -->
+                    </div> <!--//Item-->
+                }
+            }
+            </div><!-- cbx-latest-area -->
         </div><!-- container end -->
     </section>
 
 
 
 
-                <!-- TEAM SECTION START -->
-            <section>
-                <div id="cbx-team" class="cbx-section cbx-team">
-                    <div class="cbx-team-inner">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="cbx-heading text-center">
-                                        <h2 class="uppercase wow fadeInUp">APARTMANI SARAJEVO</h2>
-                                        <hr noshade size="" width="" color="">
-                                        <p class=" wow flipInY">Postovani Gosti, gore pomenuti apartmani su samo dio nase ponude. Za siru ponudu pogledajte stranicu.</p>
-                                    </div>
-                                </div>
-                            </div><!-- //ROW Our Team Header -->
+    <!-- TEAM SECTION START -->
+    <section>
+        <div id="cbx-team" class="cbx-section cbx-team">
+            <div class="cbx-team-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cbx-heading text-center">
+                                <h2 class="uppercase wow fadeInUp">APARTMANI SARAJEVO</h2>
+                                <hr noshade size="" width="" color="">
+                                <p class=" wow flipInY">Postovani Gosti, gore pomenuti apartmani su samo dio nase ponude. Za siru ponudu pogledajte stranicu.</p>
+                            </div>
+                        </div>
+                    </div><!-- //ROW Our Team Header -->
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                     <div class="cbx-single-team text-center">
@@ -358,44 +209,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12" id="collapse">
-                    <div class="collapse-margin">
-                        <i class="fa fa-plus-square" id="collapse-title" data-toggle="collapse" data-target="#demo"> Ne mozete da se odlucite koji apartman izabrati?</i>
-
-                        <div id="demo" class="collapse">
-                            <div id="collapse-content">
-                                Posaljite nam zahtjev na officestannadan.com sa svim kljucnim detaljima koji bi nam bili od koristi (dio grada, broj osoba, vrijeme dolaska/odlaska, do koje cijene .... ), a mi cemo se potruditi da Vam u najkracem roku (maksimum 1 sat u vremenskoj zoni GMT+1, za vrijeme radnog vremena) pronadjemo odgovarajuci smestaj u Sarajevu.
-                                Radno vreme je od 9-20h svakog radnog dana i subotom a nedeljom od 12-20h.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="collapse-margin">
-                        <i class="fa fa-plus-square" id="collapse-title" data-toggle="collapse" data-target="#demo1"> Tajna naseg uspjeha - Apartmani Sarajevo</i>
-
-                        <div id="demo1" class="collapse">
-                            <div id="collapse-content">
-                                Tajna naseg usjpeha u rentiranju apartmana u Sarajevu po sistemu Stan Na Dan nisu samo niske cijene vec kvalitet nade usluge, obracanje paznje na detalje, profesinonalni i predan pristup svakom gostu i naravno osmijeh na licu.
-                                Ponosimo se na nas rad i dajemo sve od sebe kako bi se osigurali da nasi gosti imaju najbolji moguci boravak.
-                                Uvjeravamo Vas da se nasi gosti uvijek vracaju nama, a na Vama je da se u to i uvjerite.
-                                Uvjerite se i Vi!!! Rezervisite jedan ili vise apartmana u Sarajevu i uvjerite se da smo mi najbolje rjesenje za Vas smjestaj u Sarajevu.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="collapse-margin">
-                        <i class="fa fa-plus-square" id="collapse-title" data-toggle="collapse" data-target="#demo2"> Cijene apartmana Sarajevo</i>
-
-                        <div id="demo2" class="collapse">
-                            <div id="collapse-content">
-                                Cijene Sarajevo Apartmana koje su predstavljene na naslovnoj strani predstavljaju dnevnu cijenu baziranu na boravku od 2 dana.
-                                Informacije o konkretnim cijenama Apartmana Sarajevo za period Vaseg boravka mozete dobiti klikom na fotografiju izabranog apartmana u Sarajevu.
-                                Cijene nasih Sarajevo apartmana razlikuju se u odnosu na duzinu boravka, lokaciju, velicinu, njegove opremljenosti, starosti objekta u kome se nalazi, kao i samog apartmana.
-                                Potrebno je da unesete datum ulaska - datum napuštanja apartmana kao i broj osoba koje ?e u navedenom periodu apartman koristiti.
-                                Sistem ce po unijetim podacima automatski izracunati ukupnu cijenu boravka u zeljenom apartmanu.
-                                Prikazani popusti apartmana u Sarajevu vaze samo za boravak u kontinuitetu.
-                                Pronadjite idealan apartmanski smestaj u Sarajevu sa najnizom cijenom.
-                            </div>
-                        </div>
+                    <div id="cssmenu">
+                        <ul>
+                            <li class='has-sub'><a href='#'><span>Ne mozete da se odlucite koji apartman izabrati?</span></a>
+                                <ul>
+                                    <li>
+                                        Posaljite nam zahtjev na officestannadan.com sa svim kljucnim detaljima koji bi nam bili od koristi (dio grada, broj osoba, vrijeme dolaska/odlaska, do koje cijene .... ), a mi cemo se potruditi da Vam u najkracem roku (maksimum 1 sat u vremenskoj zoni GMT+1, za vrijeme radnog vremena) pronadjemo odgovarajuci smestaj u Sarajevu.
+                                        Radno vreme je od 9-20h svakog radnog dana i subotom a nedeljom od 12-20h.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='has-sub'><a href='#'><span>Tajna naseg uspjeha - Apartmani Sarajevo</span></a>
+                                <ul>
+                                    <li>
+                                        Tajna naseg usjpeha u rentiranju apartmana u Sarajevu po sistemu Stan Na Dan nisu samo niske cijene vec kvalitet nade usluge, obracanje paznje na detalje, profesinonalni i predan pristup svakom gostu i naravno osmijeh na licu.
+                                        Ponosimo se na nas rad i dajemo sve od sebe kako bi se osigurali da nasi gosti imaju najbolji moguci boravak.
+                                        Uvjeravamo Vas da se nasi gosti uvijek vracaju nama, a na Vama je da se u to i uvjerite.
+                                        Uvjerite se i Vi!!! Rezervisite jedan ili vise apartmana u Sarajevu i uvjerite se da smo mi najbolje rjesenje za Vas smjestaj u Sarajevu.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='has-sub'><a href='#'><span>Cijene apartmana Sarajevo</span></a>
+                                <ul>
+                                    <li>
+                                        Cijene Sarajevo Apartmana koje su predstavljene na naslovnoj strani predstavljaju dnevnu cijenu baziranu na boravku od 2 dana.
+                                        Informacije o konkretnim cijenama Apartmana Sarajevo za period Vaseg boravka mozete dobiti klikom na fotografiju izabranog apartmana u Sarajevu.
+                                        Cijene nasih Sarajevo apartmana razlikuju se u odnosu na duzinu boravka, lokaciju, velicinu, njegove opremljenosti, starosti objekta u kome se nalazi, kao i samog apartmana.
+                                        Potrebno je da unesete datum ulaska - datum napuï¿½tanja apartmana kao i broj osoba koje ?e u navedenom periodu apartman koristiti.
+                                        Sistem ce po unijetim podacima automatski izracunati ukupnu cijenu boravka u zeljenom apartmanu.
+                                        Prikazani popusti apartmana u Sarajevu vaze samo za boravak u kontinuitetu.
+                                        Pronadjite idealan apartmanski smestaj u Sarajevu sa najnizom cijenom.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -403,40 +250,7 @@
     </section>
 
 
-    <!-- End Your site ******* or ******* application content here -->
-    <!-- lzbbones-body end here -->
-
-    <!--  ####### site script content here ######## -->
-
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/vendor/jquery-1.11.1.min.js")'></script>
-    <!-- load if our contact form or email subscribe options is used -->
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-    <!-- if load google maps then load this api -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
-    <!-- if load portfolio then load this plugin -->
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
-
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/grid.js")'></script>
-
-    <!-- wow effect plugin -->
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/wow.min.js")'></script>
-
-    <script type="text/javascript" src="js/jquery.stellar.js"></script>
-
-    <!-- load bootstrap js -->
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/bootstrap.min.js")'></script>
-
-    <!-- if use kk countdown plugin then use this plugin -->
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/kkcountdown.min.js")'></script>
-
-    <script type="text/javascript" src='@routes.Assets.versioned("javascipts/imagesloaded.pkgd.min.js")'></script>
-
-    <!-- Shuffle.min js -->
-    <script src='@routes.Assets.versioned("javascripts/jquery.shuffle.min.js")'>        </script>
-
-    <!-- LZ Custom JS  -->
-    <script type="text/javascript" src='@routes.Assets.versioned("javascripts/lz-custom.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/informations.js")'></script>
 
 
 

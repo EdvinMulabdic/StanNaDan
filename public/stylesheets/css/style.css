@@ -123,11 +123,15 @@ a:focus {
 }
 .cbx-heading2 {
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .cbx-heading3 {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+.cbx-heading4 {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 .cbx-heading h2 {
   font-family: 'Raleway', Arial, sans-serif;
@@ -150,15 +154,16 @@ a:focus {
   line-height: 40px;
 }
 .cbx-heading3 h2 {
-  font-family: 'Raleway', Arial, sans-serif;
-  font-weight: 600;
-  color: #f5740a;
-  font-size: 35px;
-  font-size: 3.5rem;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  line-height: 40px;
-}
+   font-family: 'Raleway', Arial, sans-serif;
+   font-weight: 600;
+   color: #f5740a;
+   font-size: 35px;
+   font-size: 3.5rem;
+   text-transform: uppercase;
+   letter-spacing: .5px;
+   line-height: 40px;
+ }
+
 .cbx-heading p {
   font-family: 'Raleway', Arial, sans-serif;
   font-weight: 400;
@@ -178,6 +183,15 @@ a:focus {
   letter-spacing: 1px;
 }
 .cbx-heading3 p {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-size: 2rem;
+  padding-top: 10px;
+  line-height: 30px;
+  letter-spacing: 1px;
+}
+.cbx-heading4 p {
   font-family: 'Raleway', Arial, sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -3038,7 +3052,7 @@ li.cbxgrid-item-none {
     height: 379px;
   }
   .cbx-single-all {
-    width: 65%;
+    width: 100%;
     margin: 0 auto;
   }
   html {
@@ -3177,7 +3191,7 @@ li.cbxgrid-item-none {
   }
   .col-item .photo img {
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
   }
   .og-expander h3 {
     font-size: 20px;
