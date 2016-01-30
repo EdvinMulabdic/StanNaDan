@@ -1,4 +1,5 @@
-@(content: Html)
+@import helpers.UserAccessLevel
+@(content: Html)(implicit currentUser: AppUser = UserAccessLevel.getCurrentUser(ctx()))
 
 <!DOCTYPE html>
 
@@ -117,7 +118,7 @@
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                            "dropdown" data-toggle="dropdown" href="">Cesta pitanja<i class="fa fa-angle-down"></i>
+                            "dropdown" data-toggle="dropdown" href="">Cesta pitanja <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -198,9 +199,54 @@
                     <li>
                         <a href="@routes.Informations.cooperation()" id="saradnja" >Saradnja</a>
                     </li>
+                    @if(currentUser == null) {
                         <li>
                             <a href="@routes.Login.loginIndex()" id="saradnja" >Login</a>
                         </li>
+                    }else{
+                        @if(currentUser.userAccessLevel.equals(UserAccessLevel.ADMIN)){
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                                "dropdown" data-toggle="dropdown" href="#">ADMIN <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu ">
+                                    <li>
+                                        <a href="@routes.Login.showAdminPanel(currentUser.email)"><i class="fa fa-bars fa-fw"></i>Admin panel</a>
+                                    </li>
+                                    <li>
+                                        <a href="@routes.Login.apartmentsList()"><i class="fa fa-home fa-fw"></i>Apartmani</a>
+                                    </li>
+                                    <li>
+                                        <a href="@routes.AppUsers.listOfUsers()"><i class="fa fa-users fa-fw"></i>Korisnici</a>
+                                    </li>
+                                    <li>
+                                        <a href="@routes.AppUsers.logout()"><i class="fa fa-sign-out fa-fw"></i>Log out</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }else{
+                            @if(currentUser.userAccessLevel.equals(UserAccessLevel.USER)){
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                                    "dropdown" data-toggle="dropdown" href="#">Korisnik <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu ">
+                                        <li>
+                                            <a href="@routes.AppUsers.userPanelRender(currentUser.email)"><i class="fa fa-bars fa-fw"></i>Korisnicki panel</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.Login.apartmentsList()"><i class="fa fa-home fa-fw"></i>Apartmani</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.AppUsers.logout()"><i class="fa fa-sign-out fa-fw"></i>Log out</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
                 </ul>
             </div>
             </div>

@@ -6,7 +6,6 @@ import helpers.Session;
 import helpers.UserAccessLevel;
 import models.Apartment;
 import models.AppUser;
-import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -15,6 +14,7 @@ import play.mvc.Security;
 import views.html.adminpage;
 import views.html.adminpanel;
 import views.html.login;
+import views.html.userpanel;
 
 import java.util.List;
 
@@ -29,9 +29,8 @@ public class Login extends Controller {
     }
     /* ---------------  admin page list of apartments render ---------------*/
     @Security.Authenticated(Authenticator.AdminFilter.class)
-    public Result renderAdminPage() {
+    public Result apartmentsList() {
         List<Apartment> apartments = Apartment.getAllApartments();
-
         return ok(adminpage.render(apartments));
     }
 
@@ -58,6 +57,10 @@ public class Login extends Controller {
             Cookies.setUserCookies(user);
             Session.setUserSessionData(user);
             return ok(adminpanel.render(user));
+        }else if(user.userAccessLevel == UserAccessLevel.USER){
+            Cookies.setUserCookies(user);
+            Session.setUserSessionData(user);
+            return ok(userpanel.render(user));
         }
         return redirect(routes.Application.index());
     }

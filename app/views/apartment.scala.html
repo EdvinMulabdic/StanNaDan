@@ -75,7 +75,7 @@
                     <form method="POST" role="form" action="#">
                         <div class="blue-box">
                             <div class=" persons-nights">
-                                <p class="" ><b id="total" name="totalNights">1</b> Noc</p>
+                                <p><b id="total" name="totalNights"> 1 </b> Noc</p>
                                 <p><b id="nopersons"> 1 </b> Osoba</p>
                             </div>
 
@@ -103,7 +103,7 @@
                             <div class="col-md-12 check-in-date">
                                 <h4>Broj osoba: </h4>
                             </div>
-                            <div class="col-md-12 padding-left-0">
+                            <div class="col-md-6 padding-left-0">
                                 <input type="number" max="@apartment.capacity" min="1"  class="date-check" id="person" onclick="capacity()">
                             </div>
                             <div class="col-md-12 check-in-date" id="red-letters">
@@ -212,9 +212,6 @@
                             <button type="POST" style="width:140px; font-size: 18px;" class="btn btn-primary" href="@routes.Emails.sendMail(apartment.id)">Potvrdi</button>
                         </div>
                     </form>
-                    <div class=" xs-text-center cbx-submit-area" id="cookie-button">
-                        <button type="submit" name="cookie" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiebutton" onclick="">COOKIES :)</button>
-                    </div>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ GET         /dolazakiodlazak                    @controllers.Informations.arriva
 
 
 #admin
-GET         /adminpage                          @controllers.Apartments.adminPageRender()
+GET         /adminpage                          @controllers.Login.apartmentsList()
 GET         /adminsnd/:apartmentId              @controllers.Apartments.deleteApartment(apartmentId: Integer)
 DELETE      /adminsnd/:apartmentId              @controllers.Apartments.deleteApartment(apartmentId: Integer)
 GET         /dodajapartman                      @controllers.Apartments.renderApartment()
@@ -59,3 +59,6 @@ POST        /admin/kreirajkorisnika             @controllers.AppUsers.createUser
 GET         /admin/listakorisnika               @controllers.AppUsers.listOfUsers()
 GET         /admin/:userId                      @controllers.AppUsers.deleteUser(userId: Integer)
 DELETE      /admin/:userId                      @controllers.AppUsers.deleteUser(userId: Integer)
+GET         /logout                             @controllers.AppUsers.logout()
+
+GET         /korisnickipanel/:email             @controllers.AppUsers.userPanelRender(email: String)

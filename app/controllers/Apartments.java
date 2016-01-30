@@ -107,10 +107,10 @@ public class Apartments extends Controller {
         return status(200, adminpage.render(apartments));
     }
             /* --------------- admin page render ---------------*/
-    @Security.Authenticated(Authenticator.AdminFilter.class)
-    public Result adminPageRender(){
-        List<Apartment> apartments = Apartment.getAllApartments();
-        return ok(adminpage.render(apartments));
-    }
+//    @Security.Authenticated(Authenticator.AdminFilter.class)
+//    public Result adminPageRender(){
+//        List<Apartment> apartments = Apartment.getAllApartments();
+//        return ok(adminpage.render(apartments));
+//    }
 
 }
