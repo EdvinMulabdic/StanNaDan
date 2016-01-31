@@ -23,6 +23,7 @@ public class AppUsers extends Controller {
     public Result createUserRender(){
         return ok(createuser.render());
     }
+
             /* --------------- create user ---------------*/
 
     @Security.Authenticated(Authenticator.AdminFilter.class)
@@ -60,5 +61,6 @@ public class AppUsers extends Controller {
         AppUser user = AppUser.findUserByEmail(email);
         return ok(userpanel.render(user));
     }
+
 
 }

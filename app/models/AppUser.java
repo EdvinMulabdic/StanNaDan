@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import controllers.Emails;
 import org.mindrot.jbcrypt.BCrypt;
 import play.Logger;
 import play.data.DynamicForm;
@@ -40,12 +41,17 @@ public class AppUser extends Model {
         String email = form.field("email").value();
         String password = form.field("password").value();
 
-        AppUser user = new AppUser();
-        user.email = email;
-        user.password = password;
-        user.hashPass();
-        user.userAccessLevel = 2;
-        user.save();
+        try {
+            AppUser user = new AppUser();
+            user.email = email;
+            user.password = password;
+            user.hashPass();
+            user.userAccessLevel = 2;
+            user.save();
+            Emails.sendMail(email, password);
+        }catch (IllegalArgumentException e) {
+            Logger.info(e.getMessage());
+        }
 
     }
 
@@ -91,17 +97,20 @@ public class AppUser extends Model {
         }
         return false;
     }
-
+    /* ------------------- get all users ------------------ */
     public static List<AppUser> getAllAppUsers(){
         Model.Finder<String, AppUser> finder = new Model.Finder<>(AppUser.class);
         List<AppUser> users = finder.all();
         return users;
     }
 
+    /* ------------------- delete user ------------------ */
     public static void deleteUser(Integer userId){
         AppUser user = finder.where().eq("id", userId).findUnique();
         if(user != null){
             user.delete();
         }
     }
+
+
 }
