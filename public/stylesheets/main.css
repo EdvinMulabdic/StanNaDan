@@ -589,7 +589,7 @@ ul.dropdown-menu { border: none }
     border-left: 1px solid #a2a194;
 }
 #cssmenu ul ul li {
-    font-family: "raleway", "robotothin", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: 'Raleway', Arial, sans-serif;
     font-size: 18px;
     padding: 10px 0px 10px 5px;
 }

@@ -341,10 +341,10 @@ input#subscribe {
   border: 0;
   outline: none;
 }
-#carousel-reviews .carousel-control.left,
-.carousel-control.right {
-  right: 18px;
-}
+/*#carousel-reviews .carousel-control.left,*/
+/*.carousel-control.right {*/
+  /*right: 18px;*/
+/*}*/
 /*******************************************
 ** Step Slider Solution
 *******************************************/
@@ -1448,11 +1448,11 @@ label {
   float: left;
   padding-left: 10px;
 }
-.carousel-inner-multi .carousel-control.left,
-.carousel-control.right {
-  background: none;
-  right: -6%;
-}
+/*.carousel-inner-multi .carousel-control.left,*/
+/*.carousel-control.right {*/
+  /*background: none;*/
+  /*right: -6%;*/
+/*}*/
 .carousel-inner-multi .carousel-control.left {
   left: -25px;
   top: 35%;
@@ -1583,7 +1583,7 @@ label {
 ========================================================================== */
 .cbx-latest-carousel .carousel-control.left,
 .carousel-control.right {
-  background: none;
+  /*background: none;*/
   /*width:25px;*/
 }
 .cbx-latest-carousel .carousel-control.left {
@@ -1593,7 +1593,7 @@ label {
   opacity: 0.8;
 }
 .cbx-latest-carousel .carousel-control.right {
-  right: 0;
+  right: -25px;
   top: 35%;
   color: #f5740a;
   opacity: 1;
@@ -1647,12 +1647,12 @@ label {
 /* ==========================================================================
        // CB  Product Reviews
 ========================================================================== */
-#carousel-reviews .carousel-control.left,
-.carousel-control.right {
-  background: none;
-  color: #f5740a;
-  /*width:25px;*/
-}
+/*#carousel-reviews .carousel-control.left,*/
+/*.carousel-control.right {*/
+  /*background: none;*/
+  /*color: #f5740a;*/
+  /*/!*width:25px;*!/*/
+/*}*/
 #carousel-reviews .carousel-control.left {
   left: -25px;
   top: 35%;
