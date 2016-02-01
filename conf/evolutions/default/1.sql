@@ -18,6 +18,7 @@ create table apartment (
   description               TEXT,
   lat                       varchar(255),
   lng                       varchar(255),
+  user_id                   integer,
   constraint pk_apartment primary key (id))
 ;
 

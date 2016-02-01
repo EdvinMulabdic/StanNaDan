@@ -3,7 +3,6 @@ package models;
 import com.avaje.ebean.Model;
 import helpers.Authenticator;
 import play.Logger;
-import play.api.mvc.MultipartFormData;
 import play.data.Form;
 import play.mvc.Security;
 
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Id;
 
 /**
  * Created by ajla on 22-Dec-15.
@@ -36,6 +34,7 @@ public class Apartment extends Model {
     public String description;
     public String lat;
     public String lng;
+    public Integer userId;
 
     /**
      * Default constructor
@@ -55,7 +54,7 @@ public class Apartment extends Model {
      * @param lng
      */
     public Apartment(Integer id, String name, String title, String neighborhood, String address, Integer price, Integer capacity,
-                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng) {
+                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId) {
         this.id = id;
         this.name = name;
         this.title = title;
@@ -70,6 +69,7 @@ public class Apartment extends Model {
         this.description = description;
         this.lat = lat;
         this.lng = lng;
+        this.userId = userId;
     }
 
     @Override
@@ -89,6 +89,7 @@ public class Apartment extends Model {
                 ", description=" + description +
                 ", lat=" + lat +
                 ", lng=" + lng +
+                ",userId=" + userId +
                 '}';
     }
 
@@ -101,11 +102,12 @@ public class Apartment extends Model {
      */
     /* --------------- create apartment ---------------*/
     @Security.Authenticated(Authenticator.AdminFilter.class)
-    public static Apartment createApartment() {
+    public static Apartment createApartment(Integer userId) {
         Form<Apartment> boundForm = form.bindFromRequest();
         Apartment apartment = null;
         try {
             apartment = boundForm.get();
+            apartment.userId = userId;
             apartment.save();
 
             return apartment;
@@ -257,6 +259,15 @@ public class Apartment extends Model {
     public static Boolean imagesListIsEmpty(Apartment apartment) {
         List<String> images = getListOfApartmentImages(apartment);
         return (images.size() > 0) ? false : true;
+    }
+
+        /* --------------- Finds all users apartments ---------------*/
+
+    public static List<Apartment> userApartments(Integer userId){
+
+        List<Apartment> apartments = finder.where().eq("user_id", userId).findList();
+
+        return apartments;
     }
 }
 

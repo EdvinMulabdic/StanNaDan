@@ -2,7 +2,9 @@ package controllers;
 
 import helpers.Authenticator;
 import helpers.Cookies;
+import helpers.UserAccessLevel;
 import models.Apartment;
+import models.AppUser;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -21,43 +23,45 @@ public class Apartments extends Controller {
     // Apartment details
     public Result apartment(Integer apartmentId) {
         Apartment apart = Apartment.getApartmentById(apartmentId);
-        return ok(apartment.render(apart));
+        AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
+        return ok(apartment.render(apart, currentUser));
     }
 
     // Create apartment
-    @Security.Authenticated(Authenticator.AdminFilter.class)
-    public Result renderApartment() {
-        return ok(createapartment.render());
+    @Security.Authenticated(Authenticator.AdminUserFilter.class)
+    public Result renderApartment(Integer userId) {
+        return ok(createapartment.render(userId));
     }
-    @Security.Authenticated(Authenticator.AdminFilter.class)
-    public Result createApartment() {
-        Apartment apart = Apartment.createApartment();
+    @Security.Authenticated(Authenticator.AdminUserFilter.class)
+    public Result createApartment(Integer userId) {
+        Apartment apart = Apartment.createApartment(userId);
         if (apart != null) {
             flash("success", "Uspješno ste kreirali apartman.");
             return redirect(routes.Apartments.apartment(apart.id));
         } else {
             flash("error", "Desila se greška, apartman nije kreiran.");
-            return status(404, createapartment.render());
+            return status(404, createapartment.render(userId));
         }
     }
 
     // Update apartment
-    @Security.Authenticated(Authenticator.AdminFilter.class)
+    @Security.Authenticated(Authenticator.AdminUserFilter.class)
     public Result renderUpdateApartment(Integer apartmentId) {
         Apartment apart = Apartment.getApartmentById(apartmentId);
 
         return ok(updateapartment.render(apart));
     }
 
-    @Security.Authenticated(Authenticator.AdminFilter.class)
+    @Security.Authenticated(Authenticator.AdminUserFilter.class)
     public Result updateApartment(Integer apartmentId) {
         Apartment apart = Apartment.updateApartment(apartmentId);
+        AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
         if (apart != null) {
             flash("success", "Uspješno ste ažurirali podatke o apartmanu.");
-            return ok(apartment.render(apart));
+            return ok(apartment.render(apart, currentUser));
         } else {
             flash("error", "Desila se greška, podaci o apartmanu nisu ažurirani.");
-            return ok(createapartment.render());
+            return ok(createapartment.render(apart.userId));
         }
     }
     public Result cookies(Integer apartmentId){
@@ -112,5 +116,6 @@ public class Apartments extends Controller {
 //        List<Apartment> apartments = Apartment.getAllApartments();
 //        return ok(adminpage.render(apartments));
 //    }
+
 
 }

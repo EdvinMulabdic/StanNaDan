@@ -1,3 +1,4 @@
+@(userId: Integer)
 @main{
     <section>
         <div class="container">
@@ -9,7 +10,9 @@
                         <p class=" wow flipInY">Molimo unesite sve informacije kako bi apartman bio uspjesno unesen u bazu</p>
                     </div>
                 </div>
-            </div><!-- //ROW Our Team Header -->
+            </div>
+
+                <!-- //ROW Our Team Header -->
 
             <div class="row">
                 @if(flash.containsKey("error")) {
@@ -19,7 +22,7 @@
                         @flash.get("error")
                     </div>
                 }
-                <form method="POST" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.Apartments.createApartment()" >
+                <form method="POST" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.Apartments.createApartment(userId)" >
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-1">

@@ -249,7 +249,7 @@ ga('send', 'pageview');
                                             <a href="@routes.AppUsers.userPanelRender(currentUser.email)"><i class="fa fa-bars fa-fw"></i>Korisnicki panel</a>
                                         </li>
                                         <li>
-                                            <a href="@routes.Login.apartmentsList()"><i class="fa fa-home fa-fw"></i>Apartmani</a>
+                                            <a href="@routes.AppUsers.userApartmentsRender(currentUser.id)"><i class="fa fa-home fa-fw"></i>Apartmani</a>
                                         </li>
                                         <li>
                                             <a href="@routes.AppUsers.logout()"><i class="fa fa-sign-out fa-fw"></i>Log out</a>

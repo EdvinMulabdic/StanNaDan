@@ -682,7 +682,14 @@ ul.dropdown-menu { border: none }
 .margin-top100{
     margin-top: 100px;
 }
-
+.cooperation-text p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+.cooperation-text li {
+    font-size: 14px;
+    line-height: 1.6;
+}
 /*-------------------------------------- media ----------------------------------------*/
 
 @media (max-width: 480px) {

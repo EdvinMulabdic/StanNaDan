@@ -3,12 +3,14 @@ package controllers;
 import helpers.Authenticator;
 import helpers.Cookies;
 import helpers.Session;
+import models.Apartment;
 import models.AppUser;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.allusers;
 import views.html.createuser;
+import views.html.userapartments;
 import views.html.userpanel;
 
 import java.util.List;
@@ -61,6 +63,14 @@ public class AppUsers extends Controller {
         AppUser user = AppUser.findUserByEmail(email);
         return ok(userpanel.render(user));
     }
+    /* --------------- user apartments ---------------*/
+    public Result userApartmentsRender(Integer userId){
+
+        List<Apartment> apartments = Apartment.userApartments(userId);
+
+        return ok(userapartments.render(apartments, userId));
+    }
+
 
 
 }

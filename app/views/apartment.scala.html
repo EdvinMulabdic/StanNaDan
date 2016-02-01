@@ -1,5 +1,5 @@
 @import helpers.UserAccessLevel
-@(apartment: Apartment)
+@(apartment: Apartment)(currentUser: AppUser)
 @main {
     <section>
         <div class="container">
@@ -218,21 +218,39 @@
 
 
     </section>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 margin-bottom-20">
-                    <form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">
-                        <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                            <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart"> DODAJ U LISTU</i></button>
-                        </div>
-                    </form>
+    @if(currentUser !=null && apartment.userId == currentUser.id){
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 margin-bottom-20">
+                        <form method="GET" role="form" action="@routes.Apartments.renderUpdateApartment(apartment.id)">
+                            <div class=" xs-text-center cbx-submit-area" id="cookies-button">
+                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-pencil"> AZURIRAJ </i></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-        </div>
+        </section>
+    }else {
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 margin-bottom-20">
+                        <form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">
+                            <div class=" xs-text-center cbx-submit-area" id="cookies-button">
+                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart">
+                                    DODAJ U LISTU</i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-    </section>
+        </section>
+    }
+
     <section>
         <div class="container">
             <div class="row">

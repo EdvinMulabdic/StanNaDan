@@ -1,7 +1,6 @@
 package models;
 
 import com.avaje.ebean.Model;
-import controllers.Emails;
 import org.mindrot.jbcrypt.BCrypt;
 import play.Logger;
 import play.data.DynamicForm;
@@ -48,7 +47,7 @@ public class AppUser extends Model {
             user.hashPass();
             user.userAccessLevel = 2;
             user.save();
-            Emails.sendMail(email, password);
+            Email.sendMail(email, password);
         }catch (IllegalArgumentException e) {
             Logger.info(e.getMessage());
         }
@@ -111,6 +110,5 @@ public class AppUser extends Model {
             user.delete();
         }
     }
-
 
 }

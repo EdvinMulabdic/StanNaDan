@@ -9,9 +9,9 @@ GET         /                                   @controllers.Application.index()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                           @controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /apartmani                          @controllers.Apartments.renderApartment()
+#GET         /apartmani                          @controllers.Apartments.renderApartment()
 GET         /apartman/:apartmentId              @controllers.Apartments.apartment(apartmentId: Integer)
-POST        /apartmani                          @controllers.Apartments.createApartment()
+#POST        /apartmani                          @controllers.Apartments.createApartment()
 
 
 POST        /apartman/:apartmentId              @controllers.Apartments.cookies(apartmentId: Integer)
@@ -41,8 +41,8 @@ GET         /dolazakiodlazak                    @controllers.Informations.arriva
 GET         /adminpage                          @controllers.Login.apartmentsList()
 GET         /adminsnd/:apartmentId              @controllers.Apartments.deleteApartment(apartmentId: Integer)
 DELETE      /adminsnd/:apartmentId              @controllers.Apartments.deleteApartment(apartmentId: Integer)
-GET         /dodajapartman                      @controllers.Apartments.renderApartment()
-POST        /adminsnd/apartman                  @controllers.Apartments.createApartment()
+GET         /dodajapartman/:userId              @controllers.Apartments.renderApartment(userId: Integer)
+POST        /adminsnd/apartman/:userId          @controllers.Apartments.createApartment(userId: Integer)
 GET         /updateapartman/:apartmentId        @controllers.Apartments.renderUpdateApartment(apartmentId: Integer)
 POST        /updateapartman/:apartmentId        @controllers.Apartments.updateApartment(apartmentId: Integer)
 
@@ -62,3 +62,4 @@ DELETE      /admin/:userId                      @controllers.AppUsers.deleteUser
 GET         /logout                             @controllers.AppUsers.logout()
 
 GET         /korisnickipanel/:email             @controllers.AppUsers.userPanelRender(email: String)
+GET         /user/apartmani/:userId             @controllers.AppUsers.userApartmentsRender(userId: Integer)
