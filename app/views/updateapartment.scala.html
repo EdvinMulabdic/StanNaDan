@@ -39,16 +39,16 @@
                             <div class="col-sm-10 col-sm-offset-1">
                                 <h4 class="edit-label">Grad</h4>
                                 <select name="location"  class="form-control cbxname lz-git-form-control placeholder-style" id="ddlocation">
-                                    <option selected>Sarajevo</option>
+                                    <option selected>@apartment.location</option>
+                                    <option>Sarajevo</option>
                                     <option>Mostar</option>
                                     <option>Banja Luka</option>
                                     <option>Zenica</option>
                                     <option>Tuzla</option>
                                 </select>
-                                <label id="cbxname-error" class="error valid" for="cbxname"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="opstine">
                             <div class="col-sm-10 col-sm-offset-1">
                                 <h4 class="edit-label">Naselje</h4>
                                 <select name="neighborhood"  class="form-control cbxname lz-git-form-control placeholder-style">
@@ -144,8 +144,8 @@
                             <div class="col-sm-10 col-sm-offset-1">
                                 <div id="map" class="map2"></div>
                             </div>
-                            <input id="lat" name="lat" value="43.8534183"  style="display : none">
-                            <input id="lng" name="lng" value="18.37808399999"  style="display : none">
+                            <input id="lat" name="lat" value="@apartment.lat"  style="display : none">
+                            <input id="lng" name="lng" value="@apartment.lng"  style="display : none">
                         </div>
 
                         <div id="infoPanel" style="display : none">

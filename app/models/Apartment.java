@@ -326,21 +326,18 @@ public class Apartment extends Model {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
 
         List<Apartment> recommendedApartments = new ArrayList<>();
-        List<Apartment> recommendedPrice = new ArrayList<>();
 
         Apartment apartment = finder.where().eq("id", apartmentId).findUnique();
         Integer price = apartment.price;
 
         List<Apartment> apartments = finder.where().eq("location", apartment.location).findList();
         List<Integer> prices = new ArrayList<>();
+
         for(int k=0; k < apartments.size(); k++) {
             prices.add(apartments.get(k).price);
-
-            Logger.info("PREPORUCENI " + prices);
         }
-
-
-            for(int i=0; i < prices.size(); i++) {
+        
+        for(int i=0; i < prices.size(); i++) {
             for (int j = price - 10; j <= price + 10; j++) {
                 if (apartments.get(i).price == j) {
                     recommendedApartments.add(apartments.get(i));
@@ -348,8 +345,6 @@ public class Apartment extends Model {
 
             }
         }
-
-//        Logger.info("APARTMANI ZA PREPORUKE   " + recommendedApartments);
         return recommendedApartments;
     }
 
