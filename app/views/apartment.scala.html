@@ -1,5 +1,4 @@
-@import helpers.UserAccessLevel
-@(apartment: Apartment)(currentUser: AppUser)
+@(apartment: Apartment)(currentUser: AppUser)(apartments: java.util.List [Apartment])
 @main {
     <section>
         <div class="container">
@@ -7,7 +6,7 @@
                 <div class="col-md-12">
                     <div class="col-md-8">
                         <div class="cbx-heading2 text-left">
-                            <h2 class="uppercase">@apartment.name <p>@apartment.neighborhood, @apartment.address</p></h2>
+                            <h2 class="uppercase">@apartment.name <p>@apartment.location, @apartment.address</p></h2>
                         </div>
                     </div>
                     <div class="col-md-3 favourite-div">
@@ -262,11 +261,12 @@
                                     <td>Apartman: </td>
                                     <td align="right"><b>@apartment.name</b></td>
                                 </tr>
-
+                                @if(apartment.location.equals("Sarajevo")){
                                 <tr>
                                     <td>Lokacija: </td>
                                     <td align="right"><b>@apartment.neighborhood</b></td>
                                 </tr>
+                                }
 
                                 <tr>
                                     <td>Ulica: </td>
@@ -334,35 +334,40 @@
                         <h2 class="uppercase"><p>Slicni apartmani</p></h2>
                     </div>
                 </div>
+                @if(apartments.size() > 0){
+                @for(apartment <- apartments){
 
-
-
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
+                    <div class="item active cbx-single-all">
+                        <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
+                            <div class="col-item">
                                 <div class="photo">
-                                    <img src="@Apartment.getFirstImage(apartment)">
+                                    <img src='@Apartment.getFirstImage(apartment)' class="" alt="a">
+                                    <div class="price-picture">
+                                        <i class="fa fa-euro"> @apartment.price</i>
+                                    </div>
                                 </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
+                                <div class="info">
+                                    <div class="row">
+                                        <a href="@routes.Apartments.apartment(apartment.id)" target="">
+                                            <div class=" col-md-12 text-center">
+                                                <h4 class="product-title-color"><strong>@apartment.name</strong></h4>
+                                                <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> @apartment.location</h5>
+                                                <h5 class="price-text-color">@apartment.address</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-male"></i>@apartment.capacity Osoba</p>
+                                        <p class="btn-details"><i class="fa fa-home"></i>@apartment.rooms Sobe</p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--//Item-->
+                    </div> <!--//Item-->
+                }
+                }
             </div>
         </div>
 

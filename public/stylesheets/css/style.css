@@ -1590,7 +1590,7 @@ label {
   left: -25px;
   top: 35%;
   color: #f5740a;
-  opacity: 0.8;
+  opacity: 1;
 }
 .cbx-latest-carousel .carousel-control.right {
   right: -25px;
@@ -1777,7 +1777,7 @@ label {
   /*  display: block;*/
   top: 45%;
   right: -8%;
-  index: 888 ;
+  z-index: 888 ;
 }
 #cbstepreviews .carousel-control {
   display: none;

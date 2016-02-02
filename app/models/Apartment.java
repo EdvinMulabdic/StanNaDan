@@ -22,6 +22,7 @@ public class Apartment extends Model {
     public Integer id;
     public String name;
     public String title;
+    public String location;
     public String neighborhood;
     public String address;
     public Integer price;
@@ -41,6 +42,7 @@ public class Apartment extends Model {
      * @param id
      * @param name
      * @param title
+     * @param location
      * @param neighborhood
      * @param address
      * @param price
@@ -53,11 +55,12 @@ public class Apartment extends Model {
      * @param lat
      * @param lng
      */
-    public Apartment(Integer id, String name, String title, String neighborhood, String address, Integer price, Integer capacity,
+    public Apartment(Integer id, String name, String title,String location, String neighborhood, String address, Integer price, Integer capacity,
                      Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId) {
         this.id = id;
         this.name = name;
         this.title = title;
+        this.location = location;
         this.neighborhood = neighborhood;
         this.address = address;
         this.price = price;
@@ -78,6 +81,7 @@ public class Apartment extends Model {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
+                ", location='" + location + '\'' +
                 ", neighborhood='" + neighborhood + '\'' +
                 ", address='" + address + '\'' +
                 ", price=" + price +
@@ -107,6 +111,9 @@ public class Apartment extends Model {
         Apartment apartment = null;
         try {
             apartment = boundForm.get();
+            if(!apartment.location.equals("Sarajevo")){
+                apartment.neighborhood = "";
+            }
             apartment.userId = userId;
             apartment.save();
 
@@ -125,6 +132,7 @@ public class Apartment extends Model {
         try {
             String name = boundForm.field("name").value();
             String title = boundForm.field("title").value();
+            String location = boundForm.field("location").value();
             String neighborhood = boundForm.field("neighborhood").value();
             String address = boundForm.field("address").value();
             Integer price = Integer.parseInt(boundForm.field("price").value());
@@ -139,6 +147,7 @@ public class Apartment extends Model {
 
             apartment.name = name;
             apartment.title = title;
+            apartment.location = location;
             apartment.neighborhood = neighborhood;
             apartment.address = address;
             apartment.price = price;
@@ -181,41 +190,82 @@ public class Apartment extends Model {
     public static Apartment getApartmentById(Integer apartmentId) {
         return finder.where().eq("id", apartmentId).findUnique();
     }
-        /* --------------- retrieves apartments with location centar ---------------*/
+        /* --------------- retrieves apartments with neighbourhood centar ---------------*/
 
     public static List<Apartment> apartmentsCentar(){
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("neighborhood", "Centar").findList();
         return apartments;
     }
-        /* --------------- retrieves apartments with location novo sarajevo ---------------*/
+        /* --------------- retrieves apartments with neighbourhood novo sarajevo ---------------*/
 
     public static List<Apartment> apartmentsNSarajevo(){
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("neighborhood", "Novo Sarajevo").findList();
         return apartments;
     }
-        /* --------------- retrieves apartments with location novi grad ---------------*/
+        /* --------------- retrieves apartments with neighbourhood novi grad ---------------*/
 
     public static List<Apartment> apartmentsNGrad(){
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("neighborhood", "Novi Grad").findList();
         return apartments;
     }
-        /* --------------- retrieves apartments with location stari grad ---------------*/
+        /* --------------- retrieves apartments with neighbourhood stari grad ---------------*/
 
     public static List<Apartment> apartmentsSGrad(){
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("neighborhood", "Stari Grad").findList();
         return apartments;
     }
-        /* --------------- retrieves apartments with location ilidza ---------------*/
+        /* --------------- retrieves apartments with neighbourhood ilidza ---------------*/
 
     public static List<Apartment> apartmentsIlidza(){
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("neighborhood", "Ilidza").findList();
         return apartments;
     }
+
+            /* --------------- retrieves apartments with location Sarajevo ---------------*/
+
+    public static List<Apartment> apartmentsSarajevo(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Sarajevo").findList();
+        return apartments;
+    }
+
+            /* --------------- retrieves apartments with location Mostar ---------------*/
+
+    public static List<Apartment> apartmentsMostar(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Mostar").findList();
+        return apartments;
+    }
+
+            /* --------------- retrieves apartments with location Banja Luka ---------------*/
+
+    public static List<Apartment> apartmentsBanjaLuka(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Banja Luka").findList();
+        return apartments;
+    }
+
+            /* --------------- retrieves apartments with location Zenica ---------------*/
+
+    public static List<Apartment> apartmentsZenica(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Zenica").findList();
+        return apartments;
+    }
+
+            /* --------------- retrieves apartments with location Tuzla ---------------*/
+
+    public static List<Apartment> apartmentsTuzla(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Tuzla").findList();
+        return apartments;
+    }
+
 
     /**
      * Retrieves a list of apartments for homepage.
@@ -234,7 +284,7 @@ public class Apartment extends Model {
         List<String> results = new ArrayList<>();
 
         String folderName = apartment.name + apartment.id;
-        String location = "C:/Users/ajla/Documents/DTProjects/StanNaDan/public/apartmentPhotos/" + folderName;
+        String location = "E:/StanNaDan/public/apartmentPhotos/" + folderName;
 
         File[] files = new File(location).listFiles();
 
@@ -269,5 +319,39 @@ public class Apartment extends Model {
 
         return apartments;
     }
+
+            /* --------------- Apartments to recommend ---------------*/
+
+    public static List<Apartment> apartmentsToRecommend(Integer apartmentId){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+
+        List<Apartment> recommendedApartments = new ArrayList<>();
+        List<Apartment> recommendedPrice = new ArrayList<>();
+
+        Apartment apartment = finder.where().eq("id", apartmentId).findUnique();
+        Integer price = apartment.price;
+
+        List<Apartment> apartments = finder.where().eq("location", apartment.location).findList();
+        List<Integer> prices = new ArrayList<>();
+        for(int k=0; k < apartments.size(); k++) {
+            prices.add(apartments.get(k).price);
+
+            Logger.info("PREPORUCENI " + prices);
+        }
+
+
+            for(int i=0; i < prices.size(); i++) {
+            for (int j = price - 10; j <= price + 10; j++) {
+                if (apartments.get(i).price == j) {
+                    recommendedApartments.add(apartments.get(i));
+                }
+
+            }
+        }
+
+//        Logger.info("APARTMANI ZA PREPORUKE   " + recommendedApartments);
+        return recommendedApartments;
+    }
+
 }
 

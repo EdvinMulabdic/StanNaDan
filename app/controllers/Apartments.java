@@ -24,7 +24,9 @@ public class Apartments extends Controller {
     public Result apartment(Integer apartmentId) {
         Apartment apart = Apartment.getApartmentById(apartmentId);
         AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
-        return ok(apartment.render(apart, currentUser));
+        List<Apartment> apartments = Apartment.apartmentsToRecommend(apartmentId);
+
+        return ok(apartment.render(apart, currentUser, apartments));
     }
 
     // Create apartment
@@ -55,10 +57,12 @@ public class Apartments extends Controller {
     @Security.Authenticated(Authenticator.AdminUserFilter.class)
     public Result updateApartment(Integer apartmentId) {
         Apartment apart = Apartment.updateApartment(apartmentId);
+        List<Apartment> apartments = Apartment.apartmentsToRecommend(apartmentId);
+
         AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
         if (apart != null) {
             flash("success", "Uspješno ste ažurirali podatke o apartmanu.");
-            return ok(apartment.render(apart, currentUser));
+            return ok(apartment.render(apart, currentUser,apartments));
         } else {
             flash("error", "Desila se greška, podaci o apartmanu nisu ažurirani.");
             return ok(createapartment.render(apart.userId));
@@ -73,36 +77,72 @@ public class Apartments extends Controller {
 //        String apartment = ctx.session().get(" ");
         return ok(favourite.render());
     }
-     /* --------------- apartments with location centar ---------------*/
+     /* --------------- apartments with neighbourhood centar ---------------*/
 
     public Result centarApartments(){
         List<Apartment> apartments = Apartment.apartmentsCentar();
         return ok(searchApartments.render(apartments));
     }
-        /* --------------- apartments with location novo sarajevo ---------------*/
+        /* --------------- apartments with neighbourhood novo sarajevo ---------------*/
 
     public Result nsarajevoApartments(){
         List<Apartment> apartments = Apartment.apartmentsNSarajevo();
         return ok(searchApartments.render(apartments));
     }
-        /* --------------- apartments with location novi grad ---------------*/
+        /* --------------- apartments with neighbourhood novi grad ---------------*/
 
     public Result ngradApartments(){
         List<Apartment> apartments = Apartment.apartmentsNGrad();
         return ok(searchApartments.render(apartments));
     }
-        /* --------------- apartments with location stari grad ---------------*/
+        /* --------------- apartments with neighbourhood stari grad ---------------*/
 
     public Result sgradApartments(){
         List<Apartment> apartments = Apartment.apartmentsSGrad();
         return ok(searchApartments.render(apartments));
     }
-        /* --------------- apartments with location ilizda ---------------*/
+        /* --------------- apartments with neighbourhood ilizda ---------------*/
 
     public Result ilidzaApartments(){
         List<Apartment> apartments = Apartment.apartmentsIlidza();
         return ok(searchApartments.render(apartments));
     }
+
+     /* --------------- apartments with location Sarajevo ---------------*/
+
+    public Result sarajevoApartments(){
+        List<Apartment> apartments = Apartment.apartmentsSarajevo();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments with location Banja Luka ---------------*/
+
+    public Result banjalukaApartments(){
+        List<Apartment> apartments = Apartment.apartmentsBanjaLuka();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments with location Mostar ---------------*/
+
+    public Result mostarApartments(){
+        List<Apartment> apartments = Apartment.apartmentsMostar();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments with location Zenica ---------------*/
+
+    public Result zenicaApartments(){
+        List<Apartment> apartments = Apartment.apartmentsZenica();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments with location Tuzla ---------------*/
+
+    public Result tuzlaApartments(){
+        List<Apartment> apartments = Apartment.apartmentsTuzla();
+        return ok(searchApartments.render(apartments));
+    }
+
         /* --------------- delete apartment ---------------*/
 
     public Result deleteApartment(Integer apartmentId){

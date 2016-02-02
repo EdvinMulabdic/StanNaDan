@@ -21,6 +21,15 @@ GET         /novosarajevo                       @controllers.Apartments.nsarajev
 GET         /novigrad                           @controllers.Apartments.ngradApartments()
 GET         /starigrad                          @controllers.Apartments.sgradApartments()
 GET         /ilidza                             @controllers.Apartments.ilidzaApartments()
+
+
+GET         /sarajevo                           @controllers.Apartments.sarajevoApartments()
+GET         /mostar                             @controllers.Apartments.mostarApartments()
+GET         /banjaluka                          @controllers.Apartments.banjalukaApartments()
+GET         /zenica                             @controllers.Apartments.zenicaApartments()
+GET         /tuzla                              @controllers.Apartments.tuzlaApartments()
+
+
 #Login
 GET         /login                              @controllers.Login.loginIndex()
 POST        /user                               @controllers.Login.renderAdminPanel()
