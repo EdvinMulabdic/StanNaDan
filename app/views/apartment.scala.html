@@ -1,4 +1,4 @@
-@(apartment: Apartment)(currentUser: AppUser)(apartments: java.util.List [Apartment])
+@(apartment: Apartment)(currentUser: AppUser)(apartments: java.util.List [Apartment])(reservations: java.util.List[String])
 @main {
     <section>
         <div class="container">
@@ -310,6 +310,40 @@
         </div>
     </section>
 
+
+
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+        <div class="col-md-12"></div>
+        <table class="table table-responsive" id="sort">
+            <h3>Tabela sa datumima kada je apartman zauzet</h3>
+            <thead>
+                <tr class="about">
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(reservation <- reservations){
+
+                    <tr class="about" >
+                    <td>@reservation</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+                </div>
+                </div>
+    </section>
+
+
+
+
+
+
     <section class="margin-bottom-20">
         <div class="container">
             <div class="row">
@@ -379,5 +413,6 @@
     <script  src='@routes.Assets.versioned("javascripts/bluebox.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/popup.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/cookies.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
 
 }

@@ -40,19 +40,20 @@ create table price (
 
 create table reservation (
   id                        integer auto_increment not null,
-  date_from                 datetime(6),
-  date_to                   datetime(6),
+  date_from                 varchar(255),
+  date_to                   varchar(255),
   visitor_name              varchar(255),
   visitor_lastname          varchar(255),
   visitor_email             varchar(255),
-  visitor_identification_no varchar(255),
   phone                     varchar(255),
   comment                   varchar(255),
-  arrival                   varchar(255),
   cost                      integer,
+  apartment_id              integer,
   constraint pk_reservation primary key (id))
 ;
 
+alter table reservation add constraint fk_reservation_apartment_1 foreign key (apartment_id) references apartment (id) on delete restrict on update restrict;
+create index ix_reservation_apartment_1 on reservation (apartment_id);
 
 
 

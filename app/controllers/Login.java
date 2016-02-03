@@ -62,7 +62,8 @@ public class Login extends Controller {
             Session.setUserSessionData(user);
             return ok(userpanel.render(user));
         }
-        return redirect(routes.Application.index());
+        flash("login-error", "Incorrect email or password! Please, try again.");
+        return redirect(routes.Login.loginIndex());
     }
 
     /* --------------- admin page update password ---------------*/

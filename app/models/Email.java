@@ -41,7 +41,7 @@ public class Email extends Model {
 
          /* ------------------- send mail reservation ------------------ */
 
-    public static void sendMailReservation(String name, String mail, String phone, String checkInDate, String checkOutDate, String numOfPersons, String comment){
+    public static void sendMailReservation(String name, String mail, String phone, String checkInDate, String checkOutDate, String numOfPersons, String comment, Integer apartmentId){
 
 
         /* sending an email*/
@@ -53,9 +53,9 @@ public class Email extends Model {
             email.setAuthentication(ConfigProvider.MAIL_FROM, ConfigProvider.MAIL_FROM_PASS);
             email.setFrom(ConfigProvider.MAIL_FROM);
             email.setStartTLSEnabled(true);
-            email.addTo(ConfigProvider.SMTP_USER);
+            email.addTo(mail);
             email.setSubject("Rezervacija");
-            email.setMsg("Ime i prezime:  " + name + "\n"+
+            email.setMsg("Ime i prezime:  " + name + "\n" +
                     "Email:  " + mail + "\n" +
                     "Telefon:  " + phone + "\n" +
                     "Datum dolaska:  " + checkInDate + "\n" +
@@ -63,6 +63,7 @@ public class Email extends Model {
                     "Broj osoba:  " + numOfPersons + "\n\n" +
                     "Komentar:  " + comment);
 
+            Reservation.saveReservation(apartmentId);
             email.send();
         } catch (EmailException e) {
             e.printStackTrace();

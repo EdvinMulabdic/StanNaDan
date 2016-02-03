@@ -5,6 +5,7 @@ import helpers.Cookies;
 import helpers.UserAccessLevel;
 import models.Apartment;
 import models.AppUser;
+import models.Reservation;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -25,8 +26,9 @@ public class Apartments extends Controller {
         Apartment apart = Apartment.getApartmentById(apartmentId);
         AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
         List<Apartment> apartments = Apartment.apartmentsToRecommend(apartmentId);
+        List<String> reservations = Reservation.getReservationsByApartmentId(apartmentId);
 
-        return ok(apartment.render(apart, currentUser, apartments));
+        return ok(apartment.render(apart, currentUser, apartments, reservations));
     }
 
     // Create apartment
@@ -58,11 +60,12 @@ public class Apartments extends Controller {
     public Result updateApartment(Integer apartmentId) {
         Apartment apart = Apartment.updateApartment(apartmentId);
         List<Apartment> apartments = Apartment.apartmentsToRecommend(apartmentId);
+        List<String> reservations = Reservation.getReservationsByApartmentId(apartmentId);
 
         AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
         if (apart != null) {
             flash("success", "Uspješno ste ažurirali podatke o apartmanu.");
-            return ok(apartment.render(apart, currentUser,apartments));
+            return ok(apartment.render(apart, currentUser,apartments,reservations));
         } else {
             flash("error", "Desila se greška, podaci o apartmanu nisu ažurirani.");
             return ok(createapartment.render(apart.userId));
