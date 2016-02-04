@@ -37,6 +37,8 @@ public class Apartment extends Model {
     public String lng;
     public Integer userId;
 
+    @Column
+    public Boolean isVisible;
     /**
      * Default constructor
      * @param id
@@ -56,7 +58,7 @@ public class Apartment extends Model {
      * @param lng
      */
     public Apartment(Integer id, String name, String title,String location, String neighborhood, String address, Integer price, Integer capacity,
-                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId) {
+                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId, Boolean isVisible) {
         this.id = id;
         this.name = name;
         this.title = title;
@@ -73,6 +75,7 @@ public class Apartment extends Model {
         this.lat = lat;
         this.lng = lng;
         this.userId = userId;
+        this.isVisible = isVisible;
     }
 
     @Override
@@ -94,6 +97,7 @@ public class Apartment extends Model {
                 ", lat=" + lat +
                 ", lng=" + lng +
                 ",userId=" + userId +
+                ",isVisible=" + isVisible +
                 '}';
     }
 
@@ -115,6 +119,7 @@ public class Apartment extends Model {
                 apartment.neighborhood = "";
             }
             apartment.userId = userId;
+            apartment.isVisible = false;
             apartment.save();
 
             return apartment;
@@ -266,17 +271,56 @@ public class Apartment extends Model {
         return apartments;
     }
 
+    /* --------------- retrieves apartments in mountain Bjelasnica---------------*/
+
+    public static List<Apartment> apartmentsBjelasnica(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Bjelasnica").findList();
+        return apartments;
+    }
+
+     /* --------------- retrieves apartments in mountain Jahorina---------------*/
+
+    public static List<Apartment> apartmentsJahorina(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Jahorina").findList();
+        return apartments;
+    }
+
+     /* --------------- retrieves apartments in mountain Vlasic---------------*/
+
+    public static List<Apartment> apartmentsVlasic(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Vlasic").findList();
+        return apartments;
+    }
+
+     /* --------------- retrieves apartments in mountain Igman---------------*/
+
+    public static List<Apartment> apartmentsIgman(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Igman").findList();
+        return apartments;
+    }
+
+     /* --------------- retrieves apartments in mountain Trebevic---------------*/
+
+    public static List<Apartment> apartmentsTrebevic(){
+        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+        List<Apartment> apartments = finder.where().eq("location", "Trebevic").findList();
+        return apartments;
+    }
 
     /**
      * Retrieves a list of apartments for homepage.
      * TODO Odluciti i implementirati nacin na koji ce se odlucivati koji se apartmani prikazivati na pocetnoj stranici
      * @return
      */
-    public static List<Apartment> apartmentsForHomepage() {
-        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
-        List<Apartment> apartments = finder.all();
-        return apartments;
-    }
+//    public static List<Apartment> apartmentsForHomepage() {
+//        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
+//        List<Apartment> apartments = finder.all();
+//        return apartments;
+//    }
 
     /* --------------- retrieves list of images names for the current apartment ---------------*/
 
@@ -346,6 +390,25 @@ public class Apartment extends Model {
             }
         }
         return recommendedApartments;
+    }
+
+            /* --------------- Apartment visibility on homepage ---------------*/
+
+    public static void isVisible(Integer apartmentId){
+        Apartment apartment = Apartment.getApartmentById(apartmentId);
+        if(apartment.isVisible == false) {
+            apartment.isVisible = true;
+        }else if(apartment.isVisible == true){
+            apartment.isVisible = false;
+        }
+        apartment.update();
+    }
+
+              /* --------------- List of apartments for homepage ---------------*/
+
+    public static List<Apartment> apartmentsForHomepage(){
+        List<Apartment> apartments = finder.where().eq("isVisible", true).findList();
+        return apartments;
     }
 
 }

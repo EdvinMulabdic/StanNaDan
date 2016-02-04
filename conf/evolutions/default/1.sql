@@ -20,6 +20,7 @@ create table apartment (
   lat                       varchar(255),
   lng                       varchar(255),
   user_id                   integer,
+  is_visible                tinyint(1) default 0,
   constraint pk_apartment primary key (id))
 ;
 

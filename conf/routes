@@ -30,6 +30,15 @@ GET         /zenica                             @controllers.Apartments.zenicaAp
 GET         /tuzla                              @controllers.Apartments.tuzlaApartments()
 
 
+GET         /bjelasnica                         @controllers.Apartments.bjelasnicaApartments()
+GET         /jahorina                           @controllers.Apartments.jahorinaApartments()
+GET         /vlasic                             @controllers.Apartments.vlasicApartments()
+GET         /igman                              @controllers.Apartments.igmanApartments()
+GET         /trebevic                           @controllers.Apartments.trebevicApartments()
+
+
+
+
 #Login
 GET         /login                              @controllers.Login.loginIndex()
 POST        /user                               @controllers.Login.renderAdminPanel()
@@ -72,3 +81,4 @@ GET         /logout                             @controllers.AppUsers.logout()
 
 GET         /korisnickipanel/:email             @controllers.AppUsers.userPanelRender(email: String)
 GET         /user/apartmani/:userId             @controllers.AppUsers.userApartmentsRender(userId: Integer)
+GET        /apartmani/:apartmentId              @controllers.Apartments.showOnHomepage(apartmentId: Integer)

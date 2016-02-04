@@ -171,7 +171,7 @@
                                             <h4>Email:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="mail" class="date-check" id="" placeholder="" required>
+                                            <input type="text" name="mail" class="date-check" id="" style="font-size: 15px" placeholder="" required>
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
@@ -317,26 +317,27 @@
     <section>
         <div class="container">
             <div class="row">
-        <div class="col-md-12"></div>
-        <table class="table table-responsive" id="sort">
-            <h3>Tabela sa datumima kada je apartman zauzet</h3>
-            <thead>
-                <tr class="about">
-                    <th>Datum</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(reservation <- reservations){
+                <div class="col-md-12">
+                    <table class="table table-responsive" id="sort">
+                        <h3>Tabela sa datumima kada je apartman zauzet</h3>
+                        <thead>
+                            <tr class="about">
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @for(reservation <- reservations){
 
-                    <tr class="about" >
-                    <td>@reservation</td>
-                </tr>
-                }
+                            <tr class="about" >
+                                <td>@reservation</td>
+                            </tr>
+                        }
 
-            </tbody>
-        </table>
+                        </tbody>
+                    </table>
                 </div>
-                </div>
+            </div>
+        </div>
     </section>
 
 

@@ -146,6 +146,42 @@ public class Apartments extends Controller {
         return ok(searchApartments.render(apartments));
     }
 
+    /* --------------- apartments in mountain Bjelasnica ---------------*/
+
+    public Result bjelasnicaApartments(){
+        List<Apartment> apartments = Apartment.apartmentsBjelasnica();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments in mountain Jahorina ---------------*/
+
+    public Result jahorinaApartments(){
+        List<Apartment> apartments = Apartment.apartmentsJahorina();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments in mountain Vlasic ---------------*/
+
+    public Result vlasicApartments(){
+        List<Apartment> apartments = Apartment.apartmentsVlasic();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments in mountain Igman ---------------*/
+
+    public Result igmanApartments(){
+        List<Apartment> apartments = Apartment.apartmentsIgman();
+        return ok(searchApartments.render(apartments));
+    }
+
+    /* --------------- apartments in mountain Trebevic ---------------*/
+
+    public Result trebevicApartments(){
+        List<Apartment> apartments = Apartment.apartmentsTrebevic();
+        return ok(searchApartments.render(apartments));
+    }
+
+
         /* --------------- delete apartment ---------------*/
 
     public Result deleteApartment(Integer apartmentId){
@@ -161,4 +197,10 @@ public class Apartments extends Controller {
 //    }
 
 
+     /* --------------- show apartment on homepage ---------------*/
+
+    public Result showOnHomepage(Integer apartmentId){
+        Apartment.isVisible(apartmentId);
+        return redirect(routes.Login.apartmentsList());
+    }
 }
