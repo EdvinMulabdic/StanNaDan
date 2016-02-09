@@ -3,9 +3,6 @@
     <div class="container">
         <div class="row">
             <div class=" picturemain">
-                <div id="apartmani">
-                    Apartmani Sarajevo
-                </div>
             </div>
 
             <div class="col-md-12">
@@ -53,7 +50,7 @@
             </div>
 
             <div class="col-md-6 login">
-                <form method="GET" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.Login.renderAdminPage()" >
+                <form method="GET" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.Login.apartmentsList()" >
 
                         <div class="col-sm-8 col-md-offset-1 xs-text-center cbx-submit-area" >
                             <button type="submit" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Apartmani</button>
@@ -61,6 +58,17 @@
                 </form>
 
             </div>
+
+            <div class="col-md-6 login">
+                <form method="GET" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.AppUsers.listOfUsers()" >
+
+                    <div class="col-sm-8 col-md-offset-1 xs-text-center cbx-submit-area" >
+                        <button type="submit" class="btn btn-block lz-git-submit-btn cbx-submit" id="loginbutton">Korisnici</button>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
     </div>
 }

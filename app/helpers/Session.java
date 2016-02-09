@@ -14,4 +14,12 @@ public class Session {
         session("userAccessLevel", user.userAccessLevel.toString());
         session("userId", user.id.toString());
     }
+
+    /**
+     * Clears user data from the session.
+     * Should be used within logout function.
+     */
+    public static void clearUserSessionData() {
+        session().clear();
+    }
 }

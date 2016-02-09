@@ -1,5 +1,4 @@
-@import helpers.UserAccessLevel
-@(apartment: Apartment)
+@(apartment: Apartment)(currentUser: AppUser)(apartments: java.util.List [Apartment])(reservations: java.util.List[String])
 @main {
     <section>
         <div class="container">
@@ -7,7 +6,7 @@
                 <div class="col-md-12">
                     <div class="col-md-8">
                         <div class="cbx-heading2 text-left">
-                            <h2 class="uppercase">@apartment.name <p>@apartment.neighborhood, @apartment.address</p></h2>
+                            <h2 class="uppercase">@apartment.name <p>@apartment.location, @apartment.address</p></h2>
                         </div>
                     </div>
                     <div class="col-md-3 favourite-div">
@@ -47,7 +46,7 @@
                             <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src='@routes.Assets.versioned("images/stan_na_dan.jpg")' alt="Logo">
+                                <img src='@routes.Assets.versioned("images/stan_na_dan.jpg")' alt="">
                             </div>
                             @if(Apartment.getListOfApartmentImages(apartment).size() > 0) {
                                 @for(image <- Apartment.getListOfApartmentImages(apartment)) {
@@ -75,7 +74,7 @@
                     <form method="POST" role="form" action="#">
                         <div class="blue-box">
                             <div class=" persons-nights">
-                                <p class="" ><b id="total" name="totalNights">1</b> Noc</p>
+                                <p><b id="total" name="totalNights"> 1 </b> Noc</p>
                                 <p><b id="nopersons"> 1 </b> Osoba</p>
                             </div>
 
@@ -103,7 +102,7 @@
                             <div class="col-md-12 check-in-date">
                                 <h4>Broj osoba: </h4>
                             </div>
-                            <div class="col-md-12 padding-left-0">
+                            <div class="col-md-6 padding-left-0">
                                 <input type="number" max="@apartment.capacity" min="1"  class="date-check" id="person" onclick="capacity()">
                             </div>
                             <div class="col-md-12 check-in-date" id="red-letters">
@@ -144,6 +143,8 @@
                                         </div>
                                         <div class="col-md-12 padding-left-0">
                                             <input type="date"  class="date-check" name="checkIndate" id="checkInpop"  readonly    required/>
+                                            <label id="checkIndate_error" class="error" for="checkIndate"></label>
+
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
@@ -151,6 +152,8 @@
                                         </div>
                                         <div class="col-md-12 padding-left-0">
                                             <input type="date" class="date-check" name="checkOutdate" id="checkOutpop" readonly  required />
+                                            <label id="checkOutDate_error" class="error" for="checkOutdate"></label>
+
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
@@ -158,6 +161,8 @@
                                         </div>
                                         <div class="col-md-12 padding-left-0">
                                             <input type="number" name="numOfPersons" class="date-check" id="personpop" readonly >
+                                            <label id="numOfPersons_error" class="error" for="numOfPersons"></label>
+
                                         </div>
                                     </div>
 
@@ -166,20 +171,26 @@
                                             <h4>Ime i Prezime:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="name" class="date-check" id="" placeholder="" required>
+                                            <input type="text" name="name"  class="date-check" id="name"  onchange="return checkName()" required>
+                                            <label id="name_error" class="error" for="name"></label>
+
                                         </div>
                                         <div class="col-md-12 check-in-date">
                                             <h4>Email:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="mail" class="date-check" id="" placeholder="" required>
+                                            <input type="text" name="mail" class="date-check" id="email" style="font-size: 15px" onchange=" return checkEmail()" required>
+                                            <label id="email_error" class="error" for="mail"></label>
+
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
                                             <h4>Kontakt telefon:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="phone" class="date-check" id="" placeholder="" required>
+                                            <input type="text" name="phone" class="date-check" id="phone" placeholder="" onchange="numberLength()" required>
+                                            <label id="phone_error" class="error" for="phone"></label>
+
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -212,30 +223,45 @@
                             <button type="POST" style="width:140px; font-size: 18px;" class="btn btn-primary" href="@routes.Emails.sendMail(apartment.id)">Potvrdi</button>
                         </div>
                     </form>
-                    <div class=" xs-text-center cbx-submit-area" id="cookie-button">
-                        <button type="submit" name="cookie" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiebutton" onclick="">COOKIES :)</button>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    @if(currentUser !=null && apartment.userId == currentUser.id){
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 margin-bottom-20">
+                        <form method="GET" role="form" action="@routes.Apartments.renderUpdateApartment(apartment.id)">
+                            <div class=" xs-text-center cbx-submit-area" id="cookies-button">
+                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-pencil"> AZURIRAJ </i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
 
-
-    </section>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 margin-bottom-20">
-                    <form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">
-                        <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                            <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart"> DODAJ U LISTU</i></button>
-                        </div>
-                    </form>
+        </section>
+    }else {
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 margin-bottom-20">
+                        <form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">
+                            <div class=" xs-text-center cbx-submit-area" id="cookies-button">
+                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart">
+                                    DODAJ U LISTU</i></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-        </div>
+        </section>
+    }
 
-    </section>
     <section>
         <div class="container">
             <div class="row">
@@ -247,11 +273,12 @@
                                     <td>Apartman: </td>
                                     <td align="right"><b>@apartment.name</b></td>
                                 </tr>
-
+                                @if(apartment.location.equals("Sarajevo")){
                                 <tr>
                                     <td>Lokacija: </td>
                                     <td align="right"><b>@apartment.neighborhood</b></td>
                                 </tr>
+                                }
 
                                 <tr>
                                     <td>Ulica: </td>
@@ -295,6 +322,41 @@
         </div>
     </section>
 
+
+
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-responsive" id="sort">
+                        <h3>Tabela sa datumima kada je apartman zauzet</h3>
+                        <thead>
+                            <tr class="about">
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @for(reservation <- reservations){
+
+                            <tr class="about" >
+                                <td>@reservation</td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
     <section class="margin-bottom-20">
         <div class="container">
             <div class="row">
@@ -319,35 +381,40 @@
                         <h2 class="uppercase"><p>Slicni apartmani</p></h2>
                     </div>
                 </div>
+                @if(apartments.size() > 0){
+                @for(apartment <- apartments){
 
-
-
-                <div class="item active cbx-single-all">
-                    <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                        <div class="col-item">
+                    <div class="item active cbx-single-all">
+                        <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
+                            <div class="col-item">
                                 <div class="photo">
-                                    <img src="@Apartment.getFirstImage(apartment)">
+                                    <img src='@Apartment.getFirstImage(apartment)' class="" alt="a">
+                                    <div class="price-picture">
+                                        <i class="fa fa-euro"> @apartment.price</i>
+                                    </div>
                                 </div>
-                            <div class="info">
-                                <div class="row">
-                                    <a href="" target="_blank">
-                                        <div class=" col-md-12 text-center">
-                                            <h4 class="product-title-color"><strong>POFALICI</strong></h4>
-                                            <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> POFALICI</h5>
-                                            <h5 class="price-text-color">Hamdije Cemerlica 31</h5>
-                                        </div>
-                                    </a>
+                                <div class="info">
+                                    <div class="row">
+                                        <a href="@routes.Apartments.apartment(apartment.id)" target="">
+                                            <div class=" col-md-12 text-center">
+                                                <h4 class="product-title-color"><strong>@apartment.name</strong></h4>
+                                                <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> @apartment.location</h5>
+                                                <h5 class="price-text-color">@apartment.address</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-male"></i>@apartment.capacity Osoba</p>
+                                        <p class="btn-details"><i class="fa fa-home"></i>@apartment.rooms Sobe</p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="separator clear-left">
-                                    <p class="btn-add">
-                                        <i class="fa fa-male"></i>6 Osoba</p>
-                                    <p class="btn-details"><i class="fa fa-home"></i>3 Sobe</p>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--//Item-->
+                    </div> <!--//Item-->
+                }
+                }
             </div>
         </div>
 
@@ -359,5 +426,7 @@
     <script  src='@routes.Assets.versioned("javascripts/bluebox.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/popup.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/cookies.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/validation.js")'></script>
 
 }

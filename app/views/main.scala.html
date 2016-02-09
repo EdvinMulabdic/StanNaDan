@@ -1,4 +1,5 @@
-@(content: Html)
+@import helpers.UserAccessLevel
+@(content: Html)(implicit currentUser: AppUser = UserAccessLevel.getCurrentUser(ctx()))
 
 <!DOCTYPE html>
 
@@ -33,6 +34,7 @@
 
         <script  src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 
+        <script src='@routes.Assets.versioned("javascripts/sweetalert.min.js")'></script>
 
 
 
@@ -51,6 +53,7 @@
 
             <!-- Custom CSS -->
         <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/css/style.css")' media="all" />
+        <link rel="stylesheet" href='@routes.Assets.versioned("/stylesheets/sweetalert.css")' media="all" />
 
         <link rel="stylesheet" id="lz-switcher-style" href='@routes.Assets.versioned("/stylesheets/css/switcher-default.css")' media="all" />
 
@@ -76,6 +79,19 @@
 
         <script src="https://maps.googleapis.com/maps/api/js"></script>
 
+        <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-73125042-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
 
     </head>
 
@@ -95,29 +111,68 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                            "dropdown" data-toggle="dropdown" href="#">Apartmani Sarajevo <i class="fa fa-angle-down"></i>
+                            "dropdown" data-toggle="dropdown" href="#">Izaberi grad <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu ">
-                                <li>
-                                    <a href="@routes.Apartments.centarApartments()">Centar</a>
+                                <li class="dropdown-submenu">
+                                    <a href="@routes.Apartments.sarajevoApartments()" tabindex="-1">Sarajevo </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@routes.Apartments.centarApartments()" tabindex="-1">Centar</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.Apartments.nsarajevoApartments()" tabindex="-1">Novo Sarajevo</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.Apartments.ngradApartments()" tabindex="-1">Novi Grad</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.Apartments.sgradApartments()" tabindex="-1">Stari Grad</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.Apartments.ilidzaApartments()" tabindex="-1">Ilidza</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="@routes.Apartments.nsarajevoApartments()">Novo Sarajevo</a>
+                                    <a href="@routes.Apartments.mostarApartments()">Mostar</a>
                                 </li>
                                 <li>
-                                    <a href="@routes.Apartments.ngradApartments()">Novi Grad</a>
+                                    <a href="@routes.Apartments.banjalukaApartments()">Banja Luka</a>
                                 </li>
                                 <li>
-                                    <a href="@routes.Apartments.sgradApartments()">Stari Grad</a>
+                                    <a href="@routes.Apartments.zenicaApartments()">Zenica</a>
                                 </li>
                                 <li>
-                                    <a href="@routes.Apartments.ilidzaApartments()">Ilidza</a>
+                                    <a href="@routes.Apartments.tuzlaApartments()">Tuzla</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                            "dropdown" data-toggle="dropdown" href="">Cesta pitanja<i class="fa fa-angle-down"></i>
+                            "dropdown" data-toggle="dropdown" href="">Izaberi planinu <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="@routes.Apartments.bjelasnicaApartments()">Bjelasnica</a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Apartments.jahorinaApartments()">Jahorina</a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Apartments.vlasicApartments()">Vlasic</a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Apartments.igmanApartments()">Igman </a>
+                                </li>
+                                <li>
+                                    <a href="@routes.Apartments.trebevicApartments()">Trebevic </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                            "dropdown" data-toggle="dropdown" href="">Cesta pitanja <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -139,7 +194,7 @@
                         </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                        "dropdown" data-toggle="dropdown" href="#">Korisne informacije <i class="fa fa-angle-down"></i>
+                        "dropdown" data-toggle="dropdown" href="#">Informacije <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
@@ -198,6 +253,54 @@
                     <li>
                         <a href="@routes.Informations.cooperation()" id="saradnja" >Saradnja</a>
                     </li>
+                    @if(currentUser == null) {
+                        <li>
+                            <a href="@routes.Login.loginIndex()" id="saradnja" >Login</a>
+                        </li>
+                    }else{
+                        @if(currentUser.userAccessLevel.equals(UserAccessLevel.ADMIN)){
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                                "dropdown" data-toggle="dropdown" href="#">ADMIN <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu ">
+                                    <li>
+                                        <a href="@routes.Login.showAdminPanel(currentUser.email)"><i class="fa fa-bars fa-fw"></i>Admin panel</a>
+                                    </li>
+                                    <li>
+                                        <a href="@routes.Login.apartmentsList()"><i class="fa fa-home fa-fw"></i>Apartmani</a>
+                                    </li>
+                                    <li>
+                                        <a href="@routes.AppUsers.listOfUsers()"><i class="fa fa-users fa-fw"></i>Korisnici</a>
+                                    </li>
+                                    <li>
+                                        <a href="@routes.AppUsers.logout()"><i class="fa fa-sign-out fa-fw"></i>Log out</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }else{
+                            @if(currentUser.userAccessLevel.equals(UserAccessLevel.USER)){
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                                    "dropdown" data-toggle="dropdown" href="#">Korisnik <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu ">
+                                        <li>
+                                            <a href="@routes.AppUsers.userPanelRender(currentUser.email)"><i class="fa fa-bars fa-fw"></i>Korisnicki panel</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.AppUsers.userApartmentsRender(currentUser.id)"><i class="fa fa-home fa-fw"></i>Apartmani</a>
+                                        </li>
+                                        <li>
+                                            <a href="@routes.AppUsers.logout()"><i class="fa fa-sign-out fa-fw"></i>Log out</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
                 </ul>
             </div>
             </div>
@@ -214,7 +317,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">
-                            <p  class="lz-copy text-center">Apartmani Sarajevo, Apartmani u Sarajevu. Stan Na Dan Sarajevo je najbolja opcija za Vas ukoliko trazite relativno jeftin privatni smestaj na kraci ili duzi rok u Sarajevu.
+                            <p class="lz-copy text-center">Apartmani Sarajevo, Apartmani u Sarajevu. Stan Na Dan Sarajevo je najbolja opcija za Vas ukoliko trazite relativno jeftin privatni smestaj na kraci ili duzi rok u Sarajevu.
                                 Cijene iznajmljivanja Sarajevo apartmana razlikuju se u odnosu na duzinu boravka i lokaciju.
                                 Pozovite nas na +381 65 42 43 500 i uverite se u nasu poslovnost i besprijekornu uslugu.
                                 Hvala Vam sto ste nas izabrali, Vas Stan Na Dan Sarajevo.</p>

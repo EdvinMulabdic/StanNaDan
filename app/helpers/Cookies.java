@@ -27,5 +27,15 @@ public class Cookies extends Security.Authenticator {
         response().setCookie("userId", user.id.toString());
     }
 
+    /**
+     * Clears user data from the cookies.
+     * Should be used within logout function.
+     */
+    public static void clearCookies() {
+        response().discardCookie("email");
+        response().discardCookie("userAccessLevel");
+        response().discardCookie("userId");
+    }
+
 }
 

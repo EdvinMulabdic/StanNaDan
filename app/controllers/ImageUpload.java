@@ -1,16 +1,14 @@
 package controllers;
 
-import com.google.common.io.Files;
 import models.Apartment;
 import play.Logger;
-import play.mvc.Result;
 import play.mvc.Controller;
 import play.mvc.Http;
-import views.html.upload;
+import play.mvc.Result;
 import views.html.index;
+import views.html.upload;
 
 import java.io.File;
-import java.nio.file.*;
 import java.util.List;
 
 /**
@@ -35,7 +33,7 @@ public class ImageUpload extends Controller {
             String fileName = picture.getFilename();
             File file = picture.getFile();
 
-            File theDir = new File("C:\\Users\\ajla\\Documents\\DTProjects\\StanNaDan\\public\\apartmentPhotos\\" + folder);
+            File theDir = new File("E:\\StanNaDan\\public\\apartmentPhotos\\" + folder);
 
             // if the directory does not exist, create it
 

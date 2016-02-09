@@ -1,6 +1,8 @@
 package controllers;
 
 import helpers.ConfigProvider;
+import models.Email;
+import models.Reservation;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import play.Logger;
@@ -8,12 +10,15 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.createapartment;
+import views.html.createuser;
 
 /**
  * Created by User on 1/8/2016.
  */
 public class Emails extends Controller {
     public Result sendMail(Integer apartmentId) {
+
         //taking values from input fields
         DynamicForm form = Form.form().bindFromRequest();
         String name = form.field("name").value();
@@ -24,33 +29,11 @@ public class Emails extends Controller {
         String numOfPersons = form.field("numOfPersons").value();
         String comment = form.field("comment").value();
 
-        /* sending an email*/
-        SimpleEmail email = new SimpleEmail();
-        email.setHostName(ConfigProvider.SMTP_HOST);
-        email.setSmtpPort(Integer.parseInt(ConfigProvider.SMTP_PORT));
-        try {
-                /*Configuring mail*/
-            email.setFrom(ConfigProvider.MAIL_FROM);
-            email.setAuthentication(ConfigProvider.MAIL_FROM_PASS, ConfigProvider.SMTP_PASS);
-            email.setStartTLSEnabled(true);
-            email.addTo(ConfigProvider.SMTP_USER);
-            email.setSubject("Rezervacija");
-            email.setMsg("Ime i prezime:  " + name + "\n"+
-                        "Email:  " + mail + "\n" +
-                        "Telefon:  " + phone + "\n" +
-                        "Datum dolaska:  " + checkIndate + "\n" +
-                        "Datum odlaska:  " + checkOutdate + "\n" +
-                        "Broj osoba:  " + numOfPersons + "\n\n" +
-                        "Komentar:  " + comment);
-
-            email.send();
-        } catch (EmailException e) {
-            e.printStackTrace();
-        }
+            Email.sendMailReservation(name, mail, phone, checkIndate, checkOutdate, numOfPersons, comment, apartmentId);
             /*If mail is sent flash appears and user is redirected to index page */
-        flash("success", "Vasa poruka je poslana. Potrudit cemo se da odgovorimo u najkracem mogucem roku. Zahvaljujemo!");
-        return redirect(routes.Apartments.apartment(apartmentId));
-
+            flash("success", "Vasa poruka je poslana. Potrudit cemo se da odgovorimo u najkracem mogucem roku. Zahvaljujemo!");
+            return redirect(routes.Apartments.apartment(apartmentId));
     }
+
 
 }

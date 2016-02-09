@@ -3,10 +3,13 @@ package models;
 import com.avaje.ebean.Model;
 import org.mindrot.jbcrypt.BCrypt;
 import play.Logger;
+import play.data.DynamicForm;
+import play.data.Form;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 /**
  * Created by ajla on 05-Jan-16.
@@ -21,11 +24,36 @@ public class AppUser extends Model {
     public String password;
     public Integer userAccessLevel;
 
+    public AppUser(){
+
+    }
     public AppUser(String email, String password, Integer userAccessLevel) {
         this.email = email;
         this.password = password;
         this.userAccessLevel = userAccessLevel;
     }
+
+        /* ------------------- create user ------------------ */
+
+    public static void createUser(){
+        DynamicForm form = Form.form().bindFromRequest();
+        String email = form.field("email").value();
+        String password = form.field("password").value();
+
+        try {
+            AppUser user = new AppUser();
+            user.email = email;
+            user.password = password;
+            user.hashPass();
+            user.userAccessLevel = 2;
+            user.save();
+            Email.sendMail(email, password);
+        }catch (IllegalArgumentException e) {
+            Logger.info(e.getMessage());
+        }
+
+    }
+
 
         /* ------------------- finds user by email ------------------ */
 
@@ -68,4 +96,19 @@ public class AppUser extends Model {
         }
         return false;
     }
+    /* ------------------- get all users ------------------ */
+    public static List<AppUser> getAllAppUsers(){
+        Model.Finder<String, AppUser> finder = new Model.Finder<>(AppUser.class);
+        List<AppUser> users = finder.all();
+        return users;
+    }
+
+    /* ------------------- delete user ------------------ */
+    public static void deleteUser(Integer userId){
+        AppUser user = finder.where().eq("id", userId).findUnique();
+        if(user != null){
+            user.delete();
+        }
+    }
+
 }

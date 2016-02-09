@@ -1,5 +1,6 @@
 @(apartments: java.util.List [Apartment])
 @main{
+
     <div class="container">
         <div class="row">
         <section id="tablemargins" class="col-md-12">
@@ -16,7 +17,9 @@
                         <th>Sprat</th>
                         <th>Galerija</th>
                         <th>Uredi</th>
+                        <th>Prikazati na pocetnoj stranici</th>
                         <th>Obisi</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +41,19 @@
                             <a data-role="post" data-delete-parent="tr" href="@routes.Apartments.renderUpdateApartment(apartment.id)" role="button">
                                 <i class=" fa fa-pencil fa-lg"></i></a>
                         </td>
+
+                        <td class="text-center">
+                        @if(apartment.isVisible == null || apartment.isVisible == false) {
+                            <a href="@routes.Apartments.showOnHomepage(apartment.id)" >
+                                <button type="submit" class="btn btn-primary" id="middlebuttons">DA</button>
+                            </a>
+                        } else {
+                            <a href="@routes.Apartments.showOnHomepage(apartment.id)" >
+                                <button type="submit" class="btn btn-primary" id="middlebuttons">NE</button>
+
+                            </a>
+                        }
+                        </td>
                         <td class="text-center">
                             <a data-role="delete" data-delete-parent="tr" href="@routes.Apartments.deleteApartment(apartment.id)" role="button">
                                 <i class=" fa fa-trash-o fa-lg"></i></a>
@@ -48,13 +64,9 @@
                 </tbody>
             </table>
         </section>
-        <form method="GET" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.Apartments.renderApartment()" >
-
-            <div class="col-sm-4 col-md-offset-4 xs-text-center cbx-submit-area" id="">
-                <button type="submit"  class="btn btn-block lz-git-submit-btn cbx-submit" id="addApartment">DODAJ APARTMAN</button>
-            </div>
-        </form>
         </div>
     </div>
-    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
 }
+
+    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/deleteConfirm.js")'></script>

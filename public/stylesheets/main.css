@@ -15,7 +15,7 @@
 #apartmani {
     text-align: center;
     font-size: 40px;
-    font-family: Courier;
+    font-family: 'Raleway', Arial, sans-serif;;
     text-shadow: 0 0 1px whitesmoke;
 
 }
@@ -110,7 +110,6 @@
 .blue-box{
     background-color: #acd7e5;
     border: 1px solid #f5740a;
-    border-radius: 5px 5px 5px 5px;
     min-height: 100px;
 }
 .blue-box-popup{
@@ -128,14 +127,15 @@
 }
 .persons-nights{
     /*border-right: 1px dashed grey;*/
-    text-align: center;
+    text-align: left;
     float: left;
     margin-right: 5px;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 .price{
      margin-right: 5px;
      float: right;
+    text-align: left;
  }
 .price-popup{
     margin-right: 5px;
@@ -153,9 +153,8 @@
     padding-left: 0px;
 }
 .date-check{
-    border-radius: 5px;
     border-style: none;
-    border:1px solid black;
+    border:1px solid #f5740a;
     padding: 0px;
     width: 100%;
     height: 30px;
@@ -165,7 +164,7 @@
 .text-area{
     border-radius: 5px;
     border-style: none;
-    border:1px solid black;
+    border:1px solid #f5740a;
     padding: 0px;
     width: 100%;
     font-size: 18px;
@@ -177,7 +176,7 @@
 #red-letters p{
     color:red;
     line-height: 1.2;
-    font-family: sans-serif;
+    font-family: 'Raleway', Arial, sans-serif;
     font-size: 17px;
 }
 #reservation-button{
@@ -190,6 +189,8 @@
 .apartment-informations{
     background-color: white;
     border: 1px solid #f5740a ;
+    font-family: 'Raleway', Arial, sans-serif;
+
 
 }
 .table{
@@ -242,7 +243,7 @@
 .head-section .nav li a,
 .head-section .nav li.active ul.dropdown-menu li a {
     color: #999;
-    font-family: FontAwesome;
+    font-family: 'Raleway', Arial, sans-serif;
     font-size: 14px;
     font-weight: 300;
     background: none;
@@ -261,7 +262,7 @@ ul.dropdown-menu { border: none }
     background-color: #f5740a !important;
     color: black !important;
     font-size: 16px;
-    font-family: FontAwesome;
+    font-family: 'Raleway', Arial, sans-serif;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
@@ -541,7 +542,7 @@ ul.dropdown-menu { border: none }
     -webkit-border-radius: 3px 3px 0 0;
     -moz-border-radius: 3px 3px 0 0;
     border-radius: 3px 3px 0 0;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Raleway', Arial, sans-serif;
     text-align: center;
     font-size: 18px;
     font-weight: 300;
@@ -588,7 +589,7 @@ ul.dropdown-menu { border: none }
     border-left: 1px solid #a2a194;
 }
 #cssmenu ul ul li {
-    font-family: "raleway", "robotothin", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: 'Raleway', Arial, sans-serif;
     font-size: 18px;
     padding: 10px 0px 10px 5px;
 }
@@ -658,11 +659,11 @@ ul.dropdown-menu { border: none }
 
 
 .cooperation-text p{
-     font-family: sans-serif;
+     font-family: 'Raleway', Arial, sans-serif;
      font-size: 19px;
  }
 .cooperation-text li{
-    font-family: sans-serif;
+    font-family:'Raleway', Arial, sans-serif;
     font-size: 19px;
     margin-left: 20px;
     margin-bottom: 10px;
@@ -671,13 +672,29 @@ ul.dropdown-menu { border: none }
     margin-bottom: 100px;
     margin-top: 100px;
 }
-#ddlocation{
-    color: #e94f31;
-}
+
 
 .edit-label {
     color: #f5740a;
 }
+.margin-top100{
+    margin-top: 100px;
+}
+.cooperation-text p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+.cooperation-text li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+.error{
+    font-size: 12px;
+    color: red;
+    text-align: center;
+}
+
+
 
 /*-------------------------------------- media ----------------------------------------*/
 
@@ -743,5 +760,15 @@ ul.dropdown-menu { border: none }
         position: absolute;
         top: -7px;
         right: 35px;
+    }
+}
+@media (min-width: 991px){
+    #login-button-marginbottom{
+        margin-bottom: 230px;
+    }
+}
+@media (max-width: 768px) {
+    #login-button-marginbottom{
+        margin-bottom: 50px;
     }
 }
