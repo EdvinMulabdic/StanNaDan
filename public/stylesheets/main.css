@@ -688,6 +688,14 @@ ul.dropdown-menu { border: none }
     font-size: 14px;
     line-height: 1.6;
 }
+.error{
+    font-size: 12px;
+    color: red;
+    text-align: center;
+}
+
+
+
 /*-------------------------------------- media ----------------------------------------*/
 
 @media (max-width: 480px) {

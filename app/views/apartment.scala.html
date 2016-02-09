@@ -143,6 +143,8 @@
                                         </div>
                                         <div class="col-md-12 padding-left-0">
                                             <input type="date"  class="date-check" name="checkIndate" id="checkInpop"  readonly    required/>
+                                            <label id="checkIndate_error" class="error" for="checkIndate"></label>
+
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
@@ -150,6 +152,8 @@
                                         </div>
                                         <div class="col-md-12 padding-left-0">
                                             <input type="date" class="date-check" name="checkOutdate" id="checkOutpop" readonly  required />
+                                            <label id="checkOutDate_error" class="error" for="checkOutdate"></label>
+
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
@@ -157,6 +161,8 @@
                                         </div>
                                         <div class="col-md-12 padding-left-0">
                                             <input type="number" name="numOfPersons" class="date-check" id="personpop" readonly >
+                                            <label id="numOfPersons_error" class="error" for="numOfPersons"></label>
+
                                         </div>
                                     </div>
 
@@ -165,20 +171,26 @@
                                             <h4>Ime i Prezime:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="name" class="date-check" id="" placeholder="" required>
+                                            <input type="text" name="name"  class="date-check" id="name"  onchange="return checkName()" required>
+                                            <label id="name_error" class="error" for="name"></label>
+
                                         </div>
                                         <div class="col-md-12 check-in-date">
                                             <h4>Email:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="mail" class="date-check" id="" style="font-size: 15px" placeholder="" required>
+                                            <input type="text" name="mail" class="date-check" id="email" style="font-size: 15px" onchange=" return checkEmail()" required>
+                                            <label id="email_error" class="error" for="mail"></label>
+
                                         </div>
 
                                         <div class="col-md-12 check-in-date">
                                             <h4>Kontakt telefon:  </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="text" name="phone" class="date-check" id="" placeholder="" required>
+                                            <input type="text" name="phone" class="date-check" id="phone" placeholder="" onchange="numberLength()" required>
+                                            <label id="phone_error" class="error" for="phone"></label>
+
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -415,5 +427,6 @@
     <script  src='@routes.Assets.versioned("javascripts/popup.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/cookies.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/validation.js")'></script>
 
 }

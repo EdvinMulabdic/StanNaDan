@@ -46,6 +46,7 @@ create table reservation (
   visitor_name              varchar(255),
   visitor_lastname          varchar(255),
   visitor_email             varchar(255),
+  capacity                  varchar(255),
   phone                     varchar(255),
   comment                   varchar(255),
   cost                      integer,

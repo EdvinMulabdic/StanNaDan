@@ -63,7 +63,7 @@ public class Email extends Model {
                     "Broj osoba:  " + numOfPersons + "\n\n" +
                     "Komentar:  " + comment);
 
-            Reservation.saveReservation(apartmentId);
+            Reservation.saveReservation(apartmentId, name, mail, phone, checkInDate, checkOutDate, numOfPersons, comment);
             email.send();
         } catch (EmailException e) {
             e.printStackTrace();

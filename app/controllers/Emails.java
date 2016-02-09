@@ -10,6 +10,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.createapartment;
 import views.html.createuser;
 
 /**
@@ -28,11 +29,10 @@ public class Emails extends Controller {
         String numOfPersons = form.field("numOfPersons").value();
         String comment = form.field("comment").value();
 
-        Email.sendMailReservation(name, mail, phone, checkIndate, checkOutdate, numOfPersons, comment, apartmentId);
+            Email.sendMailReservation(name, mail, phone, checkIndate, checkOutdate, numOfPersons, comment, apartmentId);
             /*If mail is sent flash appears and user is redirected to index page */
-        flash("success", "Vasa poruka je poslana. Potrudit cemo se da odgovorimo u najkracem mogucem roku. Zahvaljujemo!");
-        return redirect(routes.Apartments.apartment(apartmentId));
-
+            flash("success", "Vasa poruka je poslana. Potrudit cemo se da odgovorimo u najkracem mogucem roku. Zahvaljujemo!");
+            return redirect(routes.Apartments.apartment(apartmentId));
     }
 
 
