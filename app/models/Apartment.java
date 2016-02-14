@@ -39,6 +39,8 @@ public class Apartment extends Model {
 
     @Column
     public Boolean isVisible;
+
+    public Calendar calendar;
     /**
      * Default constructor
      * @param id
@@ -56,9 +58,10 @@ public class Apartment extends Model {
      * @param description
      * @param lat
      * @param lng
+     * @param calendar
      */
     public Apartment(Integer id, String name, String title,String location, String neighborhood, String address, Integer price, Integer capacity,
-                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId, Boolean isVisible) {
+                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId, Boolean isVisible, Calendar calendar) {
         this.id = id;
         this.name = name;
         this.title = title;
@@ -76,6 +79,7 @@ public class Apartment extends Model {
         this.lng = lng;
         this.userId = userId;
         this.isVisible = isVisible;
+        this.calendar = calendar;
     }
 
     @Override
@@ -98,6 +102,7 @@ public class Apartment extends Model {
                 ", lng=" + lng +
                 ",userId=" + userId +
                 ",isVisible=" + isVisible +
+                ",calendar=" + calendar +
                 '}';
     }
 
@@ -169,7 +174,7 @@ public class Apartment extends Model {
 
             return apartment;
         } catch (Exception e) {
-            Logger.debug("Nisam uspio spasiti apartman :(");
+            Logger.debug("Nisam uspio spasiti apartman :())))))");
             return apartment;
         }
     }

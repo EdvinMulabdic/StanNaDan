@@ -157,10 +157,29 @@
                     </div>
 
 
+                    @*<div class="col-md-12" id="bodyCalendar">*@
+                        @*<div id="fullCalendar">*@
+                        @*<div id="wrap">*@
+                            @*<div id="external-events">*@
+                                @*<h4>Draggable Events</h4>*@
+                                @*<div class="fc-event">Zauzeto</div>*@
+                            @*</div>*@
+
+                            @*<div id="calendar" name="calendar"></div>*@
+
+                            @*<div style="clear:both"></div>*@
+
+                        @*</div>*@
+                    @*</div>*@
+                    @*</div>*@
+
+
                     <div class="col-md-6 col-md-offset-3 xs-text-center cbx-submit-area">
                         <button type="submit" name="update" class="btn btn-block lz-git-submit-btn cbx-submit" id="apcreatebutton">Ažuriraj</button>
                     </div>
                 </form>
+
+
 
                 <form method="get" class="form-horizontal lz-contact-form cbx-contactform" role="form" action="@routes.ImageUpload.uploadRender(apartment.id)" >
                     <div class="col-md-6 col-md-offset-3 xs-text-center cbx-submit-area">
@@ -174,6 +193,7 @@
     </section>
     <script  src='@routes.Assets.versioned("javascripts/googlemap.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/showhidetownships.js")'></script>
+    <script  src='@routes.Assets.versioned("javascripts/calendar.js")'></script>
 
 
 }

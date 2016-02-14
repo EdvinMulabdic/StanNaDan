@@ -3696,6 +3696,83 @@ li.cbxgrid-item-none {
     font-size: 50%;
   }
 }
+
+/*.box {*/
+  /*border: 2px solid #578EBE;*/
+  /*background: #fff !important;*/
+  /*margin-bottom: 28px;*/
+/*}*/
+/*.box-header {*/
+    /*height: 16px;*/
+    /*font-size: 16px;*/
+    /*line-height: 16px;*/
+    /*padding: 10px;*/
+    /*background: #578EBE;*/
+    /*-webkit-box-shadow: none;*/
+    /*-moz-box-shadow: none;*/
+    /*box-shadow: none;*/
+    /*overflow: hidden;*/
+/*}*/
+
+/*.box-header h2{*/
+    /*float:left;*/
+    /*margin-top: 0px;*/
+    /*font-weight: 300;*/
+
+/*}*/
+/*.box-header .box-icon,*/
+/*.box-header h2{*/
+    /*color:#fff;*/
+/*}*/
+
+
+/*.box-header h2 i {*/
+    /*margin: 0px 3px 0px 4px;*/
+    /*opacity: .8;*/
+    /*filter: alpha(opacity=80);*/
+    /*-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";*/
+/*}*/
+
+/*.box-header .break{*/
+    /*border-left: 1px solid #FFF;*/
+    /*margin: -12px 10px -10px 10px;*/
+    /*padding: 12px 0px 10px 0px;*/
+
+/*}*/
+
+/*.box-header .box-icon {*/
+    /*float:right;*/
+    /*margin-top: 1px;*/
+/*}*/
+
+/*.box-header .box-icon i {*/
+    /*-webkit-transition: all 0.1s ease-in-out;*/
+    /*-moz-transition: all 0.1s ease-in-out;*/
+    /*-o-transition: all 0.1s ease-in-out;*/
+    /*-ms-transition: all 0.1s ease-in-out;*/
+    /*transition: all 0.1s ease-in-out;*/
+    /*opacity: .8;*/
+    /*filter: alpha(opacity=80);*/
+    /*-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";*/
+/*}*/
+
+/*.box-header .box-icon i:hover {*/
+    /*opacity: 1;*/
+    /*filter: alpha(opacity=100);*/
+    /*-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";*/
+/*}*/
+
+/*.box-header .box-icon a {*/
+    /*margin: 0px 5px;*/
+/*}*/
+
+/*.box-content {*/
+    /*position: relative;*/
+    /*z-index: 50;*/
+    /*margin-top: -1px;*/
+    /*padding: 10px;*/
+    /*background: #fff !important;*/
+/*}*/
 /*==================================================
      =            Bootstrap 3 Media Queries      =
   ==================================================*/
@@ -3705,3 +3782,50 @@ li.cbxgrid-item-none {
 /* Small Devices, Tablets */
 /* Extra Small Devices, Phones */
 /* Custom, iPhone Retina */
+#bodyCalendar {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+}
+
+#wrap {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+#external-events {
+    float: left;
+    width: 150px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+    text-align: left;
+}
+
+#external-events h4 {
+    font-size: 16px;
+    margin-top: 0;
+    padding-top: 1em;
+}
+
+#external-events .fc-event {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#external-events p {
+    margin: 1.5em 0;
+    font-size: 11px;
+    color: #666;
+}
+
+#external-events p input {
+    margin: 0;
+    vertical-align: middle;
+}
+
+#calendar {
+    float: right;
+    width: 900px;
+}
