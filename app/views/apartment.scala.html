@@ -89,15 +89,17 @@
                                 <h4>Datum dolaska: </h4>
                             </div>
                             <div class="col-md-12 padding-left-0">
-                                <input type="date"  class="date-check" name="checkIndate" id="checkIn"  required/>
+                                @*<input type="date"  class="date-check" name="checkIndate" id="checkIn"  required/>*@
+                                @*<input  type="text" name="checkIndate" class="date-check" placeholder="yyyy/mm/dd"  id="checkIn" required>*@
+
+                                <div class="input-daterange input-group" id="datepicker">
+                                    <input type="text" class="input-sm form-control" name="checkIndate" id="checkIn" />
+                                    <span class="input-group-addon">to</span>
+
+                                     <input type="text" class="input-sm form-control" name="checkOutdate" id="checkOut" onchange="totalNights(@apartment.price)" />
+                                </div>
                             </div>
 
-                            <div class="col-md-12 check-in-date">
-                                <h4>Datum odlaska: </h4>
-                            </div>
-                            <div class="col-md-12 padding-left-0">
-                                <input type="date" class="date-check" name="checkOutdate" id="checkOut"  required onchange="totalNights(@apartment.price)"/>
-                            </div>
 
                             <div class="col-md-12 check-in-date">
                                 <h4>Broj osoba: </h4>
@@ -142,7 +144,7 @@
                                             <h4>Datum dolaska: </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="date"  class="date-check" name="checkIndate" id="checkInpop"  readonly    required/>
+                                            <input type="text"  class="date-check" name="checkIndate" id="checkInpop"  readonly    required/>
                                             <label id="checkIndate_error" class="error" for="checkIndate"></label>
 
                                         </div>
@@ -151,7 +153,7 @@
                                             <h4>Datum odlaska: </h4>
                                         </div>
                                         <div class="col-md-12 padding-left-0">
-                                            <input type="date" class="date-check" name="checkOutdate" id="checkOutpop" readonly  required />
+                                            <input type="text" class="date-check" name="checkOutdate" id="checkOutpop" readonly  required />
                                             <label id="checkOutDate_error" class="error" for="checkOutdate"></label>
 
                                         </div>
@@ -273,13 +275,6 @@
                                     <td>Apartman: </td>
                                     <td align="right"><b>@apartment.name</b></td>
                                 </tr>
-                                @if(apartment.location.equals("Sarajevo")){
-                                <tr>
-                                    <td>Lokacija: </td>
-                                    <td align="right"><b>@apartment.neighborhood</b></td>
-                                </tr>
-                                }
-
                                 <tr>
                                     <td>Ulica: </td>
                                     <td align="right"><b>@apartment.address</b></td>
@@ -321,25 +316,6 @@
             </div>
         </div>
     </section>
-
-
-
-    @*<section id="bodyCalendar">*@
-        @*<div id="wrap">*@
-
-            @*<div id="external-events">*@
-                @*<h4>Draggable Events</h4>*@
-                @*<div class="fc-event">Zauzeto</div>*@
-
-            @*</div>*@
-
-            @*<div id="calendar"></div>*@
-
-            @*<div style="clear:both"></div>*@
-
-        @*</div>*@
-
-    @*</section>*@
 
     <section class="margin-bottom-20">
         <div class="container">
@@ -403,15 +379,26 @@
         </div>
 
     </section>
-
+    <input type="text" id="reservationDates" value="@reservations" hidden>
 
 
     <script  src='@routes.Assets.versioned("javascripts/googlemap.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/bluebox.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/popup.js")'></script>
     <script  src='@routes.Assets.versioned("javascripts/cookies.js")'></script>
-    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/validation.js")'></script>
-    <script src='@routes.Assets.versioned("javascripts/calendar.js")'></script>
+    <script>
+           var reservationDates = $('#reservationDates').val();
+
+        $('.input-daterange').datepicker({
+            startDate: new Date(),
+            todayBtn: "linked",
+            forceParse: false,
+            calendarWeeks: true,
+            todayHighlight: true,
+            datesDisabled: reservationDates
+        });
+        console.log(reservationDates)
+    </script>
 
 }

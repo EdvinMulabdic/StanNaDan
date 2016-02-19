@@ -1,31 +1,37 @@
 package controllers;
 
-import helpers.ConfigProvider;
 import models.Email;
-import models.Reservation;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
 import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.createapartment;
-import views.html.createuser;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by User on 1/8/2016.
  */
 public class Emails extends Controller {
-    public Result sendMail(Integer apartmentId) {
+    public Result sendMail(Integer apartmentId) throws ParseException {
+
 
         //taking values from input fields
         DynamicForm form = Form.form().bindFromRequest();
         String name = form.field("name").value();
         String mail = form.field("mail").value();
         String phone = form.field("phone").value();
-        String checkIndate = form.field("checkIndate").value();
-        String checkOutdate = form.field("checkOutdate").value();
+        Logger.info(form.field("checkIndate").value());
+        Logger.info(form.field("checkOutdate").value());
+
+
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            Date checkIndate = formatter.parse(form.field("checkIndate").value());
+            Date checkOutdate = formatter.parse(form.field("checkOutdate").value());
+
         String numOfPersons = form.field("numOfPersons").value();
         String comment = form.field("comment").value();
 

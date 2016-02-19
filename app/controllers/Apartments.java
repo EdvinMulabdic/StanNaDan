@@ -7,11 +7,12 @@ import models.Apartment;
 import models.AppUser;
 import models.Reservation;
 import play.mvc.Controller;
-import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.*;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,10 +23,11 @@ public class Apartments extends Controller {
 
 
     // Apartment details
-    public Result apartment(Integer apartmentId) {
+    public Result apartment(Integer apartmentId) throws ParseException {
         Apartment apart = Apartment.getApartmentById(apartmentId);
         AppUser currentUser = UserAccessLevel.getCurrentUser(ctx());
         List<Apartment> apartments = Apartment.apartmentsToRecommend(apartmentId);
+
         List<String> reservations = Reservation.getReservationsByApartmentId(apartmentId);
 
         return ok(apartment.render(apart, currentUser, apartments, reservations));
@@ -57,7 +59,7 @@ public class Apartments extends Controller {
     }
 
     @Security.Authenticated(Authenticator.AdminUserFilter.class)
-    public Result updateApartment(Integer apartmentId) {
+    public Result updateApartment(Integer apartmentId) throws ParseException {
         Apartment apart = Apartment.updateApartment(apartmentId);
         List<Apartment> apartments = Apartment.apartmentsToRecommend(apartmentId);
         List<String> reservations = Reservation.getReservationsByApartmentId(apartmentId);
@@ -79,36 +81,6 @@ public class Apartments extends Controller {
     public Result favouriteApartments(){
 //        String apartment = ctx.session().get(" ");
         return ok(favourite.render());
-    }
-     /* --------------- apartments with neighbourhood centar ---------------*/
-
-    public Result centarApartments(){
-        List<Apartment> apartments = Apartment.apartmentsCentar();
-        return ok(searchApartments.render(apartments));
-    }
-        /* --------------- apartments with neighbourhood novo sarajevo ---------------*/
-
-    public Result nsarajevoApartments(){
-        List<Apartment> apartments = Apartment.apartmentsNSarajevo();
-        return ok(searchApartments.render(apartments));
-    }
-        /* --------------- apartments with neighbourhood novi grad ---------------*/
-
-    public Result ngradApartments(){
-        List<Apartment> apartments = Apartment.apartmentsNGrad();
-        return ok(searchApartments.render(apartments));
-    }
-        /* --------------- apartments with neighbourhood stari grad ---------------*/
-
-    public Result sgradApartments(){
-        List<Apartment> apartments = Apartment.apartmentsSGrad();
-        return ok(searchApartments.render(apartments));
-    }
-        /* --------------- apartments with neighbourhood ilizda ---------------*/
-
-    public Result ilidzaApartments(){
-        List<Apartment> apartments = Apartment.apartmentsIlidza();
-        return ok(searchApartments.render(apartments));
     }
 
      /* --------------- apartments with location Sarajevo ---------------*/
