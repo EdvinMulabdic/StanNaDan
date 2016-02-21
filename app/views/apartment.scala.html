@@ -388,7 +388,7 @@
     <script  src='@routes.Assets.versioned("javascripts/cookies.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/validation.js")'></script>
     <script>
-           var reservationDates = $('#reservationDates').val();
+           var reservationDates = JSON.parse($('#reservationDates').val());
 
         $('.input-daterange').datepicker({
             startDate: new Date(),
@@ -398,7 +398,6 @@
             todayHighlight: true,
             datesDisabled: reservationDates
         });
-        console.log(reservationDates)
     </script>
 
 }

@@ -31,15 +31,6 @@ create table app_user (
   constraint pk_app_user primary key (id))
 ;
 
-create table calendar (
-  id                        integer auto_increment not null,
-  title                     varchar(255),
-  startdate                 varchar(255),
-  enddate                   varchar(255),
-  all_day                   varchar(255),
-  constraint pk_calendar primary key (id))
-;
-
 create table price (
   id                        integer auto_increment not null,
   persons_no                integer,
@@ -74,8 +65,6 @@ SET FOREIGN_KEY_CHECKS=0;
 drop table apartment;
 
 drop table app_user;
-
-drop table calendar;
 
 drop table price;
 

@@ -10,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ajla on 26-Dec-15.
@@ -89,13 +87,42 @@ public class Reservation extends Model {
         List<String> dates = new ArrayList<>();
 
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
+        Calendar calendar = new GregorianCalendar();
 
-        for (int i=0; i < reservations.size(); i ++){
-            String date = DATE_FORMAT.format(reservations.get(i).dateFrom);
-            dates.add(date);
+
+        for (int i = 0; i < reservations.size(); i++) {
+            String dateFrom = DATE_FORMAT.format(reservations.get(i).dateFrom);
+            Date dateToPlusOne =  new Date(reservations.get(i).dateTo.getTime()+(24*60*60*1000));
+            String dateTo = DATE_FORMAT.format(dateToPlusOne);
+
+            calendar.setTime(DATE_FORMAT.parse(dateFrom));
+
+            while (calendar.getTime().before(DATE_FORMAT.parse(dateTo))) {
+                Date result = calendar.getTime();
+                dates.add("\"" + DATE_FORMAT.format(result).toString() + "\"");
+                calendar.add(Calendar.DATE, 1);
+            }
 
         }
-
         return dates;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", visitorName='" + visitorName + '\'' +
+                ", visitorLastname='" + visitorLastname + '\'' +
+                ", visitorEmail='" + visitorEmail + '\'' +
+                ", capacity='" + capacity + '\'' +
+                ", phone='" + phone + '\'' +
+                ", comment='" + comment + '\'' +
+                ", cost=" + cost +
+                ", apartment=" + apartment +
+                '}';
     }
 }

@@ -40,8 +40,6 @@ public class Apartment extends Model {
 
     @Column
     public Boolean isVisible;
-
-    public Calendar calendar;
     /**
      * Default constructor
      * @param id
@@ -61,7 +59,7 @@ public class Apartment extends Model {
      * @param calendar
      */
     public Apartment(Integer id, String name, String title,String location, String address, Integer price, Integer capacity,
-                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId, Boolean isVisible, Calendar calendar) {
+                     Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId, Boolean isVisible) {
         this.id = id;
         this.name = name;
         this.title = title;
@@ -78,7 +76,6 @@ public class Apartment extends Model {
         this.lng = lng;
         this.userId = userId;
         this.isVisible = isVisible;
-        this.calendar = calendar;
     }
 
     @Override
@@ -100,7 +97,6 @@ public class Apartment extends Model {
                 ", lng=" + lng +
                 ",userId=" + userId +
                 ",isVisible=" + isVisible +
-                ",calendar=" + calendar +
                 '}';
     }
 
