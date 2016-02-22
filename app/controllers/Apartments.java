@@ -175,4 +175,10 @@ public class Apartments extends Controller {
         Apartment.isVisible(apartmentId);
         return redirect(routes.Login.apartmentsList());
     }
+
+    public Result apartmentReservations(Integer apartmentId){
+        List<Reservation> reservations = Reservation.getReservationsByApartmentIdReservation(apartmentId);
+        Apartment apartment = Apartment.getApartmentById(apartmentId);
+        return ok (apartmentReservations.render(apartment, reservations));
+    }
 }

@@ -1,0 +1,51 @@
+@(apartment: Apartment)(reservations: java.util.List[Reservation])
+@main{
+
+    <div class="container">
+        <div class="row">
+            <section id="tablemargins" class="col-md-12">
+                <h1>@apartment.name</h1>
+                <table class="table table-responsive" id="sort">
+                    <thead>
+                        <tr class="about">
+                            <th>Gost</th>
+                            <th>Email</th>
+                            <th>Telefon</th>
+                            <th>Datum dolaska</th>
+                            <th>Datum odlaska</th>
+                            <th>Cijena</th>
+                            <th>Potvrdi</th>
+                            <th>Otkazi</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @for(reservation <- reservations) {
+                        <tr class="about" >
+                            <td>@reservation.visitorName  @reservation.visitorLastname</td>
+                            <td>@reservation.visitorEmail</td>
+                            <td>@reservation.phone</td>
+                            <td class="text-center">@reservation.dateFrom</td>
+                            <td class="text-center">@reservation.dateTo</td>
+                            <td class="text-center">@reservation.cost</td>
+                            <td class="text-center">
+                                <a data-role="get" data-delete-parent="tr" href="" role="button">
+                                    <i class=" fa fa-check fa-lg"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a data-role="post" data-delete-parent="tr" href="" role="button">
+                                    <i class=" fa fa-close fa-lg"></i></a>
+                            </td>
+
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+
+    <script src='@routes.Assets.versioned("javascripts/sort.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/deleteConfirm.js")'></script>
+}

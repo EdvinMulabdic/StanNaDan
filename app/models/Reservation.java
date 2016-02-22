@@ -107,6 +107,11 @@ public class Reservation extends Model {
         return dates;
     }
 
+    public static List<Reservation> getReservationsByApartmentIdReservation(Integer apartmentId) {
+        Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
+
+        return finder.where().eq("apartment_id", apartmentId).findList();
+    }
 
 
     @Override

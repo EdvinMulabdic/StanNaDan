@@ -13,38 +13,48 @@
             <div class="clearfix" style="margin-bottom: 5px"> </div>
             <div class="cbx-latest-area">
             @if(apartments.size() > 0) {
+                <section id="tablemargins" class="col-md-12">
+                    <table class="table table-responsive" id="sort">
+                        <thead>
+                            <tr class="about">
+                                <th>Ime apartmana</th>
+                                <th>Lokacija</th>
+                                <th>Adresa</th>
+                                <th>Cijena</th>
+                                <th>Kapacitet</th>
+                                <th>Kreveti</th>
+                                <th>Povrsina</th>
+                                <th>Sprat</th>
+                                <th>Rezervacije</th>
+                                <th>Uredi</th>
 
-                @for(apartment <- apartments) {
-                    <div class="item active cbx-single-all">
-                        <div class="col-md-3 col-sm-4 col-xs-12 margin-bottom-20">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src='@Apartment.getFirstImage(apartment)' class="" alt="a">
-                                    <div class="price-picture">
-                                        <i class="fa fa-euro"> @apartment.price</i>
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <a href="@routes.Apartments.apartment(apartment.id)" target="">
-                                            <div class=" col-md-12 text-center">
-                                                <h4 class="product-title-color"><strong>@apartment.name</strong></h4>
-                                                <h5 class="price-text-color"><i class="fa fa-map-marker" id="font-size20"></i> @apartment.location</h5>
-                                                <h5 class="price-text-color">@apartment.address</h5>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="separator clear-left">
-                                        <p class="btn-add">
-                                            <i class="fa fa-male"></i>@apartment.capacity Osoba</p>
-                                        <p class="btn-details"><i class="fa fa-home"></i>@apartment.rooms Sobe</p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!--//Item-->
-                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @for(apartment <- apartments) {
+                            <tr class="about" >
+                                <td>@apartment.name</td>
+                                <td>@apartment.location</td>
+                                <td>@apartment.address</td>
+                                <td class="text-center">@apartment.price</td>
+                                <td class="text-center">@apartment.capacity</td>
+                                <td class="text-center">@apartment.beds</td>
+                                <td class="text-center">@apartment.area</td>
+                                <td class="text-center">@apartment.floor</td>
+                                <td class="text-center">
+                                    <a data-role="get" data-delete-parent="tr" href="@routes.Apartments.apartmentReservations(apartment.id)" role="button">
+                                        <i class=" fa fa-list fa-lg"></i></a>
+                                </td>
+                                <td class="text-center">
+                                    <a data-role="post" data-delete-parent="tr" href="@routes.Apartments.renderUpdateApartment(apartment.id)" role="button">
+                                        <i class=" fa fa-pencil fa-lg"></i></a>
+                                </td>
+
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </section>
             }else{
                 <div class="row">
                     <div class="col-md-12">
