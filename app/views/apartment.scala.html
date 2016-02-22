@@ -9,13 +9,13 @@
                             <h2 class="uppercase">@apartment.name <p>@apartment.location, @apartment.address</p></h2>
                         </div>
                     </div>
-                    <div class="col-md-3 favourite-div">
-                        <form method="GET" role="form" action="@routes.Apartments.favouriteApartments()">
-                            <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="favbutton" onclick="getCookies()"><i class="fa fa-heart" style="font-size: 30px"></i> MOJA LISTA</button>
-                            </div>
-                        </form>
-                    </div>
+                    @*<div class="col-md-3 favourite-div">*@
+                        @*<form method="GET" role="form" action="@routes.Apartments.favouriteApartments()">*@
+                            @*<div class=" xs-text-center cbx-submit-area" id="cookies-button">*@
+                                @*<button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="favbutton" onclick="getCookies()"><i class="fa fa-heart" style="font-size: 30px"></i> MOJA LISTA</button>*@
+                            @*</div>*@
+                        @*</form>*@
+                    @*</div>*@
 
                 </div>
             </div><!-- //ROW Our Team Header -->
@@ -85,18 +85,21 @@
                         </div>
 
                         <div class="" id="check-in">
-                            <div class="col-md-12 check-in-date">
-                                <h4>Datum dolaska: </h4>
-                            </div>
-                            <div class="col-md-12 padding-left-0">
-                                @*<input type="date"  class="date-check" name="checkIndate" id="checkIn"  required/>*@
-                                @*<input  type="text" name="checkIndate" class="date-check" placeholder="yyyy/mm/dd"  id="checkIn" required>*@
 
-                                <div class="input-daterange input-group" id="datepicker">
-                                    <input type="text" class="input-sm form-control" name="checkIndate" id="checkIn" />
-                                    <span class="input-group-addon">to</span>
 
-                                     <input type="text" class="input-sm form-control" name="checkOutdate" id="checkOut" onchange="totalNights(@apartment.price)" />
+                            <div class="input-daterange input-group" id="datepicker">
+                                <div class="col-md-12 check-in-date">
+                                    <h4>Datum dolaska: </h4>
+                                </div>
+                                <div class="col-md-12 padding-left-0">
+                                    <input type="text" class="input-sm form-control date-check" name="checkIndate" id="checkIn" />
+                                </div>
+                                <div class="col-md-12 check-in-date">
+                                    <h4>Datum odlaska: </h4>
+                                </div>
+                                <div class="col-md-12 padding-left-0">
+                                    <input type="text" class="input-sm form-control date-check"  name="checkOutdate" id="checkOut" onchange="totalNights(@apartment.price)" />
+
                                 </div>
                             </div>
 
@@ -231,30 +234,15 @@
 
 
     </section>
-    @if(currentUser !=null && apartment.userId == currentUser.id){
+    @if(currentUser !=null && apartment.userId == currentUser.id) {
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 margin-bottom-20">
                         <form method="GET" role="form" action="@routes.Apartments.renderUpdateApartment(apartment.id)">
                             <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                                <button type="submit" class="btn btn-block lz-git-submit-btn cbx-submit"  ><i class="fa fa-pencil"> AZURIRAJ </i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-    }else {
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4 margin-bottom-20">
-                        <form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">
-                            <div class=" xs-text-center cbx-submit-area" id="cookies-button">
-                                <button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart">
-                                    DODAJ U LISTU</i></button>
+                                <button type="submit" class="btn btn-block lz-git-submit-btn cbx-submit" ><i class="fa fa-pencil">
+                                    AZURIRAJ </i></button>
                             </div>
                         </form>
                     </div>
@@ -263,6 +251,23 @@
 
         </section>
     }
+    @*}else {*@
+        @*<section>*@
+            @*<div class="container">*@
+                @*<div class="row">*@
+                    @*<div class="col-md-4 col-md-offset-4 margin-bottom-20">*@
+                        @*<form method="POST" role="form" action="@routes.Apartments.cookies(apartment.id)">*@
+                            @*<div class=" xs-text-center cbx-submit-area" id="cookies-button">*@
+                                @*<button type="submit" name="cookies" class="btn btn-block lz-git-submit-btn cbx-submit" id="cookiesbutton" onclick="setCookie(@apartment);"><i class="fa fa-heart">*@
+                                    @*DODAJ U LISTU</i></button>*@
+                            @*</div>*@
+                        @*</form>*@
+                    @*</div>*@
+                @*</div>*@
+            @*</div>*@
+
+        @*</section>*@
+    @*}*@
 
     <section>
         <div class="container">

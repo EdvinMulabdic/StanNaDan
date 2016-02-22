@@ -50,6 +50,8 @@ create table reservation (
   comment                   varchar(255),
   cost                      integer,
   apartment_id              integer,
+  approved                  tinyint(1) default 0,
+  declined                  tinyint(1) default 0,
   constraint pk_reservation primary key (id))
 ;
 
