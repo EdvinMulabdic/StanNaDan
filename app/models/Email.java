@@ -5,6 +5,8 @@ import helpers.ConfigProvider;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
+import java.util.Date;
+
 /**
  * Created by User on 2/1/2016.
  */
@@ -41,7 +43,7 @@ public class Email extends Model {
 
          /* ------------------- send mail reservation ------------------ */
 
-    public static void sendMailReservation(String name, String mail, String phone, String checkInDate, String checkOutDate, String numOfPersons, String comment, Integer apartmentId){
+    public static void sendMailReservation(String name, String mail, String phone, Date checkInDate, Date checkOutDate, String numOfPersons, String comment, Integer apartmentId){
 
 
         /* sending an email*/

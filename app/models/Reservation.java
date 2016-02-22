@@ -4,11 +4,13 @@ import com.avaje.ebean.Model;
 import play.data.DynamicForm;
 import play.data.Form;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by ajla on 26-Dec-15.
@@ -18,12 +20,12 @@ public class Reservation extends Model {
     @Id
     public Integer id;
 
-//    @Column(columnDefinition = "datetime")
+    @Column(columnDefinition = "DATE")
+    public Date dateFrom;
 
-    public String dateFrom;
-//    @Column(columnDefinition = "datetime")
+    @Column(columnDefinition = "DATE")
+    public Date dateTo;
 
-    public String dateTo;
     public String visitorName;
     public String visitorLastname;
     public String visitorEmail;
@@ -37,7 +39,7 @@ public class Reservation extends Model {
 
     public Reservation() {
     }
-    public Reservation(Apartment apartment, String dateTo, String dateFrom, String visitorName, String visitorLastname, String visitorEmail,String capacity, String phone, String comment, Integer cost) {
+    public Reservation(Apartment apartment, Date dateTo, Date dateFrom, String visitorName, String visitorLastname, String visitorEmail,String capacity, String phone, String comment, Integer cost) {
         this.apartment = apartment;
         this.dateTo = dateTo;
         this.dateFrom = dateFrom;
@@ -52,7 +54,7 @@ public class Reservation extends Model {
 
 //    private static Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
 
-    public static void saveReservation(Integer apartmentId, String name, String email, String phone, String checkInDate, String checkOutDate, String numOfPersons, String comment){
+    public static void saveReservation(Integer apartmentId, String name, String email, String phone, Date checkInDate, Date checkOutDate, String numOfPersons, String comment){
         DynamicForm form = Form.form().bindFromRequest();
 
         Apartment apartment = Apartment.getApartmentById(apartmentId);
@@ -78,16 +80,49 @@ public class Reservation extends Model {
         reservation.save();
     }
 
-    public static List<String> getReservationsByApartmentId(Integer apartmentId) {
+    public static List<String> getReservationsByApartmentId(Integer apartmentId) throws ParseException {
         Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
 
         List<Reservation> reservations = finder.where().eq("apartment_id", apartmentId).findList();
         List<String> dates = new ArrayList<>();
 
-        for (int i=0; i < reservations.size(); i ++){
-            dates.add(reservations.get(i).dateFrom.toString()+" do " + reservations.get(i).dateTo.toString() );
-        }
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
+        Calendar calendar = new GregorianCalendar();
 
+
+        for (int i = 0; i < reservations.size(); i++) {
+            String dateFrom = DATE_FORMAT.format(reservations.get(i).dateFrom);
+            Date dateToPlusOne =  new Date(reservations.get(i).dateTo.getTime()+(24*60*60*1000));
+            String dateTo = DATE_FORMAT.format(dateToPlusOne);
+
+            calendar.setTime(DATE_FORMAT.parse(dateFrom));
+
+            while (calendar.getTime().before(DATE_FORMAT.parse(dateTo))) {
+                Date result = calendar.getTime();
+                dates.add("\"" + DATE_FORMAT.format(result).toString() + "\"");
+                calendar.add(Calendar.DATE, 1);
+            }
+
+        }
         return dates;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", visitorName='" + visitorName + '\'' +
+                ", visitorLastname='" + visitorLastname + '\'' +
+                ", visitorEmail='" + visitorEmail + '\'' +
+                ", capacity='" + capacity + '\'' +
+                ", phone='" + phone + '\'' +
+                ", comment='" + comment + '\'' +
+                ", cost=" + cost +
+                ", apartment=" + apartment +
+                '}';
     }
 }

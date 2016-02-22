@@ -11,7 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by ajla on 22-Dec-15.
@@ -23,7 +25,6 @@ public class Apartment extends Model {
     public String name;
     public String title;
     public String location;
-    public String neighborhood;
     public String address;
     public Integer price;
     public Integer capacity;
@@ -45,7 +46,6 @@ public class Apartment extends Model {
      * @param name
      * @param title
      * @param location
-     * @param neighborhood
      * @param address
      * @param price
      * @param capacity
@@ -56,14 +56,14 @@ public class Apartment extends Model {
      * @param description
      * @param lat
      * @param lng
+     * @param calendar
      */
-    public Apartment(Integer id, String name, String title,String location, String neighborhood, String address, Integer price, Integer capacity,
+    public Apartment(Integer id, String name, String title,String location, String address, Integer price, Integer capacity,
                      Integer beds, Integer rooms, Integer area, Integer floor, String description, String lat, String lng, Integer userId, Boolean isVisible) {
         this.id = id;
         this.name = name;
         this.title = title;
         this.location = location;
-        this.neighborhood = neighborhood;
         this.address = address;
         this.price = price;
         this.capacity = capacity;
@@ -85,7 +85,6 @@ public class Apartment extends Model {
                 ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", location='" + location + '\'' +
-                ", neighborhood='" + neighborhood + '\'' +
                 ", address='" + address + '\'' +
                 ", price=" + price +
                 ", capacity=" + capacity +
@@ -115,9 +114,6 @@ public class Apartment extends Model {
         Apartment apartment = null;
         try {
             apartment = boundForm.get();
-            if(!apartment.location.equals("Sarajevo")){
-                apartment.neighborhood = "";
-            }
             apartment.userId = userId;
             apartment.isVisible = false;
             apartment.save();
@@ -138,7 +134,6 @@ public class Apartment extends Model {
             String name = boundForm.field("name").value();
             String title = boundForm.field("title").value();
             String location = boundForm.field("location").value();
-            String neighborhood = boundForm.field("neighborhood").value();
             String address = boundForm.field("address").value();
             Integer price = Integer.parseInt(boundForm.field("price").value());
             Integer capacity = Integer.parseInt(boundForm.field("capacity").value());
@@ -153,7 +148,6 @@ public class Apartment extends Model {
             apartment.name = name;
             apartment.title = title;
             apartment.location = location;
-            apartment.neighborhood = neighborhood;
             apartment.address = address;
             apartment.price = price;
             apartment.capacity = capacity;
@@ -169,7 +163,7 @@ public class Apartment extends Model {
 
             return apartment;
         } catch (Exception e) {
-            Logger.debug("Nisam uspio spasiti apartman :(");
+            Logger.debug("Nisam uspio spasiti apartman :())))))");
             return apartment;
         }
     }
@@ -195,41 +189,7 @@ public class Apartment extends Model {
     public static Apartment getApartmentById(Integer apartmentId) {
         return finder.where().eq("id", apartmentId).findUnique();
     }
-        /* --------------- retrieves apartments with neighbourhood centar ---------------*/
 
-    public static List<Apartment> apartmentsCentar(){
-        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
-        List<Apartment> apartments = finder.where().eq("neighborhood", "Centar").findList();
-        return apartments;
-    }
-        /* --------------- retrieves apartments with neighbourhood novo sarajevo ---------------*/
-
-    public static List<Apartment> apartmentsNSarajevo(){
-        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
-        List<Apartment> apartments = finder.where().eq("neighborhood", "Novo Sarajevo").findList();
-        return apartments;
-    }
-        /* --------------- retrieves apartments with neighbourhood novi grad ---------------*/
-
-    public static List<Apartment> apartmentsNGrad(){
-        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
-        List<Apartment> apartments = finder.where().eq("neighborhood", "Novi Grad").findList();
-        return apartments;
-    }
-        /* --------------- retrieves apartments with neighbourhood stari grad ---------------*/
-
-    public static List<Apartment> apartmentsSGrad(){
-        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
-        List<Apartment> apartments = finder.where().eq("neighborhood", "Stari Grad").findList();
-        return apartments;
-    }
-        /* --------------- retrieves apartments with neighbourhood ilidza ---------------*/
-
-    public static List<Apartment> apartmentsIlidza(){
-        Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
-        List<Apartment> apartments = finder.where().eq("neighborhood", "Ilidza").findList();
-        return apartments;
-    }
 
             /* --------------- retrieves apartments with location Sarajevo ---------------*/
 
@@ -408,6 +368,8 @@ public class Apartment extends Model {
 
     public static List<Apartment> apartmentsForHomepage(){
         List<Apartment> apartments = finder.where().eq("isVisible", true).findList();
+        long seed = System.nanoTime();
+        Collections.shuffle(apartments, new Random(seed));
         return apartments;
     }
 

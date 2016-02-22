@@ -8,7 +8,6 @@ create table apartment (
   name                      varchar(255),
   title                     varchar(255),
   location                  varchar(255),
-  neighborhood              varchar(255),
   address                   varchar(255),
   price                     integer,
   capacity                  integer,
@@ -41,8 +40,8 @@ create table price (
 
 create table reservation (
   id                        integer auto_increment not null,
-  date_from                 varchar(255),
-  date_to                   varchar(255),
+  date_from                 DATE,
+  date_to                   DATE,
   visitor_name              varchar(255),
   visitor_lastname          varchar(255),
   visitor_email             varchar(255),

@@ -16,12 +16,6 @@ GET         /apartman/:apartmentId              @controllers.Apartments.apartmen
 
 POST        /apartman/:apartmentId              @controllers.Apartments.cookies(apartmentId: Integer)
 GET         /listaapartmana/                    @controllers.Apartments.favouriteApartments()
-GET         /centar                             @controllers.Apartments.centarApartments()
-GET         /novosarajevo                       @controllers.Apartments.nsarajevoApartments()
-GET         /novigrad                           @controllers.Apartments.ngradApartments()
-GET         /starigrad                          @controllers.Apartments.sgradApartments()
-GET         /ilidza                             @controllers.Apartments.ilidzaApartments()
-
 
 GET         /sarajevo                           @controllers.Apartments.sarajevoApartments()
 GET         /mostar                             @controllers.Apartments.mostarApartments()
