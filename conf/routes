@@ -79,3 +79,5 @@ GET           /apartmani/:apartmentId                   @controllers.Apartments.
 
 #Apartment
 GET           /rezervacije/:apartmentId                 @controllers.Apartments.apartmentReservations(apartmentId: Integer)
+GET          /rezervacije/odobri/:reservationId        @controllers.Reservations.approveReservation(reservationId: Integer)
+GET          /rezervacije/ponisti/:reservationId       @controllers.Reservations.declineReservation(reservationId: Integer)

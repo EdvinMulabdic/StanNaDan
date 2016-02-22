@@ -73,68 +73,68 @@ public class Apartments extends Controller {
             return ok(createapartment.render(apart.userId));
         }
     }
-    public Result cookies(Integer apartmentId){
+    public Result cookies(Integer apartmentId) {
         Cookies.setCookies(apartmentId);
         return redirect(routes.Apartments.apartment(apartmentId));
     }
 
-    public Result favouriteApartments(){
+    public Result favouriteApartments() {
 //        String apartment = ctx.session().get(" ");
         return ok(favourite.render());
     }
 
      /* --------------- apartments with location Sarajevo ---------------*/
 
-    public Result sarajevoApartments(){
+    public Result sarajevoApartments() {
         List<Apartment> apartments = Apartment.apartmentsSarajevo();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments with location Banja Luka ---------------*/
 
-    public Result banjalukaApartments(){
+    public Result banjalukaApartments() {
         List<Apartment> apartments = Apartment.apartmentsBanjaLuka();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments with location Mostar ---------------*/
 
-    public Result mostarApartments(){
+    public Result mostarApartments() {
         List<Apartment> apartments = Apartment.apartmentsMostar();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments with location Zenica ---------------*/
 
-    public Result zenicaApartments(){
+    public Result zenicaApartments() {
         List<Apartment> apartments = Apartment.apartmentsZenica();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments with location Tuzla ---------------*/
 
-    public Result tuzlaApartments(){
+    public Result tuzlaApartments() {
         List<Apartment> apartments = Apartment.apartmentsTuzla();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments in mountain Bjelasnica ---------------*/
 
-    public Result bjelasnicaApartments(){
+    public Result bjelasnicaApartments() {
         List<Apartment> apartments = Apartment.apartmentsBjelasnica();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments in mountain Jahorina ---------------*/
 
-    public Result jahorinaApartments(){
+    public Result jahorinaApartments() {
         List<Apartment> apartments = Apartment.apartmentsJahorina();
         return ok(searchApartments.render(apartments));
     }
 
     /* --------------- apartments in mountain Vlasic ---------------*/
 
-    public Result vlasicApartments(){
+    public Result vlasicApartments() {
         List<Apartment> apartments = Apartment.apartmentsVlasic();
         return ok(searchApartments.render(apartments));
     }
@@ -148,7 +148,7 @@ public class Apartments extends Controller {
 
     /* --------------- apartments in mountain Trebevic ---------------*/
 
-    public Result trebevicApartments(){
+    public Result trebevicApartments() {
         List<Apartment> apartments = Apartment.apartmentsTrebevic();
         return ok(searchApartments.render(apartments));
     }
@@ -156,7 +156,7 @@ public class Apartments extends Controller {
 
         /* --------------- delete apartment ---------------*/
 
-    public Result deleteApartment(Integer apartmentId){
+    public Result deleteApartment(Integer apartmentId) {
         Apartment.deleteApartment(apartmentId);
         List<Apartment> apartments = Apartment.getAllApartments();
         return status(200, adminpage.render(apartments));
@@ -171,14 +171,14 @@ public class Apartments extends Controller {
 
      /* --------------- show apartment on homepage ---------------*/
 
-    public Result showOnHomepage(Integer apartmentId){
+    public Result showOnHomepage(Integer apartmentId) {
         Apartment.isVisible(apartmentId);
         return redirect(routes.Login.apartmentsList());
     }
 
-    public Result apartmentReservations(Integer apartmentId){
+    public Result apartmentReservations(Integer apartmentId) {
         List<Reservation> reservations = Reservation.getReservationsByApartmentIdReservation(apartmentId);
         Apartment apartment = Apartment.getApartmentById(apartmentId);
-        return ok (apartmentReservations.render(apartment, reservations));
+        return ok(apartmentReservations.render(apartment, reservations));
     }
 }

@@ -169,7 +169,7 @@ public class Apartment extends Model {
     }
     /* --------------- delete apartment ---------------*/
     @Security.Authenticated(Authenticator.AdminFilter.class)
-    public static void deleteApartment(Integer apartmentId){
+    public static void deleteApartment(Integer apartmentId) {
         Apartment apartment = finder.where().eq("id", apartmentId).findUnique();
         apartment.delete();
     }
@@ -193,7 +193,7 @@ public class Apartment extends Model {
 
             /* --------------- retrieves apartments with location Sarajevo ---------------*/
 
-    public static List<Apartment> apartmentsSarajevo(){
+    public static List<Apartment> apartmentsSarajevo() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Sarajevo").findList();
         return apartments;
@@ -201,7 +201,7 @@ public class Apartment extends Model {
 
             /* --------------- retrieves apartments with location Mostar ---------------*/
 
-    public static List<Apartment> apartmentsMostar(){
+    public static List<Apartment> apartmentsMostar() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Mostar").findList();
         return apartments;
@@ -209,7 +209,7 @@ public class Apartment extends Model {
 
             /* --------------- retrieves apartments with location Banja Luka ---------------*/
 
-    public static List<Apartment> apartmentsBanjaLuka(){
+    public static List<Apartment> apartmentsBanjaLuka() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Banja Luka").findList();
         return apartments;
@@ -217,7 +217,7 @@ public class Apartment extends Model {
 
             /* --------------- retrieves apartments with location Zenica ---------------*/
 
-    public static List<Apartment> apartmentsZenica(){
+    public static List<Apartment> apartmentsZenica() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Zenica").findList();
         return apartments;
@@ -225,7 +225,7 @@ public class Apartment extends Model {
 
             /* --------------- retrieves apartments with location Tuzla ---------------*/
 
-    public static List<Apartment> apartmentsTuzla(){
+    public static List<Apartment> apartmentsTuzla() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Tuzla").findList();
         return apartments;
@@ -233,7 +233,7 @@ public class Apartment extends Model {
 
     /* --------------- retrieves apartments in mountain Bjelasnica---------------*/
 
-    public static List<Apartment> apartmentsBjelasnica(){
+    public static List<Apartment> apartmentsBjelasnica() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Bjelasnica").findList();
         return apartments;
@@ -241,7 +241,7 @@ public class Apartment extends Model {
 
      /* --------------- retrieves apartments in mountain Jahorina---------------*/
 
-    public static List<Apartment> apartmentsJahorina(){
+    public static List<Apartment> apartmentsJahorina() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Jahorina").findList();
         return apartments;
@@ -249,7 +249,7 @@ public class Apartment extends Model {
 
      /* --------------- retrieves apartments in mountain Vlasic---------------*/
 
-    public static List<Apartment> apartmentsVlasic(){
+    public static List<Apartment> apartmentsVlasic() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Vlasic").findList();
         return apartments;
@@ -257,7 +257,7 @@ public class Apartment extends Model {
 
      /* --------------- retrieves apartments in mountain Igman---------------*/
 
-    public static List<Apartment> apartmentsIgman(){
+    public static List<Apartment> apartmentsIgman() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Igman").findList();
         return apartments;
@@ -265,7 +265,7 @@ public class Apartment extends Model {
 
      /* --------------- retrieves apartments in mountain Trebevic---------------*/
 
-    public static List<Apartment> apartmentsTrebevic(){
+    public static List<Apartment> apartmentsTrebevic() {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
         List<Apartment> apartments = finder.where().eq("location", "Trebevic").findList();
         return apartments;
@@ -317,7 +317,7 @@ public class Apartment extends Model {
 
         /* --------------- Finds all users apartments ---------------*/
 
-    public static List<Apartment> userApartments(Integer userId){
+    public static List<Apartment> userApartments(Integer userId) {
 
         List<Apartment> apartments = finder.where().eq("user_id", userId).findList();
 
@@ -326,7 +326,7 @@ public class Apartment extends Model {
 
             /* --------------- Apartments to recommend ---------------*/
 
-    public static List<Apartment> apartmentsToRecommend(Integer apartmentId){
+    public static List<Apartment> apartmentsToRecommend(Integer apartmentId) {
         Model.Finder<String, Apartment> finder = new Model.Finder<>(Apartment.class);
 
         List<Apartment> recommendedApartments = new ArrayList<>();
@@ -354,7 +354,7 @@ public class Apartment extends Model {
 
             /* --------------- Apartment visibility on homepage ---------------*/
 
-    public static void isVisible(Integer apartmentId){
+    public static void isVisible(Integer apartmentId) {
         Apartment apartment = Apartment.getApartmentById(apartmentId);
         if(apartment.isVisible == false) {
             apartment.isVisible = true;
@@ -366,7 +366,7 @@ public class Apartment extends Model {
 
               /* --------------- List of apartments for homepage ---------------*/
 
-    public static List<Apartment> apartmentsForHomepage(){
+    public static List<Apartment> apartmentsForHomepage() {
         List<Apartment> apartments = finder.where().eq("isVisible", true).findList();
         long seed = System.nanoTime();
         Collections.shuffle(apartments, new Random(seed));

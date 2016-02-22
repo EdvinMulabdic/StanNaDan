@@ -29,11 +29,11 @@
                             <td class="text-center">@reservation.dateTo</td>
                             <td class="text-center">@reservation.cost</td>
                             <td class="text-center">
-                                <a data-role="get" data-delete-parent="tr" href="" role="button">
+                                <a data-role="get" data-delete-parent="tr" href="@routes.Reservations.approveReservation(reservation.id)" role="button">
                                     <i class=" fa fa-check fa-lg"></i></a>
                             </td>
                             <td class="text-center">
-                                <a data-role="post" data-delete-parent="tr" href="" role="button">
+                                <a data-role="post" data-delete-parent="tr" href="@routes.Reservations.declineReservation(reservation.id)" role="button">
                                     <i class=" fa fa-close fa-lg"></i></a>
                             </td>
 

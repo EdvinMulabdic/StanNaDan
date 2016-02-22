@@ -17,6 +17,8 @@ import java.util.*;
  */
 @Entity
 public class Reservation extends Model {
+    private static Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
+
     @Id
     public Integer id;
 
@@ -35,11 +37,14 @@ public class Reservation extends Model {
     public Integer cost;
     @ManyToOne
     public Apartment apartment;
+    public Boolean approved;
+    public Boolean declined;
 
 
     public Reservation() {
     }
-    public Reservation(Apartment apartment, Date dateTo, Date dateFrom, String visitorName, String visitorLastname, String visitorEmail,String capacity, String phone, String comment, Integer cost) {
+
+    public Reservation(Apartment apartment, Date dateTo, Date dateFrom, String visitorName, String visitorLastname, String visitorEmail,String capacity, String phone, String comment, Integer cost, Boolean approved, Boolean declined) {
         this.apartment = apartment;
         this.dateTo = dateTo;
         this.dateFrom = dateFrom;
@@ -50,11 +55,13 @@ public class Reservation extends Model {
         this.phone = phone;
         this.comment = comment;
         this.cost = cost;
+        this.approved = false;
+        this.declined = false;
     }
 
 //    private static Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
 
-    public static void saveReservation(Integer apartmentId, String name, String email, String phone, Date checkInDate, Date checkOutDate, String numOfPersons, String comment){
+    public static void saveReservation(Integer apartmentId, String name, String email, String phone, Date checkInDate, Date checkOutDate, String numOfPersons, String comment) {
         DynamicForm form = Form.form().bindFromRequest();
 
         Apartment apartment = Apartment.getApartmentById(apartmentId);
@@ -70,12 +77,15 @@ public class Reservation extends Model {
         if(reservation.visitorName.contains(" ")) {
             reservation.visitorName = name.split(" ")[0];
             reservation.visitorLastname = name.split(" ")[1];
-        }else{
+        } else {
             reservation.visitorName = name;
             reservation.visitorLastname = " ";
         }
         reservation.dateFrom = checkInDate;
         reservation.dateTo = checkOutDate;
+
+        reservation.approved = false;
+        reservation.declined = false;
 
         reservation.save();
     }
@@ -89,28 +99,48 @@ public class Reservation extends Model {
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
         Calendar calendar = new GregorianCalendar();
 
-
         for (int i = 0; i < reservations.size(); i++) {
-            String dateFrom = DATE_FORMAT.format(reservations.get(i).dateFrom);
-            Date dateToPlusOne =  new Date(reservations.get(i).dateTo.getTime()+(24*60*60*1000));
-            String dateTo = DATE_FORMAT.format(dateToPlusOne);
+            if (reservations.get(i).approved == true) {
+                String dateFrom = DATE_FORMAT.format(reservations.get(i).dateFrom);
+                Date dateToPlusOne =  new Date(reservations.get(i).dateTo.getTime()+(24*60*60*1000));
+                String dateTo = DATE_FORMAT.format(dateToPlusOne);
 
-            calendar.setTime(DATE_FORMAT.parse(dateFrom));
+                calendar.setTime(DATE_FORMAT.parse(dateFrom));
 
-            while (calendar.getTime().before(DATE_FORMAT.parse(dateTo))) {
-                Date result = calendar.getTime();
-                dates.add("\"" + DATE_FORMAT.format(result).toString() + "\"");
-                calendar.add(Calendar.DATE, 1);
+                while (calendar.getTime().before(DATE_FORMAT.parse(dateTo))) {
+                    Date result = calendar.getTime();
+                    dates.add("\"" + DATE_FORMAT.format(result).toString() + "\"");
+                    calendar.add(Calendar.DATE, 1);
+                }
             }
-
         }
+
         return dates;
     }
 
     public static List<Reservation> getReservationsByApartmentIdReservation(Integer apartmentId) {
-        Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
-
         return finder.where().eq("apartment_id", apartmentId).findList();
+    }
+
+    public static Reservation getReservationById(Integer reservationId) {
+        return finder.where().eq("id", reservationId).findUnique();
+    }
+
+    public static Apartment getApartmentByReservationId(Integer reservationId) {
+        Reservation reservation = finder.where().eq("id", reservationId).findUnique();
+        return reservation.apartment;
+    }
+
+    public static void approveReservation(Integer reservationId) {
+        Reservation reservation = getReservationById(reservationId);
+        reservation.approved = true;
+        reservation.save();
+    }
+
+    public static void declineReservation(Integer reservationId) {
+        Reservation reservation = getReservationById(reservationId);
+        reservation.declined = true;
+        reservation.save();
     }
 
 
