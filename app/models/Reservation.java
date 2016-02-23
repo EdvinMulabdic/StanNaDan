@@ -134,12 +134,14 @@ public class Reservation extends Model {
     public static void approveReservation(Integer reservationId) {
         Reservation reservation = getReservationById(reservationId);
         reservation.approved = true;
+        reservation.declined = false;
         reservation.save();
     }
 
     public static void declineReservation(Integer reservationId) {
         Reservation reservation = getReservationById(reservationId);
         reservation.declined = true;
+        reservation.approved = false;
         reservation.save();
     }
 
