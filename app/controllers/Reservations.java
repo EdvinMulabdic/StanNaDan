@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class Reservations extends Controller {
 
+
+
     public Result approveReservation(Integer reservationId) {
         Reservation.approveReservation(reservationId);
 

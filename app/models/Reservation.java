@@ -61,7 +61,7 @@ public class Reservation extends Model {
 
 //    private static Model.Finder<String, Reservation> finder = new Model.Finder<>(Reservation.class);
 
-    public static void saveReservation(Integer apartmentId, String name, String email, String phone, Date checkInDate, Date checkOutDate, String numOfPersons, String comment) {
+    public static void saveReservation(Integer apartmentId, String name, String email, String phone,Integer cost, Date checkInDate, Date checkOutDate, String numOfPersons, String comment) {
         DynamicForm form = Form.form().bindFromRequest();
 
         Apartment apartment = Apartment.getApartmentById(apartmentId);
@@ -70,6 +70,7 @@ public class Reservation extends Model {
         reservation.apartment = apartment;
         reservation.comment = comment;
         reservation.phone = phone;
+        reservation.cost = cost;
         reservation.visitorEmail = email;
         reservation.capacity = numOfPersons;
         reservation.visitorName = name;

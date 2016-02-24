@@ -24,7 +24,8 @@ function totalNights(price){
     var money = diffDays *  price;
 
     $('#totalmoney').text(money);
-    $('#priceforpopup').text(money);
+    $('#pricepop').val(money);
+
 }
 function capacity(){
     var person = document.getElementById("person").value;

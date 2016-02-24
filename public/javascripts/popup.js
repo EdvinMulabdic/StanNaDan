@@ -10,7 +10,7 @@ $('#checkOut').change(function() {
     $('#checkOutpop').val($(this).val());
 });
 
-$('#person').change(function() {
-    $('#personpop').val($(this).val());
-});
+//$('#person').change(function() {
+//    $('#personpop').val($(this).val());
+//});
 

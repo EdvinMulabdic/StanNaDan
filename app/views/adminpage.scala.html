@@ -45,11 +45,11 @@
                         <td class="text-center">
                         @if(apartment.isVisible == null || apartment.isVisible == false) {
                             <a href="@routes.Apartments.showOnHomepage(apartment.id)" >
-                                <button type="submit" class="btn btn-primary" id="middlebuttons" onclick="setAtt()">NE</button>
+                                <button type="submit" class="btn btn-primary" id="middlebuttons" onclick="setAtt()">DA</button>
                             </a>
                         } else {
                             <a href="@routes.Apartments.showOnHomepage(apartment.id)" >
-                                <button type="submit" class="btn btn-primary" id="middlebutton">DA</button>
+                                <button type="submit" class="btn btn-primary" id="middlebutton">NE</button>
                             </a>
                         }
                         </td>
